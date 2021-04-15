@@ -11,7 +11,7 @@ let handler = async (m, { conn, text }) => {
   }
 }
 handler.help = ['tahta <teks>']
-handler.tags = ['nulis']
+handler.tags = ['creator']
 handler.command = /^((harta)?tahta)$/i
 handler.group = true
 handler.register = true
