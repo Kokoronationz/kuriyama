@@ -10,7 +10,7 @@ let d = new Date
 await conn.sendFile(m.chat, global.API('xteam', '/quotemaker', { text, wm: conn.getName(m.sender) }, 'APIKEY'), 'nulis.jpg', 'Maker kamu sudah jadi..\n╰ Follow Me: *instagram.com/kokoronationz*', m)
 }
 handler.help = ['quote'].map(v => v + 'maker (tulisan)|(name)')
-handler.tags = ['nulis']
+handler.tags = ['creator']
 handler.command = /^quotemaker$/i
 handler.owner = false
 handler.mods = false
