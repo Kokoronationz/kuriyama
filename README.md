@@ -1,7 +1,6 @@
 # kuriyama
 
-Simple WhatsApp Bot for Group 
-Recode [`wabot-aq`](https://GitHub.com/Nurutomo/wabot-aq)
+Simple WhatsApp Bot for Group | Recode [`wabot-aq`](https://GitHub.com/Nurutomo/wabot-aq)
 
 ## FOR TERMUX USER
 
