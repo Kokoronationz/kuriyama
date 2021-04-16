@@ -1,5 +1,5 @@
 let handler = async (m, { conn }) => {
-  if (new Date - global.DATABASE._data.users[m.sender].lastmining > 86400000) {
+  if (new Date - global.DATABASE._data.users[m.sender].lastmining > 60000) {
     global.DATABASE._data.users[m.sender].uang += 10000
     global.DATABASE._data.users[m.sender].exp += 100
     m.reply('Selamat anda mendapatkan +Rp10000')
