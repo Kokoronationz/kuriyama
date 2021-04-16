@@ -1,6 +1,6 @@
 let fetch = require('node-fetch')
 let [effect, teks] = text.split `|`
-let handler = async (m, { conn, args: [effect], text: txt }) => {
+let handler = async (m, { conn, text }) => {
   let { effects } = await (await (fetch(global.API('xteam', '/photooxy')))).json()
   if (!effect) throw '*List Effect*\n\n' + effects.sort((a, b) => a - b).join('\n')
   effect = effect.toLowerCase()
