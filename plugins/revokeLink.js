@@ -1,14 +1,6 @@
-let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})/i
-
-let handler = async (m, { conn, text }) => {
-    let [_, code] = text.match(linkRegex) || []
-    if (!code) throw 'Link invalid'
-    let res = await conn.query({
-        json: ["action", "new", code]
-    })
-    if (res.status !== 200) throw res
-    m.reply(`Link group berhasil disetel ulang`)
-}
+let handler = async (m, { conn, args }) => {
+  this.fakeReply(m.chat, 'Link group berhasil di setel ulang', '0@s.whatsapp.net', `${conn.user.name} Verified Bot`, m.chat)
+  await conn.revokeInvite(m.key.remoteJid)
 }
 handler.help = ['revoke']
 handler.tags = ['']
