@@ -3,7 +3,7 @@ let handler = async (m, { conn, args }) => {
   await conn.revokeInvite(m.key.remoteJid)
 }
 handler.help = ['revoke']
-handler.tags = ['admin']
+handler.tags = ['']
 handler.command = /^revoke$/i
 handler.owner = false
 handler.mods = false
