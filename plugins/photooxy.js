@@ -13,9 +13,8 @@ let handler = async (m, { conn, args: [effect], text: txt }) => {
 
 handler.help = ['photooxy'].map(v => v + ' <effect> <text>')
 handler.tags = ['creator']
-handler.command = /^(textpro)$/i
+handler.command = /^(photooxy)$/i
 handler.premium = true
 handler.register = true
 
 module.exports = handler
-
