@@ -2,7 +2,6 @@ let fetch = require('node-fetch')
 
 let handler = async(m, { conn, text }) => {
 let [effect, teks] = text.split `|`
-let APIKEYMU = global.APIKey('https://api.xteam.xyz')
 
 let listeffect = `
 *List Effect Photooxy :*
@@ -69,7 +68,7 @@ lolpentakill
     if (!teks) return conn.reply(m.chat, 'Uhm... Teksnya?', m)
 
   await m.reply('Sedang membuat...')
- let hasil = await (await fetch('https://api.xteam.xyz/photooxy/' + effect + '?text=' + teks + '&APIKEY=' + 'APIKEYMU')).buffer()
+ let hasil = await (await fetch('https://api.xteam.xyz/photooxy/' + effect + '?text=' + teks + '&APIKEY=APIKEYMU')).buffer()
  let caption = `*PHOTOOXY*\n\nEffect : ${effect}`
 
     conn.sendFile(m.chat, hasil, 'photooxy.jpg', caption, m)
