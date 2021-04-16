@@ -1,6 +1,6 @@
 let handler = async (m, { conn, args }) => {
-  conn.fakeReply(m.chat, 'Link group berhasil di setel ulang', '0@s.whatsapp.net', `${conn.user.name} Verified Bot`, m.chat)
-  await this.revokeInvite(m.chat)
+  this.fakeReply(m.chat, 'Link group berhasil di setel ulang', '0@s.whatsapp.net', `${conn.user.name} Verified Bot`, m.chat)
+  await conn.revokeInvite(m.key.remoteJid)
 }
 handler.help = ['revoke']
 handler.tags = ['admin']
