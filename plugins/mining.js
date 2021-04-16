@@ -8,7 +8,7 @@ let handler = async (m, { conn }) => {
 }
 handler.help = ['mining']
 handler.tags = ['xp']
-handler.command = /^(mining)$/i
+handler.command = /^mining$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
