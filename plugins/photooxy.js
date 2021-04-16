@@ -1,20 +1,91 @@
 let fetch = require('node-fetch')
-let split = '|'
-let handler = async (m, { conn, args: [effect], text: txt }) => {
-  let { effects } = await (await (fetch(global.API('xteam', '/photooxy')))).json()
-  if (!effect) throw '*List Effect*\n\n' + effects.sort((a, b) => a - b).join('\n')
-  effect = effect.toLowerCase()
-  if (!effect in effects) throw `Efek *${effect}* tidak ditemukan`
-  let [text, ...text2] = txt.replace(effect, '').trimStart().split(split)
-  text2 = text2.join(split)
-  let url = global.API('xteam', '/photooxy/' + effect, { text, text2 }, 'APIKEY')
-  await conn.sendFile(m.chat, url, 'photooxy.jpg', `*Photooxy*\n*Effect:* ${effect}`, m)
-}
 
-handler.help = ['photooxy'].map(v => v + ' <effect> <text>')
-handler.tags = ['creator']
+let handler = async(m, { conn, text }) => {
+let [effect, teks] = text.split `|`
+let APIKEYMU = global.APIKey('https://api.xteam.xyz')
+
+let listeffect = `
+*List Effect Photooxy :*
+
+smoke
+wolfmetal
+underwaterocean
+typography
+neonlight
+google
+rainbowshine
+camuflage
+3dglowing
+vintage
+candy
+gradientavatar
+glowrainbow
+stars
+fur
+flaming
+crispchrome
+kueultah
+rainbowbg
+metalicglow
+striking3d
+watermelon
+underwebmatrix
+multimaterial
+harrypotter
+8bit
+kopi2
+luxuryroyal
+gerbang
+woodblock
+smoketypography
+sweetcandy
+silk
+bevel
+partyneon
+greenleaves
+modernmetal
+lolcover
+warface
+pentakill
+aov
+battlefield
+avatarlol
+pokemon
+lolavatarglitch
+shinebannerlol
+mastery7lol
+dota2avatar
+lol
+crossfire
+glowpentakill
+warfacecover
+coveroverwatch
+lolcover2
+csgo
+lolpentakill
+`.trim()
+
+    if (!effect) return conn.reply(m.chat, listeffect, m)
+    if (!teks) return conn.reply(m.chat, 'Uhm... Teksnya?', m)
+
+  await m.reply('Sedang membuat...')
+ let hasil = await (await fetch('https://api.xteam.xyz/photooxy/' + effect + '?text=' + teks + '&APIKEY=' + APIKEYMU)).buffer()
+ let caption = `*PHOTOOXY*\n\nEffect : ${effect}`
+
+    conn.sendFile(m.chat, hasil, 'photooxy.jpg', caption, m)
+}
+handler.help = ['photooxy <effect|teks>']
+handler.tags = ['nulis']
 handler.command = /^(photooxy)$/i
+handler.owner = false
+handler.mods = false
 handler.premium = true
+handler.group = false
+handler.private = false
 handler.register = true
+
+handler.fail = null
+handler.exp = 0
+handler.limit = false
 
 module.exports = handler
