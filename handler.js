@@ -18,6 +18,7 @@ module.exports = {
           if (!isNumber(user.uang)) user.uang = 0
           if (!isNumber(user.limit)) user.limit = 10
           if (!isNumber(user.lastclaim)) user.lastclaim = 0
+          if (!isNumber(user.lastmining)) user.lastmining = 0
           if (!'registered' in user) user.registered = false
           if (!user.registered) {
             if (!'name' in user) user.name = this.getName(m.sender)
@@ -34,6 +35,7 @@ module.exports = {
           uang: 0,
           limit: 10,
           lastclaim: 0,
+          lastmining: 0,
           registered: false,
           name: this.getName(m.sender),
           age: -1,
