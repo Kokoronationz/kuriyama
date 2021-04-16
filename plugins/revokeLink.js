@@ -1,6 +1,6 @@
 let handler = async (m, { conn, args }) => {
   
-  await conn.revokeInvite(m.key.remoteJid)
+  await conn.revokeInvite()
 }
 handler.help = ['revoke']
 handler.tags = ['']
