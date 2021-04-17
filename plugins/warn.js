@@ -20,6 +20,7 @@ let handler = async (m, { conn, args}) => {
 handler.help = ['warn @mention']
 handler.tags = ['admin']
 handler.command = /^warn$/i
+handler.group = true
 handler.admin = true
 
 module.exports = handler
