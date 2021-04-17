@@ -2,6 +2,7 @@
 
 let handler = async(m, { conn, text, usedPrefix }) => {
 
+    await m.reply('Searching...')
     if (!text) return conn.reply(m.chat, 'Contoh penggunaan: ' + usedPrefix + 'chord hanya rindu', m)
 
     axios.get(`https://docs-jojo.herokuapp.com/api/chord?q=` + text)
