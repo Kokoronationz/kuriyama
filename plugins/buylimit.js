@@ -1,7 +1,7 @@
 const uangperlimit = 350
 let handler = async (m, { conn, command, args }) => {
   let count = command.replace(/^buy/i, '')
-  count = count ? /all/i.test(count) ? Math.floor(global.DATABASE._uang / uangperlimit) : parseInt(count) : args[0] ? parseInt(args[0]) : 1
+  count = count ? /all/i.test(count) ? Math.floor(global.DATABASE._data.users[m.sender]._uang / uangperlimit) : parseInt(count) : args[0] ? parseInt(args[0]) : 1
   count = Math.max(1, count)
   if (global.DATABASE._data.users[m.sender].uang >= uangperlimit * count) {
     global.DATABASE._data.users[m.sender].uang -= uangperlimit * count
