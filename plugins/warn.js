@@ -22,5 +22,6 @@ handler.tags = ['admin']
 handler.command = /^warn$/i
 handler.group = true
 handler.admin = true
+handler.botAdmin = true
 
 module.exports = handler
