@@ -18,7 +18,7 @@ let handler = async (m, { conn, args}) => {
     } else conn.reply(m.chat, 'Siapa yang mau di Warn om?', m)
 }
 handler.help = ['warn @mention']
-handler.tags = ['admin']
+handler.tags = ['group']
 handler.command = /^warn$/i
 handler.group = true
 handler.admin = true
