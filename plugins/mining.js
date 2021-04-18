@@ -28,7 +28,7 @@ handler.limit = false
 module.exports = handler
 
 function MeNit(ms) {
-  let m = isNaN(ms) ? '60' : Math.floor(ms / 60000) % 60
+  let m = isNaN(ms) ? '30' : Math.floor(ms / 60000) % 60
   return [m].map(v => v.toString().padStart(2, 0) ).join(':')
 }
 
