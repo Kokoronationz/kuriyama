@@ -6,7 +6,7 @@ let handler = async (m, { conn, args}) => {
         if (warn < 2) {
             global.DATABASE._data.users[ban].warn += 1
             conn.reply(m.chat, `berhasil Warn`, m)
-            m.reply('Kamu telah diperingatkan oleh admin, dan sekarang kamu punya ' + (warn + 1) + ' kesempatan. Ingat Jika kamu mendapat warn 2 kali kamu akan otomatis ditendang dari Grup', ban)
+            m.reply('Kamu telah diperingatkan oleh admin, dan sekarang kamu punya ' + (warn + 1) + 'warn . Ingat Jika kamu mendapat warn 3 kali kamu akan otomatis ditendang dari Grup', ban)
         } else if (warn == 2) {
             global.DATABASE._data.users[ban].Banneduser = true
             global.DATABASE._data.users[ban].warn = 0
