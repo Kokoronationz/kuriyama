@@ -109,7 +109,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
 ┃ ❖ Nurutomo
 ┃ ❖ St4rz
 ┃ ❖ Arya274
-┃ ❖ RendyGans
+┃ ❖ RC047
 ┃ ❖ MFarelS
 ┃ ❖ Dan Kawan-kawan
 ┗ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
