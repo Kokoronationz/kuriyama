@@ -1,7 +1,6 @@
 let handler = m => m
 handler.before = m => {
   let user = global.DATABASE.data.users[m.sender]
-  let name = user.name
   if (user.afk > -1) {
     m.reply(`
 Anda berhenti AFK
@@ -20,7 +19,6 @@ Anda berhenti AFK
 *「 AFK 」*
 
 _Jangan tag dia!!_
-nama   : ${name}
 Alasan  : ${reason}
 Selama : ${clockString(new Date - afkTime)}
 
