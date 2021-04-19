@@ -26,7 +26,7 @@ ${similarity < 0.89 ? 'Saya Memiliki Keyakinan Rendah Tentang Hal Ini' : ''}
 ❏ Judul Jepang : *${title}*
 ❏ Ejaan Judul : *${title_romaji}*
 ❏ Similarity : *${(similarity * 100).toFixed(1)}%*
-❏ Episode : *${episode.toString()} ${at}*
+❏ Episode : *${episode.toString()}*
 ❏ Ecchi : *${is_adult ? 'Yes' : 'No'}*
 `.trim()
   conn.sendFile(m.chat, link, 'srcanime.mp4', `${nobuyaki}`, m)
