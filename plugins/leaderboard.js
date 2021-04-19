@@ -7,7 +7,7 @@ let handler = async (m, { conn, args }) => {
   let usersExp = sortedExp.map(v => v[0])
   let usersLim = sortedLim.map(v => v[0])
   let usersLev = sortedLev.map(v => v[0])
-  let len = args[0] && args[0].length > 0 ? Math.min(1000, Math.max(parseInt(args[0]), 5)) : Math.min(3, sortedExp.length)
+  let len = args[0] && args[0].length > 0 ? Math.min(100, Math.max(parseInt(args[0]), 5)) : Math.min(3, sortedExp.length)
   let text = `
 • *Saldo Leaderboard Top ${len}* •
 Kamu: *${usersUang.indexOf(m.sender) + 1}* dari *${usersUang.length}*
