@@ -1,6 +1,7 @@
 let fetch = require('node-fetch')
 let googleIt = require('google-it')
 let handler = async (m, { conn, command, args }) => {
+  await m.reply('Searching...')
   let full = /f$/i.test(command)
   let text = args.join` `
   if (!text) return conn.reply(m.chat, 'Tidak ada teks untuk di cari', m)
