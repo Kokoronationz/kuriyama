@@ -14,7 +14,7 @@ let handler = async (m, { conn, text }) => {
   let url = await uploadImage(img)
   let triggered = `https://some-random-api.ml/canvas/triggered?avatar=${url}`
   //let stiker = await sticker(null, triggered, 'triggered', '@Kokoronationz')
-  conn.sendFile(m.chat, triggered, 'trigger.jpg', '@Kokoronationz', m)
+  conn.sendFile(m.chat, triggered, 'trigger.mp4', '@Kokoronationz', m)
  } catch (e) {
    m.reply('Conversion Failed')
   }
