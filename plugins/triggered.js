@@ -1,8 +1,8 @@
 //Thanks Nobuyaki:D
 
 const uploadImage = require('../lib/uploadImage') 
-//const { sticker } = require('../lib/sticker')
-//const { MessageType } = require('@adiwajshing/baileys')
+const { sticker } = require('../lib/sticker')
+const { MessageType } = require('@adiwajshing/baileys')
 
 let handler = async (m, { conn, text }) => {
  try {
@@ -13,8 +13,10 @@ let handler = async (m, { conn, text }) => {
   let img = await q.download()
   let url = await uploadImage(img)
   let triggered = `https://some-random-api.ml/canvas/triggered?avatar=${url}`
-  //let stiker = await sticker(null, triggered, 'triggered', '@Kokoronationz')
-  conn.sendFile(m.chat, triggered, 'trigger.gif', '@Kokoronationz', m)
+  let stiker = await sticker(null, triggered, 'triggered', '@Kokoronationz')
+  conn.sendMessage(m.chat, stiker, MessageType.sticker, {
+    quoted: m
+  })
  } catch (e) {
    m.reply('Conversion Failed')
   }
