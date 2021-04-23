@@ -5,7 +5,7 @@ let handler = async (m, { conn }) => {
  let hasil = `*@kuriyama-bot*`
  conn.sendFile(m.chat, result, 'result.jpg', hasil, m)
 }
-handler.help = ['loli$']
+handler.help = ['loli']
 handler.tags = ['weebs']
 handler.command = /^loli$/i
 handler.group = true
