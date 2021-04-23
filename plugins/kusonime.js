@@ -1,40 +1,16 @@
 let fetch = require('node-fetch')
-let handler = async (m, { conn, args }) => {
-  if (!args[0]) throw 'Masukkan judul anime...'
-  let res = await fetch(global.API('xteam', '/anime/kusonime?q=', {
-    anime: args[0]
-  }, 'APIKEY'))
-  let json = await res.json()
-  if (res.status != 200) throw json
-  if (json.result.error) throw json.result.message
-  let {
-    anime,
-    title,
-    thumb,
-    info,
-    sinopsis,
-    link_dl
-  } = json.result.user
-  let pp = thumb
-  let caption = `
-Anime : ${anime},
-Title : ${title},
-Info : ${info},
-Sinopsis : ${sinopsis},
-Link : ${link_dl},
-`.trim()
-  if (pp) conn.sendFile(m.chat, pp, 'ppnime.jpg', caption, m)
-  else m.reply(caption)
+let handler = async function (m, { text, isPrems, isOwner }) {
+	let user = global.DATABASE._data.users[m.sender]
+    if (!text) throw '_yg dicari apa_'
+  let res = await fetch('https://ardhixsquerpants.herokuapp.com/api/kuso?q=' + encodeURIComponent(text))
+let json= await res.json()
+  const ardi =  `➸ *info:* ${json.info}\n\n➸ *link download:* ${json.link_dl}➸ *sinopsis:* ${json.sinopsis}\n\n➸ *judul* ${json.title}`
+     conn.sendFile(m.chat,json.thumb, 'image.jpg', ardi, m)
 }
-handler.help = ['kusonime'].map(v => v + ' <anime>')
-handler.tags = ['maintenance']
-
-handler.command = /^(kusonime)$/i
+handler.help = ['kusonime <judul>']
+handler.tags = ['weebs']
+handler.command = /^kusonime$/i
 handler.group = true
-handler.premium = true
 handler.register = true
-
-handler.fail = null
-handler.limit = false
 
 module.exports = handler
