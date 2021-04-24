@@ -5,7 +5,7 @@ let handler = async(m, { conn, text, usedPrefix }) => {
     await m.reply('Searching...')
     if (!text) return conn.reply(m.chat, 'Contoh penggunaan: ' + usedPrefix + 'chord hanya rindu', m)
 
-    axios.get(`https://alfians-api.herokuapp.com/api/chord?q=` + (text))
+    axios.get(`https://alfians-api.herokuapp.com/api/chord?q=`${text})
         .then((res) => {
             conn.reply(m.chat, res.data.result, m)
         })
