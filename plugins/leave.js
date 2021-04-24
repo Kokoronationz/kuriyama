@@ -3,7 +3,7 @@ let handler = async function(m, { conn, args, isPrems, isOwner }) {
 const time = async (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-      this.fakeReply(m.chat, `*Bye Semuaa 🙂*`, '0@s.whatsapp.net', `${conn.user.name} Verified Bot`, m.chat)
+      this.reply(m.chat, `Bye Semua 🙂`, { key: { remoteJid: 'status@broadcast', participant: '0@s.whatsapp.net', fromMe: false }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": `${conn.user.name} Verified Bot`, "jpegThumbnail": fs.readFileSync(`./src/mirai.png`)} } })
       await time(5000)
   await conn.groupLeave(m.key.remoteJid)
 }
