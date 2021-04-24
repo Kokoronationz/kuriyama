@@ -18,6 +18,11 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       month: 'long',
       year: 'numeric'
     })
+    let dateIslamic = Intl.DateTimeFormat(locale + '-TN-u-ca-islamic', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    }).format(d)
     let time = d.toLocaleTimeString(locale, {
       hour: 'numeric',
       minute: 'numeric',
@@ -95,6 +100,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
 ┃
 ┃ ❖ Hari: *%week %weton*
 ┃ ❖ Tanggal: *%date*
+┃ ❖ Tanggal Islam: *%dateIslamic*
 ┃ ❖ Waktu: *%time*
 ┃
 ┃ ❖ Uptime: *_%uptime_ (%muptime)*
@@ -141,10 +147,10 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       totalexp: exp,
       xp4levelup: max - exp,
       github: package.homepage ? package.homepage.url || package.homepage : '[unknown github url]',
-      level, limit, name, weton, week, date, time, totalreg, rtotalreg,
+      level, limit, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg,
       readmore: readMore
     }
-    text = text.replace(new RegExp(`%(${Object.keys(replace).join`|`})`, 'g'), (_, name) => ''+replace[name])
+    text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => ''+replace[name])
     //conn.fakeReply(m.chat, text.trim(), '0@s.whatsapp.net', `${conn.user.name} Verified Bot`, 'status@broadcast')
     conn.sendFile(m.chat, kuriyama, 'kuriyama.jpg', text.trim(), { key: { remoteJid: 'status@broadcast', participant: '0@s.whatsapp.net', fromMe: false }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": `${conn.user.name} Verified Bot`, "jpegThumbnail": fs.readFileSync(`./src/mirai.png`)} } }, m)
   } catch (e) {
