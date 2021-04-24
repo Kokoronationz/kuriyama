@@ -11,7 +11,7 @@ let handler = async (m, { conn, text }) => {
   let url = await uploadImage(img)
   let [atas, bawah] = text.split('|')
   axios.get(`https://mnazria.herokuapp.com/api/create-meme?text-atas=${atas}&text-bawah=${bawah}&background-url=${url}`)
-  let hasil = `${res.data.result}`
+  let hasil = `${res.data.gambar}`
   
   conn.sendFile(m.chat, hasil, 'meme.jpg', '@kuriyama-bot', m)
  }catch (e) {
