@@ -2,7 +2,7 @@ let axios = require("axios")
 const uploadImage = require('../lib/uploadImage')
 
 let handler = async (m, { conn, text }) => {
- try {
+
   let q = m.quoted ? m.quoted : m
   let mime = (q.msg || q).mimetype || ''
   if (!mime) throw 'Tidak ada foto'
@@ -14,9 +14,6 @@ let handler = async (m, { conn, text }) => {
   let hasil = `${res.data.gambar}`
   
   conn.sendFile(m.chat, hasil, 'meme.jpg', '@kuriyama-bot', m)
-  }
- }catch (e) {
-   m.reply('Conversion Failed')
   }
 }
 handler.help = ['memecreate'].map(v => v + ' <text>|<text>')
