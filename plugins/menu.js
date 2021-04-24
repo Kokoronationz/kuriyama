@@ -62,6 +62,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       'premium': 'Premium Menu',
       'owner': 'Owner',
       'host': 'Host',
+      'database': 'Database',
       'advanced': 'Advanced',
       'info': 'Info',
       '': 'No Category',
