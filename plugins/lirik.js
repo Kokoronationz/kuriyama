@@ -7,8 +7,8 @@ let handler = async(m, { conn, text, usedPrefix }) => {
         axios.get(`https://ardi30.herokuapp.com/api/v1/lirik?l=` + encodeURIComponent(text))
             .then((res) => {
                       
-                const ardi = `*• Lirik Lagu :* ${res.data.data}`
-                conn.reply(m.chat, ardi, 'username',m)
+                const ardi = `*• Lirik Lagu ${text} :*\n\n ${res.data.data}`
+                conn.reply(m.chat, ardi, 'username',m.chat)
             })
             .catch((err) => {
                 reject(err)
