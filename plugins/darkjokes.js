@@ -5,7 +5,7 @@ let handler = async (m, { text }) => {
 
   conn.sendFile(m.chat, darkjokes.result, 'filename', '_*Gelap euy:v*_')
 }
-handler.help = ['darkjoke']
+handler.help = ['darkjokes']
 handler.tags = ['fun']
 handler.command = /^darkjokes$/i
 handler.group = true
