@@ -3,7 +3,7 @@ let handler = async(m, { conn, text }) => {
   
   await m.reply('Searching...')
 	axios.get(`https://api.zeks.xyz/api/liputan6?apikey=apivinz`).then ((res) => {
-	 	let hasil = res.data.result.map(res=>`*Judul:* ${res.title}\n*Tanggal:* ${res.time}\n*Kategori:* ${res.category}\n     ${res.ket}\n*Link: ${res.url}`).join('\n\n')
+	 	let hasil = res.data.result.map(res=>`*Judul:* ${res.title}\n*Tanggal:* ${res.time}\n*Kategori:* ${res.category}\n     ${res.ket}\n*Link:* ${res.url}`).join('\n\n')
 
     conn.reply(m.chat, hasil, m)
 	})
