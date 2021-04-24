@@ -8,7 +8,7 @@ let handler = async(m, { conn, text, usedPrefix }) => {
             .then((res) => {
                       
                 const ardi = `*• Lirik Lagu ${text} :*\n\n ${res.data.data}`
-                conn.reply(m.chat, ardi, 'username',m.chat)
+                conn.reply(m.chat, ardi, m)
             })
             .catch((err) => {
                 reject(err)
