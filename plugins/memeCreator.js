@@ -14,7 +14,9 @@ let handler = async (m, { conn, text }) => {
   let hasil = `${res.data.result}`
   
   conn.sendFile(m.chat, hasil, 'meme.jpg', '@kuriyama-bot', m)
- }
+ }catch (e) {
+   m.reply('Conversion Failed')
+  }
 }
 handler.help = ['memecreate'].map(v => v + ' <text>|<text>')
 handler.tags = ['creator']
