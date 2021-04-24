@@ -5,7 +5,7 @@ let handler = async(m, { conn, text }) => {
     if (!kata) return conn.reply(m.chat, 'Masukan kata', m)
   await m.reply('Searching...')
 	axios.get(`https://api.zeks.xyz/api/gsmArena?apikey=apivinz&q=${kata}`).then ((res) => {
-	 	let hasil = res.data.data.map(res=>`*Title:* ${res.title}\n\n*spesifikasi:*\n${res.full_desc.string}`)
+	 	let hasil = res.data.map(res=>`*Title:* ${res.title}\n\n*spesifikasi:*\n${res.full_desc.string}`)
 
     conn.reply(m.chat, hasil, m)
 	})
