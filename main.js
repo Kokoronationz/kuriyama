@@ -126,8 +126,8 @@ global.reloadHandler = function () {
     conn.off('group-add', conn.onAdd)
     conn.off('group-leave', conn.onLeave)
   }
-  conn.welcome = 'Hai, @user!\nSelamat datang di grup @subject'
-  conn.bye = 'Selamat tinggal @user!'
+  conn.welcome = '╔═════════════════════╗\n🔰 Welcome to @subject 🔰\n╚═════════════════════╝\n\n ════ ```Hi @user!``` ════\n\n*‼️Wajib Intro & Ikuti Rules Group‼️*\n\n ━━━━━━━━━━━━━━━━━━━━━━\n     ❝ _Jangan Lupa Pakai Masker &_\n        _Patuhi Protokol Kesehatan_ ❞\n ━━━━━━━━━━━━━━━━━━━━━━\n\n ═══ 𝒀𝒐𝒓𝒐𝒔𝒉𝒊𝒌𝒖 𝑶𝒏𝒆𝒈𝒂𝒊𝒔𝒉𝒊𝒎𝒂𝒔𝒖 ═══'
+  conn.bye = '╔═════════════════════╗\n║        ╦   ╦  ╔═╗  ╔═╗  ╦  ╔╗╦        ║\n║        ╚╦╝  ╠═╣  ╚═╗  ║  ║║║        ║\n║           ╩     ╩   ╩  ╚═╝  ╩  ╩╚╝        ║\n╚═════════════════════╝\n\n Mengenang Kepergian @user\n\n ━━━━━━━━━━━━━━━━━━━━━━\n      ❝ _Jangan Lupa Pakai Masker &_\n          _Patuhi Protokol Kesehatan_ ❞\n ━━━━━━━━━━━━━━━━━━━━━━\n\n ════ 👋🏻 *_Semoga Tenang!_* ════'
   conn.handler = handler.handler
   conn.onAdd = handler.welcome
   conn.onLeave = handler.leave
