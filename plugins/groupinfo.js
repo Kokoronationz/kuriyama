@@ -8,14 +8,14 @@ let handler = async (m, { conn }) => {
 	} finally {
 	
 		let welcome = global.DATABASE.data.chats[m.chat].welcome
-		let left = global.DATABASE.data.chats[m.chat].left
-		let filter = global.DATABASE.data.chats[m.chat].nobadword
-		let nolink = global.DATABASE.data.chats[m.chat].nolink
-		let novirtex = global.DATABASE.data.chats[m.chat].novirtex
+		let antiToxic = global.DATABASE.data.chats[m.chat].antiToxic
+		let antiLink = global.DATABASE.data.chats[m.chat].antiLink
+		let delete = global.DATABASE.data.chats[m.chat].delete
+    let isBanned = global.DATABASE.data.chats[m.chat].isBanned
     
 	var name = conn.getName(m.chat)
 	
-	conn.sendFile(m.chat, pp, 'profile.jpg', `*[ ${ucword(name)} ]*\n\n  - Anti-Link : ${data(nolink)}\n  - Anti-Virtex : ${data(novirtex)}\n  - Anti-Badword : ${data(filter)}\n  - Welcome Msg : ${data(welcome)}\n  - Leave Msg : ${data(left)}`, m)
+	conn.sendFile(m.chat, pp, 'profile.jpg', `*[ ${ucword(name)} ]*\n\n  - Banned : ${data(isBanned)}\n  - Anti-Link : ${data(antiLink)}\n  - Anti-Toxic : ${data(antiToxic)}\n  - Welcome Msg : ${data(welcome)}\n  - delete Msg : ${data(delete)}`, m)
 	}
 }
 handler.help = ['groupinfo']
