@@ -21,8 +21,6 @@ let handler = async (m, { conn }) => {
 Nama Group: ${res.subject}
 ID:	${res.id}
 Dibuat pada: ${formatDate(res.creation * 1000)}
-Judul diubah oleh @${res.subjectOwner.split`@`[0]} pada ${formatDate(res.subjectTime * 1000)}
-Deskripsi diubah oleh @${res.descOwner.split`@`[0]} pada ${formatDate(res.descTime * 1000)}
 Deskripsi:
 ${res.desc}
 
