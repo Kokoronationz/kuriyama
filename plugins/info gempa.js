@@ -1,9 +1,9 @@
-let fetch = require('node-fetch')
+let axios = require("axios");
 let handler = async function (m, { text, isPrems, isOwner }) {
 	
     
     await m.reply('Searching...')
-  let res = await fetch('https://videfikri.com/api/infogempa/').then((res) => {
+  axios.get('https://videfikri.com/api/infogempa/').then((res) => {
     
   let hasil =  res.data.result.map(res=>`*Wilayah:* ${res.wilayah}\n*Bujur:* ${res.bujur}\n*Lintang:* ${res.lintang}\n*Waktu:* ${res.waktu}\n*Magnitudo:* ${res.magnitudo}\n*Kedalaman:* ${res.kedalaman}`)
      conn.reply(m.chat,  hasil, m)
