@@ -4,7 +4,7 @@ let handler = async function (m, { text, isPrems, isOwner }) {
     
     await m.reply('Searching...')
   let res = await fetch('https://videfikri.com/api/infogempa/')
-let json= await res.json()
+let json= await res.data.result
   const hasil =  `*Wilayah:* "${json.wilayah}"\n*Bujur:* ${json.bujur}\n*Lintang:* ${json.lintang}\n*Waktu:* ${json.waktu}\n*Magnitudo:* ${json.magnitudo}\n*Kedalaman:* ${json.kedalaman}`
      conn.reply(m.chat,  hasil, m)
 }
