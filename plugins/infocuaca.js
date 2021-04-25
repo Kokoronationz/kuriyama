@@ -7,7 +7,9 @@ let handler = async(m, { conn, text, usedPrefix }) => {
 
     axios.get(`https://ardi30.herokuapp.com/doc/cuaca`)
         .then((res) => {
-          let hasil = res.data.hasil.map(res=>`*Kota:* ${res.nama}\n*Koordinat:*\n  Lon: ${res.koordinat.lon}\n  Lat: ${res.koordinat.lat}\n*Suhu:* ${res.suhu}\n*Angin:* ${res.angin}\n*Kelembaban:* ${res.kelembaban}\n*Cuaca:* ${res.cuaca}\n*Keterangan:* ${res.keterangan}\n*Angin:* ${res.angin}`)
+          let ress = res.data.hasil
+          
+          let hasil = `*Kota:* ${ress.nama}\n*Koordinat:*\n  Lon: ${ress.koordinat.lon}\n  Lat: ${ress.koordinat.lat}\n*Suhu:* ${ress.suhu}\n*Angin:* ${ress.angin}\n*Kelembaban:* ${ress.kelembaban}\n*Cuaca:* ${res.cuaca}\n*Keterangan:* ${ress.keterangan}\n*Angin:* ${ress.angin}`)
             conn.reply(m.chat, hasil, m)
         })
         .catch()
