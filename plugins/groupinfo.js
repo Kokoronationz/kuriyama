@@ -14,9 +14,26 @@ let handler = async (m, { conn }) => {
 		let hapus = global.DATABASE.data.chats[m.chat].delete
     let isBanned = global.DATABASE.data.chats[m.chat].isBanned
     
-	var name = conn.getName(m.chat)
 	
-	conn.sendFile(m.chat, pp, 'profile.jpg', `*[ ${ucword(name)} ]*\n\n  - Banned : ${data(isBanned)}\n  - Anti-Link : ${data(antiLink)}\n  - Anti-Toxic : ${data(antiToxic)}\n  - Welcome Msg : ${data(welcome)}\n  - delete Msg : ${data(hapus)}\n\n     ${res.desc}`, m)
+	let hasil = `
+*「 Group Info 」*
+
+	${res.id}
+Judul: ${res.subject}
+Dibuat pada: ${formatDate(res.creation * 1000)}
+Judul diubah oleh @${res.subjectOwner.split`@`[0]} pada ${formatDate(res.subjectTime * 1000)}
+Deskripsi diubah oleh @${res.descOwner.split`@`[0]} pada ${formatDate(res.descTime * 1000)}
+Deskripsi:
+${res.desc}
+
+  - Banned : ${data(isBanned)}
+  - Anti-Link : ${data(antiLink)}
+  - Anti-Toxic : ${data(antiToxic)}
+  - Welcome Msg : ${data(welcome)}
+  - delete Msg : ${data(hapus)}
+`.trim()
+	
+	conn.sendFile(m.chat, pp, 'profile.jpg', hasil, m)
 	}
 }
 handler.help = ['groupinfo']
@@ -39,4 +56,17 @@ function data(str){
 	}else {
 		return "Active"
 	}
+}
+
+function formatDate(n, locale = 'id') {
+  let d = new Date(n)
+  return d.toLocaleDateString(locale, {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric'
+  })
 }
