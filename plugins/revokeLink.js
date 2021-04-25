@@ -1,5 +1,6 @@
+let { Presence } = require('@adiwajshing/baileys')
 let handler = async (m, { conn, args }) => {
-  
+  conn.updatePresence(m.chat, Presence.composing) 
   await conn.revokeInvite(m.chat)
 }
 handler.help = ['revoke']
