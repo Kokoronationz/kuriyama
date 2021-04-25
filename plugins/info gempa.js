@@ -10,7 +10,7 @@ let json= await res.data.result
 }
 handler.help = ['infogempa']
 handler.tags = ['info']
-handler.command = /^(info?)gempa$/i
+handler.command = /^(infogempa|gempa)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
