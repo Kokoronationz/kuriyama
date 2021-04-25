@@ -9,9 +9,6 @@ let handler = async (m, { conn, usedPrefix, command, text, args, isROwner }) => 
     case 'welcome':
       chat.welcome = isEnable
       break
-    case 'antitoxic':
-      chat.antiToxic = isEnable
-      break
     case 'delete':
       chat.delete = isEnable
       break
@@ -35,7 +32,7 @@ let handler = async (m, { conn, usedPrefix, command, text, args, isROwner }) => 
       break
     default:
       return m.reply(`
-List option: welcome | antitoxic | delete | public | antilink | autolevelup
+List option: welcome | delete | public | antilink | autolevelup
 
 Contoh:
 ${usedPrefix}enable welcome
