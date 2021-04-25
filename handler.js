@@ -57,7 +57,7 @@ module.exports = {
           if (!'sBye' in chat) chat.sBye = ''
           if (!'delete' in chat) chat.delete = true
           if (!'antiLink' in chat) chat.antiLink = false
-          if (!'antiToxic' in chat) chat.antiToxic = false
+          if (!'antiToxic' in chat) chat.antiToxic = true
         } else global.DATABASE._data.chats[m.chat] = {
           isBanned: false,
           welcome: false,
@@ -65,7 +65,7 @@ module.exports = {
           sBye: '',
           delete: true,
           antiLink: false,
-          antiToxic: false,
+          antiToxic: true,
         }
       } catch (e) {
         console.log(e, global.DATABASE.data)
