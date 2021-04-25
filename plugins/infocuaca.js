@@ -1,19 +1,16 @@
 const axios = require('axios')
 
 let handler = async(m, { conn, text, usedPrefix }) => {
-	let user = global.DATABASE._data.users[m.sender]
-    if (!text) return conn.reply(m.chat, '_Masukkan yang dicari_', m)
-    new Promise((resolve, reject) => {
-        axios.get(`http://api-iam.herokuapp.com/api/cuaca?q=` + encodeURIComponent(text))
-            .then((res) => {
-                        
-                const teks = `• *KOTA : ${res.data.result.tempat}*\n• *SUHU : ${res.data.result.suhu}*\n• *KELEMBAPAN : ${res.data.result.kelembapan}*\n• *UDARA : ${res.data.result.udara}*\n• *ANGIN : ${res.data.result.angin}*\n• *CUACA : ${res.data.result.cuaca}*\n• *DESK : ${res.data.result.desk}*`
-                conn.reply(m.chat, teks, 'username',m)
-            })
-            .catch((err) => {
-                reject(err)
-            })
-    })
+
+    await m.reply('Searching...')
+    if (!text) return conn.reply(m.chat, 'Contoh penggunaan: ' + usedPrefix + 'infocuaca Bandung', m)
+
+    axios.get(`https://ardi30.herokuapp.com/doc/cuaca`)
+        .then((res) => {
+          let hasil = res.data.hasil.map(res=>`*Kota:* ${res.nama}\n*Koordinat:*\n  Lon: ${res.koordinat.lon}\n  Lat: ${res.koordinat.lat}\n*Suhu:* ${res.suhu}\n*Angin:* ${res.angin}\n*Kelembaban:* ${res.kelembaban}\n*Cuaca:* ${res.cuaca}\n*Keterangan:* ${res.keterangan}\n*Angin:* ${res.angin}`)
+            conn.reply(m.chat, hasil, m)
+        })
+        .catch()
 }
 handler.help = ['infocuaca <kota>']
 handler.tags = ['internet']
