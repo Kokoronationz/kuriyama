@@ -12,7 +12,7 @@ let handler = async (m, { conn, text }) => {
   if (!/image\/(jpe?g|png)/.test(mime)) throw `Mime ${mime} tidak support`
   let img = await q.download()
   let url = await uploadImage(img)
-  let triggered = `https://some-random-api.ml/canvas/triggered?avatar=${url}`
+  let triggered = `http://zekais-api.herokuapp.com/trigger?url=${url}`
   let stiker = await sticker(null, triggered, 'triggered', '@Kokoronationz')
   conn.sendMessage(m.chat, stiker, MessageType.sticker, {
     quoted: m
