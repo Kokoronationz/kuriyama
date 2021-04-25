@@ -65,7 +65,7 @@ module.exports = {
           sBye: '',
           delete: true,
           antiLink: false,
-          antiToxic: false,
+          antiToxic: true,
         }
       } catch (e) {
         console.log(e, global.DATABASE.data)
