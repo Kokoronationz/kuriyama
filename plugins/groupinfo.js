@@ -15,11 +15,11 @@ let handler = async (m, { conn }) => {
     let isBanned = global.DATABASE.data.chats[m.chat].isBanned
     
 	
-	let hasil = `
+	let caption = `
 *「 Group Info 」*
 
-	${res.id}
-Judul: ${res.subject}
+Nama Group: ${res.subject}
+ID:	${res.id}
 Dibuat pada: ${formatDate(res.creation * 1000)}
 Judul diubah oleh @${res.subjectOwner.split`@`[0]} pada ${formatDate(res.subjectTime * 1000)}
 Deskripsi diubah oleh @${res.descOwner.split`@`[0]} pada ${formatDate(res.descTime * 1000)}
@@ -33,7 +33,11 @@ ${res.desc}
   - delete Msg : ${data(hapus)}
 `.trim()
 	
-	conn.sendFile(m.chat, pp, 'profile.jpg', hasil, m)
+	conn.sendFile(m.chat, pp, 'profile.jpg', caption, false, {
+    contextInfo: {
+      mentionedJid: conn.parseMention(caption)
+    }
+  })
 	}
 }
 handler.help = ['groupinfo']
