@@ -10,7 +10,7 @@ let handler = async (m, { conn, usedPrefix, command, text, args, isROwner }) => 
       chat.welcome = isEnable
       break
     case 'antitoxic':
-      chat.antiToxic = !isEnable
+      chat.antiToxic = isEnable
       break
     case 'delete':
       chat.delete = isEnable
