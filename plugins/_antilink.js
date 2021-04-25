@@ -3,11 +3,12 @@ let handler = m => m
 let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})/i
 handler.before = function (m, { user }) {
   if (m.isBaileys && m.fromMe) return true
+  if (isAdmin) return false
   let chat = global.DATABASE.data.chats[m.chat]
   let isGroupLink = linkRegex.exec(m.text)
 
   if (chat.antiLink && isGroupLink) {
-    m.reply('Jika ini bukan link Grup ini\nSegera Hapus!!')
+    m.reply('Jika bukan link Grup ini\nSegera Hapus!!')
     if (global.opts['restrict']) {
       // if (!user.isAdmin) return true
       // this.groupRemove(m.chat, [m.sender])
