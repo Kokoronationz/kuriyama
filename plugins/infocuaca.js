@@ -5,7 +5,7 @@ let handler = async(m, { conn, text, usedPrefix }) => {
     await m.reply('Searching...')
     if (!text) return conn.reply(m.chat, 'Contoh penggunaan: ' + usedPrefix + 'infocuaca Bandung', m)
 
-    axios.get(`https://ardi30.herokuapp.com/doc/cuaca`)
+    axios.get(`https://ardi30.herokuapp.com/doc/cuaca?p=${text}`)
         .then((res) => {
           let ress = res.data.hasil
           
