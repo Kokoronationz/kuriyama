@@ -1,17 +1,16 @@
-const { MessageType } = require('@adiwajshing/baileys')
-
-let handler = async(m, { conn, text }) => {
-    if (!text) return conn.reply(m.chat, 'Silahkan masukkan laporan', m)
-    if (text > 300) return conn.reply(m.chat, 'Maaf Teks Terlalu Panjang, Maksimal 300 Teks!', m)
-    const laporan = `*「 REPORT 」*\n\nNomor : wa.me/${m.sender.split`@`[0]}\nPesan : ${text}`
-    for (let jid of global.owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').filter(v => v != conn.user.jid))
-    m.reply(laporan, jid)
-    m.reply(laporan, m.sender) // Mwehehehehe
-    conn.reply(m.chat, '✔️Masalah telah di laporkan ke Owner Bot, laporan palsu/main2 tidak akan ditanggapi!', m)
+let fetch = require('node-fetch')
+let handler = async function (m, { text, isPrems, isOwner }) {
+	
+    
+    await m.reply('Searching...')
+  let res = await fetch('https://videfikri.com/api/infogempa/')
+let json= await res.json()
+  const hasil =  `*Wilayah:* "${json.wilayah}"\n*Bujur:* ${json.bujur}\n*Lintang:* ${json.lintang}\n*Waktu:* ${json.waktu}\n*Magnitudo:* ${json.magnitudo}\n*Kedalaman:* ${json.kedalaman}`
+     conn.reply(m.chat,  hasil, m)
 }
-handler.help = ['bug <laporan>', 'report <laporan>']
+handler.help = ['infogempa']
 handler.tags = ['info']
-handler.command = /^(bug|report)$/i
+handler.command = /^(info?)gempa$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
