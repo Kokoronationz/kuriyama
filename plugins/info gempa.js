@@ -3,10 +3,11 @@ let handler = async function (m, { text, isPrems, isOwner }) {
 	
     
     await m.reply('Searching...')
-  let res = await fetch('https://videfikri.com/api/infogempa/')
-let json= await res.data.result
-  const hasil =  `*Wilayah:* "${json.wilayah}"\n*Bujur:* ${json.bujur}\n*Lintang:* ${json.lintang}\n*Waktu:* ${json.waktu}\n*Magnitudo:* ${json.magnitudo}\n*Kedalaman:* ${json.kedalaman}`
+  let res = await fetch('https://videfikri.com/api/infogempa/').then((res) => {
+let json= await 
+  let hasil =  res.data.result.map(res=>`*Wilayah:* ${res.wilayah}\n*Bujur:* ${res.bujur}\n*Lintang:* ${res.lintang}\n*Waktu:* ${res.waktu}\n*Magnitudo:* ${res.magnitudo}\n*Kedalaman:* ${res.kedalaman}`)
      conn.reply(m.chat,  hasil, m)
+  })
 }
 handler.help = ['infogempa']
 handler.tags = ['info']
