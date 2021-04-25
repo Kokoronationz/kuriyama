@@ -1,6 +1,7 @@
 let { Presence } = require('@adiwajshing/baileys')
 let handler = async (m, { conn }) => {
 	conn.updatePresence(m.chat, Presence.composing) 
+	let res = await conn.groupMetadata(m.chat)
 	let pp = './src/avatar_contact.png'
   try {
 	pp = await conn.getProfilePicture(m.chat)
@@ -15,7 +16,7 @@ let handler = async (m, { conn }) => {
     
 	var name = conn.getName(m.chat)
 	
-	conn.sendFile(m.chat, pp, 'profile.jpg', `*[ ${ucword(name)} ]*\n\n  - Banned : ${data(isBanned)}\n  - Anti-Link : ${data(antiLink)}\n  - Anti-Toxic : ${data(antiToxic)}\n  - Welcome Msg : ${data(welcome)}\n  - delete Msg : ${data(hapus)}`, m)
+	conn.sendFile(m.chat, pp, 'profile.jpg', `*[ ${ucword(name)} ]*\n\n  - Banned : ${data(isBanned)}\n  - Anti-Link : ${data(antiLink)}\n  - Anti-Toxic : ${data(antiToxic)}\n  - Welcome Msg : ${data(welcome)}\n  - delete Msg : ${data(hapus)}\n\n     ${res.desc}`, m)
 	}
 }
 handler.help = ['groupinfo']
