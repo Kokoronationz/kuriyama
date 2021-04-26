@@ -6,8 +6,8 @@ let handler  = async (m, { conn, text }) => {
 let d = new Date
   let tgl = d.toLocaleDateString('id-Id')
   let hari = d.toLocaleDateString('id-Id', { weekday: 'long' })
- let [teks, wm] = text.split('|')
-await conn.sendFile(m.chat, global.API('xteam', '/quotemaker', ${teks} ,${wm}, 'APIKEY'), 'nulis.jpg', 'Maker kamu sudah jadi..\n╰ Follow Me: *instagram.com/kokoronationz*', m)
+ let [text, wm] = text.split('|')
+await conn.sendFile(m.chat, global.API('xteam', '/quotemaker', { text, wm }, 'APIKEY'), 'nulis.jpg', 'Maker kamu sudah jadi..\n╰ Follow Me: *instagram.com/kokoronationz*', m)
 }
 handler.help = ['quote'].map(v => v + 'maker (tulisan)|(name)')
 handler.tags = ['creator']
