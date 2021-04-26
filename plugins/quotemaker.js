@@ -6,12 +6,11 @@ let handler  = async (m, { conn, text: txt }) => {
 let d = new Date
   let tgl = d.toLocaleDateString('id-Id')
   let hari = d.toLocaleDateString('id-Id', { weekday: 'long' })
- //let [teks, wm] = text.split('|')
  let [text, ...wm] = txt.trimStart().split('|')
   wm = wm.join('|')
-await conn.sendFile(m.chat, global.API('xteam', '/quotemaker', { text, wm }, 'APIKEY'), 'nulis.jpg', 'Maker kamu sudah jadi..\n╰ Follow Me: *instagram.com/kokoronationz*', m)
+await conn.sendFile(m.chat, global.API('xteam', '/quotemaker', { text, wm }, 'APIKEY'), 'nulis.jpg', '©kuriyama-bot', m)
 }
-handler.help = ['quote'].map(v => v + 'maker (teks)|(name)')
+handler.help = ['quote'].map(v => v + 'maker <text>|<name>')
 handler.tags = ['creator']
 handler.command = /^quotemaker$/i
 handler.owner = false
