@@ -1,6 +1,6 @@
 let handler = m => m
 
-let linkRegex = /(asu)|(anj(i?ng))|(me(mek|ki)|(kontol)|(ba(cot|bi|ngsat|jingan))|(goblo(k|g))|(fuck)|(jancok)|(jemb[ou]t)|(tempek)/i
+let linkRegex = /(asu)|(anj(i?ng))|(me(mek|ki))|(kontol)|(ba(cot|bi|ngsat|jingan))|(goblo(k|g))|(fuck)|(jancok)|(jemb[ou]t)|(tempek)/i
 handler.before = function (m, { user }) {
   if (m.isBaileys && m.fromMe) return true
   let chat = global.DATABASE.data.chats[m.chat]
