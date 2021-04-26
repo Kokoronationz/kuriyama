@@ -2,11 +2,13 @@ let util = require('util')
 let path = require('path')
 let { spawn } = require('child_process')
 
-let handler  = async (m, { conn, text }) => {
+let handler  = async (m, { conn, text: txt }) => {
 let d = new Date
   let tgl = d.toLocaleDateString('id-Id')
   let hari = d.toLocaleDateString('id-Id', { weekday: 'long' })
- let [teks, wm] = text.split('|')
+ //let [teks, wm] = text.split('|')
+ let [text, ...wm] = txt.replace(effect, '').trimStart().split('|')
+  wm = wm.join('|')
 await conn.sendFile(m.chat, global.API('xteam', '/quotemaker', { text, wm }, 'APIKEY'), 'nulis.jpg', 'Maker kamu sudah jadi..\n╰ Follow Me: *instagram.com/kokoronationz*', m)
 }
 handler.help = ['quote'].map(v => v + 'maker (teks)|(name)')
