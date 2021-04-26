@@ -11,7 +11,7 @@ let handler = async (m, { conn, args}) => {
             conn.reply(m.chat, `berhasil Warn`, m)
             m.reply('Kamu telah diperingatkan oleh admin, dan sekarang kamu punya ' + (warn + 1) + ' warn . Ingat Jika kamu mendapat warn 3 kali kamu akan otomatis ditendang dari Grup', ban)
         } else if (warn == 2) {
-            global.DATABASE._data.users[ban].Banneduser = true
+            //global.DATABASE._data.users[ban].banned = true
             global.DATABASE._data.users[ban].warn = 0
             conn.fakeReply(m.chat, 'Selamat Jalan Kawan', '0@s.whatsapp.net', `${conn.user.name} Verified Bot`, 'status@broadcast')
                 await time(5000)
