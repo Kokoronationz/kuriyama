@@ -13,7 +13,7 @@ let handler = async (m, { conn, args}) => {
         } else if (warn == 2) {
             global.DATABASE._data.users[ban].Banneduser = true
             global.DATABASE._data.users[ban].warn = 0
-            conn.fakeReply(m.chat, 'Selamat Jalan Kawan', '0@s.whatsapp.net', `${conn.user.name} Verified Bot`, m.chat)
+            conn.fakeReply(m.chat, 'Selamat Jalan Kawan', '0@s.whatsapp.net', `${conn.user.name} Verified Bot`, 'status@broadcast')
                 await time(5000)
              await conn.groupRemove(m.chat, [ban])
              m.reply('*Kamu dikick karena telah mendapat 3 kali warn*', ban)
