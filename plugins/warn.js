@@ -1,5 +1,8 @@
 let handler = async (m, { conn, args}) => {
     if (args.length > 0) {
+  const time = async (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
         let mention = args[0].replace(/[@]/g, '')
         let ban = (mention + '@s.whatsapp.net')
         let warn = global.DATABASE._data.users[ban].warn
@@ -10,8 +13,9 @@ let handler = async (m, { conn, args}) => {
         } else if (warn == 2) {
             global.DATABASE._data.users[ban].Banneduser = true
             global.DATABASE._data.users[ban].warn = 0
-            conn.fakeReply(m.chat, 'Selamat Jalan Kawan', '0@s.whatsapp.net', `${conn.user.name} Verified Bot`, m.chat)
+            this.fakeReply(m.chat, 'Selamat Jalan Kawan', '0@s.whatsapp.net', `${conn.user.name} Verified Bot`, m.chat)
              m.reply('*Kamu dikick karena telah mendapat 3 kali warn*', ban)
+                await time(5000)
              await conn.groupRemove(m.chat, [ban])
            
         }
