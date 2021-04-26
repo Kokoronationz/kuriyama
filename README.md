@@ -1,6 +1,12 @@
 # kuriyama
+![logo](https://1.bp.blogspot.com/-fN_KlHPtVmU/WnWCu3QrM9I/AAAAAAAADqw/Jm0Gd08MeHk89k00pt4KD2ygt_QshL1QwCEwYBhgL/s1600/%255BKORIGENGI-FAKHRI%255D%2BMirai%2B-%2BI%2527ll%2BBe%2BHere.png)
 
-Simple WhatsApp Bot for Group | Recode [`wabot-aq`](https://GitHub.com/Nurutomo/wabot-aq)
+### Simple WhatsApp Bot for Group
+
+Recode [`wabot-aq`](https://GitHub.com/Nurutomo/wabot-aq)
+
+### Prefix
+. # (default)
 
 ## FOR TERMUX USER
 
@@ -91,6 +97,8 @@ conn.logger.level = 'debug'
 
 ---------
 
-#### Powered By : [`XTEAM`](https://api.xteam.xyz)
+#### Powered By :
+<a href="https://api.xteam.xyz"><img src="https://img.shields.io/badge/XTEAM%20-%23121011.svg?&style=for-the-badge&logo=&logoColor=white"/></a>
 
-#### Author / Creator : [`Nurutomo`](https://GitHub.com/Nurutomo)
+#### Author / Creator : 
+<a href="https://github.com/Nurutomo/wabot-aq"><img alt="GitHub" src="https://img.shields.io/badge/NURUTOMO%20-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a>
