@@ -1,6 +1,6 @@
-let handler = m => m.reply('Hai, aku disini\n\n@Kuriyama Mirai')
+let handler = m => m.reply('Hai, aku disini\n\nAda yang bisa aku bantu?')
 
-handler.customPrefix = /bot/
+handler.customPrefix = /Bot/
 handler.command = new RegExp
 
 module.exports = handler
