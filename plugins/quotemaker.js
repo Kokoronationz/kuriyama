@@ -7,7 +7,7 @@ let d = new Date
   let tgl = d.toLocaleDateString('id-Id')
   let hari = d.toLocaleDateString('id-Id', { weekday: 'long' })
  //let [teks, wm] = text.split('|')
- let [text, ...wm] = txt.replace('').trimStart().split('|')
+ let [text, ...wm] = txt.trimStart().split('|')
   wm = wm.join('|')
 await conn.sendFile(m.chat, global.API('xteam', '/quotemaker', { text, wm }, 'APIKEY'), 'nulis.jpg', 'Maker kamu sudah jadi..\n╰ Follow Me: *instagram.com/kokoronationz*', m)
 }
