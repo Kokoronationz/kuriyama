@@ -3,7 +3,7 @@ let handler = async (m, { conn, text }) => {
     let name = member['62895361677059@s.whatsapp.net']
     let panggil = `
     @${name.replace(/@.+/, '')}!!! Ada Yang manggil nih:v
-    `trim.()
+    `.trim()
     let mentionedJid = [name]
   conn.reply(m.chat, panggil, m, { contextInfo: { mentionedJid }})
 
