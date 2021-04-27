@@ -7,7 +7,7 @@ let handler = async (m, { conn, text, participants }) => {
     if (!r) return conn.reply(m.chat, 'Silahkan masukan pesan anda', m)
 
   let users = participants.map(u => u.jid)
-  conn.reply(m.chat, '「 *TAG ALL* 」\n\n*Nama:* ' + l +  '\n*Pesan:* ' + r +'\n\n' + users.map(v => '@' + v.replace(/@.+/, '')).join`\n`, m, {
+  conn.reply(m.chat, '*「 TAG ALL 」*\n\n*Nama:* ' + l +  '\n*Pesan:* ' + r +'\n\n' + users.map(v => '@' + v.replace(/@.+/, '')).join`\n`, m, {
     contextInfo: { mentionedJid: users }
  
   
