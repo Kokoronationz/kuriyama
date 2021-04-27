@@ -7,7 +7,7 @@ let handler = async (m, { conn }) => {
         let res = await fetch(global.API('xteam', '/randomimage/ass', {}, 'APIKEY'))
         let img = await res.buffer()
         conn.sendMessage(m.chat, img, MessageType.image, {
-            quoted: m, caption: '*© kokoro-bot*'
+            quoted: m, caption: '*©Kuriyama-bot*'
         })
     } catch (e) {
         console.log(e)
