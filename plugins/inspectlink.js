@@ -8,9 +8,10 @@ let handler = async (m, { conn, text }) => {
     expect200: true
   })
   let caption = `
--- [Group Link Inspector] --
-${res.id}
+*「 Group Link Inspector 」*
+
 Judul: ${res.subject}
+ID: ${res.id}
 Dibuat pada: ${formatDate(res.creation * 1000)}
 Judul diubah oleh @${res.subjectOwner.split`@`[0]} pada ${formatDate(res.subjectTime * 1000)}
 Deskripsi diubah oleh @${res.descOwner.split`@`[0]} pada ${formatDate(res.descTime * 1000)}
