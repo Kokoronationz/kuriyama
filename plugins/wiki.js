@@ -1,5 +1,4 @@
-  const axios = require('axios')
-
+let axios = require('axios');
 let handler = async(m, { conn, text, usedPrefix }) => {
   let [kata] = text.split `|`
 
