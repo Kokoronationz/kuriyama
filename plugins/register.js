@@ -2,6 +2,7 @@ const { createHash } = require('crypto')
 let Reg = /(.*)([.|])([0-9]*)$/i
 let handler = async function (m, { text, usedPrefix }) {
   
+  let rtotalreg = Object.values(global.DATABASE._data.users).filter(user => user.registered == true).length
   let user = global.DATABASE._data.users[m.sender]
   if (user.registered === true) throw `Anda sudah terdaftar\nMau daftar ulang? ${usedPrefix}unreg <SN|SERIAL NUMBER>`
   if (!Reg.test(text)) throw `Format salah\n*${usedPrefix}daftar <nama>|<umur>*`
@@ -16,14 +17,15 @@ let handler = async function (m, { text, usedPrefix }) {
   m.reply(`
 *「 Daftar Berhasil! 」*
 
-┏ ┅ ━━━━━━━━━━━━━━━━━ ┅ ━
+┏ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
 ┃ *Info*
 ┃
 ┃ Nama: ${name}
 ┃ Umur: ${age} tahun
 ┃ SN: ${sn}
 ┃ Gift: Rp10000
-┗ ┅ ━━━━━━━━━━━━━━━━━ ┅ ━
+┃ Total Register: ${rtotalreg}
+┗ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
 
 
  _Simpan Serial Number anda!_
