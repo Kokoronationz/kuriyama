@@ -22,9 +22,9 @@ let handler = async function (m, { text, usedPrefix }) {
 ┃
 ┃ Nama: ${name}
 ┃ Umur: ${age} tahun
-┃ SN: ${sn}
 ┃ Gift: Rp10000
 ┃ Total Register: ${rtotalreg}
+┃ SN: ${sn}
 ┗ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
 
 
