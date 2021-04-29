@@ -5,9 +5,9 @@ let handler = async(m, { conn, text, usedPrefix }) => {
     await m.reply('Searching...')
     if (!text) return conn.reply(m.chat, 'Contoh penggunaan: ' + usedPrefix + 'wikipedia bot', m)
 
-    axios.get(`https://docs-jojo.herokuapp.com/api/wiki?q=` + text)
+    axios.get(`https://videfikri.com/api/wiki/?query=` + text)
         .then((res) => {
-            conn.reply(m.chat, res.data.result, m)
+            conn.reply(m.chat, res.data.result.isi_konten, m)
         })
         .catch()
 }
