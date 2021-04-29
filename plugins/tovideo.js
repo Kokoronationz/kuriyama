@@ -35,7 +35,7 @@ let handler = async (m, { conn, args, usedPrefix }) => {
                             fs.readFileSync(`./tmp/${filename}-done.mp4`),
                             MessageType.video, {
                             mimetype: Mimetype.mp4,
-                            caption: `*© Kuriyama-bot*`,
+                            caption: `*©Kuriyama-bot*`,
                             quoted: m,
                         }
                         )
