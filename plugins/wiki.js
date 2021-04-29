@@ -1,14 +1,10 @@
-  const axios = require('axios')
-
-let handler = async(m, { conn, text, usedPrefix }) => {
-
-    await m.reply('Searching...')
-    if (!text) return conn.reply(m.chat, 'Contoh penggunaan: ' + usedPrefix + 'wikipedia bot', m)
-
-    let hasil = await axios.get(`https://videfikri.com/api/wiki/?query=` + text)
-        
-            conn.reply(m.chat, `${hasil.result.isi_konten}`, m)
-
+let fetch = require('node-fetch')
+let handler = async (m, { args }) => {
+  if (!args) return m.reply('Mau cari apa?')
+  let res = await fetch(`https://zahirr-web.herokuapp.com/api/wikipedia?search=${args[0]}&apikey=zahirgans`)
+  let json = await res.json()
+  if (json.result.status_code) m.reply(json.result.message + '!!')
+  else m.reply('Menurut wikipedia *' + json.result.result + '*')
 }
 handler.help = ['wiki <query>','wikipedia <query>']
 handler.tags = ['internet']
