@@ -1,14 +1,13 @@
-let axios = require('axios');
+  const axios = require('axios')
+
 let handler = async(m, { conn, text, usedPrefix }) => {
-  let [kata] = text.split `|`
 
     await m.reply('Searching...')
-    if (!kata) return conn.reply(m.chat, 'Contoh penggunaan: ' + usedPrefix + 'wikipedia bot', m)
+    if (!text) return conn.reply(m.chat, 'Contoh penggunaan: ' + usedPrefix + 'wikipedia bot', m)
 
-    axios.get(`https://api.zeks.xyz/api/wiki?q=` + kata + `&apikey=apivinz`)
-        .then((res) => {
-          let hasil = res.data.result
-            conn.reply(m.chat, hasil, m)
+    let hasil = await axios.get(`https://videfikri.com/api/wiki/?query=` + text)
+        
+            conn.reply(m.chat, hasil.result.isi_konten, m)
         })
         .catch()
 }
