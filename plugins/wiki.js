@@ -7,7 +7,8 @@ let handler = async(m, { conn, text, usedPrefix }) => {
 
     axios.get(`https://api.zeks.xyz/api/wiki?q=${kata}&apikey=apivinz`)
         .then((res) => {
-            conn.reply(m.chat, res.data.result, m)
+          let hasil = res.data.result
+            conn.reply(m.chat, hasil, m)
         })
         .catch()
 }
