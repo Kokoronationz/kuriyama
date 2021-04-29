@@ -1,9 +1,10 @@
   const axios = require('axios')
 
 let handler = async(m, { conn, text, usedPrefix }) => {
+  let [kata] = text.split `|`
 
     await m.reply('Searching...')
-    if (!text) return conn.reply(m.chat, 'Contoh penggunaan: ' + usedPrefix + 'wikipedia bot', m)
+    if (!kata) return conn.reply(m.chat, 'Contoh penggunaan: ' + usedPrefix + 'wikipedia bot', m)
 
     axios.get(`https://api.zeks.xyz/api/wiki?q=${text}&apikey=apivinz`)
         .then((res) => {
