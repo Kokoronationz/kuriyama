@@ -15,7 +15,7 @@ let handler  = async (m, { conn }) => {
     im.stdin.write(sticker)
     im.stdin.end()
     im.on('exit', () => {
-      conn.sendMessage(m.chat, Buffer.concat(bufs), MessageType.image, {
+      conn.sendMessage(m.chat, Buffer.concat(bufs), MessageType.image, caption: `*© Kuriyama-bot*`, {
         quoted: m
       })
     })
