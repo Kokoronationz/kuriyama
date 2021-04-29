@@ -5,7 +5,7 @@ let handler = async(m, { conn, text, usedPrefix }) => {
     await m.reply('Searching...')
     if (!kata) return conn.reply(m.chat, 'Contoh penggunaan: ' + usedPrefix + 'wikipedia bot', m)
 
-    axios.get(`https://api.zeks.xyz/api/wiki?q=${kata}&apikey=apivinz`)
+    axios.get(`https://api.zeks.xyz/api/wiki?q=` + kata + `&apikey=apivinz`)
         .then((res) => {
           let hasil = res.data.result
             conn.reply(m.chat, hasil, m)
