@@ -7,7 +7,7 @@ let handler = async(m, { conn, text, usedPrefix }) => {
 
     let hasil = await axios.get(`https://videfikri.com/api/wiki/?query=` + text)
         
-            conn.reply(m.chat, ${hasil.result.isi_konten}, m)
+            conn.reply(m.chat, `${hasil.result.isi_konten}`, m)
 
 }
 handler.help = ['wiki <query>','wikipedia <query>']
