@@ -123,19 +123,18 @@ global.reloadHandler = function () {
   if (!isInit) {
     conn.off('chat-update', conn.handler)
     conn.off('message-delete', conn.onDelete)
-    conn.off('group-add', conn.onAdd)
-    conn.off('group-leave', conn.onLeave)
+    conn.off('group-participants-update', conn.onParticipantsUpdate)
   }
   conn.welcome = '╔═════════════════════╗\n🔰 Welcome to @subject 🔰\n╚═════════════════════╝\n\n ════ ```Hi @user!``` ════\n\n*‼️Wajib Intro & Ikuti Rules Group‼️*\n\n ━━━━━━━━━━━━━━━━━━━━━━\n     ❝ _Jangan Lupa Pakai Masker &_\n        _Patuhi Protokol Kesehatan_ ❞\n ━━━━━━━━━━━━━━━━━━━━━━\n\n ═══ 𝒀𝒐𝒓𝒐𝒔𝒉𝒊𝒌𝒖 𝑶𝒏𝒆𝒈𝒂𝒊𝒔𝒉𝒊𝒎𝒂𝒔𝒖 ═══'
   conn.bye = '╔═════════════════════╗\n║        ╦   ╦  ╔═╗  ╔═╗  ╦  ╔╗╦        ║\n║        ╚╦╝  ╠═╣  ╚═╗  ║  ║║║        ║\n║           ╩     ╩   ╩  ╚═╝  ╩  ╩╚╝        ║\n╚═════════════════════╝\n\n Mengenang Kepergian @user\n\n ━━━━━━━━━━━━━━━━━━━━━━\n      ❝ _Jangan Lupa Pakai Masker &_\n          _Patuhi Protokol Kesehatan_ ❞\n ━━━━━━━━━━━━━━━━━━━━━━\n\n ════ 👋🏻 *_Semoga Tenang!_* ════'
+  conn.spromote = '@user sekarang admin!'
+  conn.sdemote = '@user sekkarang bukan admin!'
   conn.handler = handler.handler
-  conn.onAdd = handler.welcome
-  conn.onLeave = handler.leave
   conn.onDelete = handler.delete
+  conn.onParticipantsUpdate = handler.participantsUpdate
   conn.on('chat-update', conn.handler)
   conn.on('message-delete', conn.onDelete)
-  conn.on('group-add', conn.onAdd)
-  conn.on('group-leave', conn.onLeave)
+  conn.on('group-participants-update', conn.onParticipantsUpdate)
   if (isInit) {
     conn.on('error', conn.logger.error)
     conn.on('close', () => {
