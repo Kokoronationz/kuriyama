@@ -10,7 +10,7 @@ module.exports = {
     if (!chatUpdate.messages && !chatUpdate.count) return
     let m = chatUpdate.messages.all()[0]
     try {
-      simple.smsg(this, m)
+    	simple.smsg(this, m)
       m.exp = 0
       m.limit = false
       try {
@@ -112,7 +112,7 @@ module.exports = {
                 new RegExp(str2Regex(p))
               return [re.exec(m.text), re]
             }) :
-            typeof _prefix === 'string' ? // String?
+             typeof _prefix === 'string' ? // String?
               [[new RegExp(str2Regex(_prefix)).exec(m.text), new RegExp(str2Regex(_prefix))]] :
               [[[], new RegExp]]
         ).find(p => p[1])
@@ -121,7 +121,7 @@ module.exports = {
         })) continue
         if ((usedPrefix = (match[0] || '')[0])) {
           let noPrefix = m.text.replace(usedPrefix, '')
-          let [command, ...args] = noPrefix.trim().split` `.filter(v => v)
+          let [command, ...args] = noPrefix.trim().split` `.filter(v=>v)
           args = args || []
           let _args = noPrefix.trim().split` `.slice(1)
           let text = _args.join` `
@@ -273,7 +273,7 @@ module.exports = {
     }
   },
   async participantsUpdate({ jid, participants, action }) {
-    let chat = global.DATABASE._data.chats[m.key.remoteJid]
+    let chat = global.DATABASE._data.chats[jid]
     let text = ''
     switch (action) {
       case 'add':
@@ -299,8 +299,8 @@ module.exports = {
       case 'promote':
         text = (chat.sPromote || this.spromote || conn.spromote || '@user ```is now Admin```')
       case 'demote':
-        text = (chat.sDemote || this.sdemote || conn.sdemote || '@user ```is no longer Admin```')
-        text = text.replace('@user', '@' + participants[0])
+        if (!text) text = (chat.sDemote || this.sdemote || conn.sdemote || '@user ```is no longer Admin```')
+        text = text.replace('@user', '@' + participants[0].split('@')[0])
         if (chat.detect) this.sendMessage(jid, text, MessageType.extendedText, {
           contextInfo: {
             mentionedJid: this.parseMention(text)
