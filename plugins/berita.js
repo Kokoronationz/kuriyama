@@ -4,11 +4,7 @@ let handler = async(m, { conn, command }) => {
   await m.reply('Searching...')
 	axios.get(`https://docs-jojo.herokuapp.com/api/news`).then ((res) => {
 	  let isi = res.data.articles.map(res=>`*Judul:* ${res.title}\n*Author:* ${res.author}\n*Publish:* ${res.publishedAt}\n*Deskripsi:* ${res.description}\n*URL:* ${res.url}\n   ${res.content}`).join('\n━ ┅ ━━━━━━━━━━━━━━━ ┅ ━\n').trim()
-	 	let hasil = `
-*「 ${command} 」*
-
-*Total Berita:* ${res.data.totalResults}
-`
+	 	let hasil = `*「 ${command} 」*\n\n*Total Berita:* ${res.data.totalResults}`
     conn.reply(m.chat, hasil+isi, m)
 	})
 }
