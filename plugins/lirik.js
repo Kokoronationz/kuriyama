@@ -1,14 +1,14 @@
 const axios = require('axios')
 
 let handler = async(m, { conn, text, usedPrefix }) => {
-        let user = global.DATABASE._data.users[m.sender]
+
     if (!text) return conn.reply(m.chat, '_Masukkan yang dicari_', m)
     await m.reply('Searching...')
     new Promise((resolve, reject) => {
-        axios.get(`https://videfikri.com/api/liriklagu/?query=` + encodeURIComponent(text))
+        axios.get(`https://ardi30.herokuapp.com/api/v1/lirik?l=` + encodeURIComponent(text))
             .then((res) => {
-                      
-                const ardi = `*• Lirik Lagu ${text} :*\n\n ${res.data.result.lirik}`
+
+                const ardi = `*• Lirik Lagu ${text} :*\n\n${res.data.data}`
                 conn.reply(m.chat, ardi, m)
             })
             .catch((err) => {
