@@ -1,11 +1,15 @@
 let axios = require("axios");
-let handler = async(m, { conn, text }) => {
+let handler = async(m, { conn, command }) => {
   
   await m.reply('Searching...')
-	axios.get(`https://api.zeks.xyz/api/liputan6?apikey=apivinz`).then ((res) => {
-	 	let hasil = res.data.result.map(res=>`*Judul:* ${res.title}\n*Tanggal:* ${res.time}\n*Kategori:* ${res.category}\n     ${res.ket}\n*Link:* ${res.url}`).join('\n\n')
+	axios.get(`https://docs-jojo.herokuapp.com/api/news`).then ((res) => {
+	  let isi = res.data.articles.map(res=>`*Judul:* ${res.title}\n*Author:* ${res.author}\n*Publish:* ${res.publishedAt}\n*Deskripsi:* ${res.description}\n*URL:* ${res.url}\n   ${res.content}`).join('\n━ ┅ ━━━━━━━━━━━━━━━ ┅ ━\n').trim()
+	 	let hasil = `
+*「 ${command} 」*
 
-    conn.reply(m.chat, hasil, m)
+*Total Berita:* ${totalResults}
+`
+    conn.reply(m.chat, hasil+isi, m)
 	})
 }
 handler.help = ['berita','news']
