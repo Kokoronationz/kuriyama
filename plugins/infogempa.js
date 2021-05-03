@@ -6,7 +6,7 @@ let handler = async(m, { conn, text, usedPrefix }) => {
     axios.get(`https://docs-jojo.herokuapp.com/api/infogempa`)
         .then((res) => {
      let hasil = `
-「 INFO GEMPA 」
+*「 INFO GEMPA 」*
 
 *Waktu:* ${res.data.waktu}
 *Magnitudo:* ${res.data.magnitude}
