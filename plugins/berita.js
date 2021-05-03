@@ -7,7 +7,7 @@ let handler = async(m, { conn, command }) => {
 	 	let hasil = `
 *「 ${command} 」*
 
-*Total Berita:* ${totalResults}
+*Total Berita:* ${res.data.totalResults}
 `
     conn.reply(m.chat, hasil+isi, m)
 	})
