@@ -6,7 +6,8 @@ let handler = async(m, { conn, text, usedPrefix }) => {
     await m.reply('Searching...')
     axios.get(`https://docs-jojo.herokuapp.com/api/wiki?q=` + text)
         .then((res) => {
-            conn.reply(m.chat, res.data.result, m)
+          let hasil = `*• Wikipedia ${text} :*\n\n${res.data.result}`
+            conn.reply(m.chat, hasil, m)
         })
         .catch()
 }
