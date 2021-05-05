@@ -1,5 +1,6 @@
 let yts = require('yt-search')
 let handler = async (m, { text }) => {
+  await m.reply(global.wait)
   if (!text) throw 'Cari apa?'
   let results = await yts(text)
   let teks = results.all.map(v => {
