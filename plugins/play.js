@@ -3,6 +3,7 @@ let yts = require('yt-search')
 let fetch = require('node-fetch')
 const { servers, yta, ytv } = require('../lib/y2mate')
 let handler = async (m, { conn, command, text, isPrems, isOwner }) => {
+  await m.reply(global.wait)
   if (!text) throw 'Cari apa?'
   let results = await yts(text)
   let vid = results.all.find(video => video.seconds < 3600)
