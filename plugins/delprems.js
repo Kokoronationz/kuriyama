@@ -4,18 +4,21 @@ let handler = async(m, { conn, text, participants, isPrems }) => {
 let who
   if (m.isGroup) who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
   else who = m.chat
-  if (!who) throw '_Tag orang yang akan dijadikan user premium!_'
+  if (!who) throw '_Tag orang yang akan dihapus dari user premium!_'
   let user = `${who.split("@s.whatsapp.net")[0]}`
-  let up = global.prems.push(user)
+  let fuck = global.prems.indexOf(user)
+  let up = global.prems.splice(fuck, 1)
   fs.writeFileSync('./config.js',JSON.stringify(up))
-  let prem = `*「 ADD PREMIUM 」*\n\nNomor : wa.me/${who.split("@s.whatsapp.net")[0]}\n*Expired : 30 days*\n\nTerimakasih telah beli Premium!`
+  let prem = `_Berhasil Delete @${who.split("@")[0]} Dari User Premium!_`
   conn.reply(m.chat, prem, m, {
            contextInfo: { 
                  mentionedJid: [who]
           } 
       })
 }
-handler.command = /^(addprem|prem|addprems)$/i
+handler.command = /^(delprems)$/i
 handler.rowner = true
 
 module.exports = handler
+
+
