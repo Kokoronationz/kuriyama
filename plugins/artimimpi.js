@@ -2,7 +2,7 @@
 
 let handler = async(m, { conn, text, usedPrefix }) => {
 
-    await m.reply('Searching...')
+    await m.reply(global.wait)
     if (!text) return conn.reply(m.chat, 'Contoh penggunaan: ' + usedPrefix + 'artimimpi ular', m)
 
     axios.get(`https://docs-jojo.herokuapp.com/api/artimimpi?q=` + text)
