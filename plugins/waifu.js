@@ -1,5 +1,6 @@
 let fetch = require('node-fetch')
 let handler = async (m, { conn }) => {
+  await m.reply(global.wait)
  let res = await fetch('https://ardhixsquerpants.herokuapp.com/api/waifu')
  let { desc, image, name, source } = await res.json()
  let hasil = `*DESC :* ${desc}\n*NAMA :* ${name}\n*URL :* ${source}`
