@@ -2,7 +2,7 @@ const axios = require('axios')
 
 let handler = async(m, { conn, text, usedPrefix }) => {
 
-    await m.reply('Searching...')
+    await m.reply(global.wait)
     axios.get(`https://docs-jojo.herokuapp.com/api/infogempa`)
         .then((res) => {
      let hasil = `
