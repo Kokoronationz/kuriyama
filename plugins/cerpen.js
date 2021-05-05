@@ -3,7 +3,7 @@ const axios = require('axios')
 let handler = async(m, { conn, text, usedPrefix }) => {
 
     
-    await m.reply('Searching...')
+    await m.reply(global.wait)
     axios.get(`https://docs-jojo.herokuapp.com/api/cerpen`)
         .then((res) => {
           let hasil = `*Judul:* ${res.data.result.title}\n\n*Pengarang:* ${res.data.result.pengarang}\n*Kategori:* ${res.data.result.kategori}\n\n   ${res.data.result.cerpen}`
