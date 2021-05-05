@@ -2,7 +2,7 @@ let axios = require("axios");
 let handler = async(m, { conn, text }) => {
 
     if (!text) return conn.reply(m.chat, 'Harap Masukan Nama Film Animenya', m)
-
+  await m.reply(global.wait)
 	axios.get(`https://arugaz.herokuapp.com/api/sdmovie?film=${text}`).then ((res) => {
 	 	let hasil = `*Film Anime ${text}*\n\nJudul : ${res.data.result.title}\nRating : ${res.data.result.rating}\nInfo : ${res.data.result.sinopsis}\nLink Video : ${res.data.result.video}`
 
