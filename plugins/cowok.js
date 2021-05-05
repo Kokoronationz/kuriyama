@@ -2,7 +2,7 @@ let imageToBase64 = require('image-to-base64');
 let axios = require("axios");
 let handler = async(m, { conn, text }) => {
 
-  await m.reply('Searching...')
+  await m.reply(global.wait)
     let items = ["cowo ganteng", "cogan", "korean boy", "chinese boy", "japan boy", "cowok indo ganteng", "cowok korea"];
     let cowo = items[Math.floor(Math.random() * items.length)];
     let url = "https://api.fdci.se/rep.php?gambar=" + cowo;
