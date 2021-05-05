@@ -3,7 +3,7 @@ const axios = require('axios')
 let handler = async(m, { conn, text, usedPrefix }) => {
 
     if (!text) return conn.reply(m.chat, '_Masukkan yang dicari_', m)
-    await m.reply('Searching...')
+    await m.reply(global.wait)
     new Promise((resolve, reject) => {
         axios.get(`https://ardi30.herokuapp.com/api/v1/lirik?l=` + encodeURIComponent(text))
             .then((res) => {
