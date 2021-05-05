@@ -3,6 +3,7 @@ let path = require('path')
 let { spawn } = require('child_process')
 
 let handler  = async (m, { conn, text: txt }) => {
+  await m.reply(global.wait)
 let d = new Date
   let tgl = d.toLocaleDateString('id-Id')
   let hari = d.toLocaleDateString('id-Id', { weekday: 'long' })
