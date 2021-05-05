@@ -11,7 +11,7 @@ Hasil Pencarian :
 ${text}
 `.trim()
 
-await m.reply('Searching...')
+await m.reply(global.wait)
 axios.get(url)
 .then((result) => {
 let b = JSON.parse(JSON.stringify(result.data));
