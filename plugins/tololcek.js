@@ -39,7 +39,7 @@ global.tolol = [
 'Tolol Level : 77%\n\nGak akan Salah Lagi dah tololnya lu',
 'Tolol Level : 83%\n\nDijamin tololnyan',
 'Tolol Level : 89%\n\nTolol Banget!',
-'Tolol Level : 94%\n\nSetolol Om Deddy😂',
+'Tolol Level : 94%\n\nSetolol Om idoy😂',
 'Tolol Level : 100%\n\nLU ORANG TERTOLOL YANG PERNAH ADA!!!',
 'Tolol Level : 100%\n\nLU ORANG TERTOLOL YANG PERNAH ADA!!!',
 'Tolol Level : 100%\n\nLU ORANG TERTOLOL YANG PERNAH ADA!!!',
