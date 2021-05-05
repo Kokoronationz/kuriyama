@@ -10,6 +10,7 @@ const cheerio = require('cheerio')
 const FormData = require('form-data')
 
 let handler = async (m, { conn, args, usedPrefix }) => {
+  await m.reply(global.wait)
     const content = JSON.stringify(m.message)
     const type = Object.keys(m.message)[0]
     const isQuotedSticker = type === 'extendedTextMessage' && content.includes('image/webp')
