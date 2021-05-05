@@ -5,6 +5,7 @@ const { sticker } = require('../lib/sticker')
 const { MessageType } = require('@adiwajshing/baileys')
 
 let handler = async (m, { usedPrefix, conn, args, text }) => {
+  await m.reply(global.wait)
   let [tipe, emoji] = text.includes('|') ? text.split('|') : args
   if (tipe && !emoji) {
     emoji = tipe
