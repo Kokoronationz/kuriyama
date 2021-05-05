@@ -7,7 +7,7 @@ let handler = async(m, { conn, text, usedPrefix }) => {
     axios.get(`https://docs-jojo.herokuapp.com/api/neonime_search?q=` + text)
         .then((res) => {
           let hasil = res.data.result.map(res=>`*Judul:* ${res.title}\n*Link:* ${res.url}\n*Deskripsi:* ${res.desc}`.join   ('\n\n━ ┅ ━━━━━━━━━━━━━━━ ┅ ━\n\n')
-            conn.reply(m.chat, hasil, m)
+            m.reply(m.chat, hasil, m)
         })
         .catch()
 }
