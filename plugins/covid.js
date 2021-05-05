@@ -12,7 +12,7 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
 	if (!args || !args[0]) return conn.reply(m.chat, `Format Salah!\n\n*contoh* : ${usedPrefix + command} Jakarta`, m)
 	let text = args.join` `
 	await conn.updatePresence(m.chat, Presence.composing) 
-	conn.reply(m.chat, `Searching...`, m)
+	await m.reply(global.wait)
 	fetch("https://services5.arcgis.com/VS6HdKS0VfIhv8Ct/arcgis/rest/services/COVID19_Indonesia_per_Provinsi/FeatureServer/0/query?where=Provinsi%20%3D%20'" + encodeURIComponent(text) + "'&outFields=*&outSR=4326&f=json")
   .then(res => res.json())
   .then(batch => {
