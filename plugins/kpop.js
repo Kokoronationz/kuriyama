@@ -4,7 +4,7 @@ let handler = async(m, { conn, args, usedPrefix }) => {
     if (args.length == 0) return conn.reply(m.chat, `Untuk menggunakan ${usedPrefix}kpop\nSilahkan ketik: ${usedPrefix}kpop [query]\nContoh: ${usedPrefix}kpop bts\n\nquery yang tersedia:\nblackpink, exo, bts`, m)
     if (args[0] == 'blackpink' || args[0] == 'exo' || args[0] == 'bts') {
 
-  await m.reply('Searching...')
+  await m.reply(global.wait)
         fetch('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/random/kpop/' + args[0] + '.txt')
             .then(res => res.text())
             .then(body => {
