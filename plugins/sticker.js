@@ -1,7 +1,7 @@
 const { MessageType } = require('@adiwajshing/baileys')
 const { sticker } = require('../lib/sticker')
 let handler  = async (m, { conn, args }) => {
-  await m.reply('Sedang membuat...')
+  await m.reply(global.wait)
   let stiker = false
   try {
     let q = m.quoted ? m.quoted : m
