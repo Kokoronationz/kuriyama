@@ -1,5 +1,6 @@
 let fetch = require('node-fetch')
 let handler = async (m, { text }) => {
+  await m.reply(global.wait)
   let url = await fetch('https://api.zeks.xyz/api/darkjokes?apikey=apivinz')
   let darkjokes = await url.json()
 
