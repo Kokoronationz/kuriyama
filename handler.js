@@ -62,7 +62,7 @@ module.exports = {
           if (!'sDemote' in chat) chat.sDemote = ''
           if (!'delete' in chat) chat.delete = true
           if (!'antiLink' in chat) chat.antiLink = false
-          if (!'antiToxic' in chat) chat.antiToxic = false
+          if (!'antiToxic' in chat) chat.antiToxic = true
         } else global.DATABASE._data.chats[m.chat] = {
           isBanned: false,
           welcome: false,
@@ -73,7 +73,7 @@ module.exports = {
           sDemote: '',
           delete: true,
           antiLink: false,
-          antiToxic: false,
+          antiToxic: true,
         }
       } catch (e) {
         console.log(e, global.DATABASE.data)
@@ -285,7 +285,7 @@ module.exports = {
               pp = await this.getProfilePicture(user)
             } catch (e) {
             } finally {
-              text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', this.getName(m.key.remoteJid)) :
+              text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', this.getName(jid)) :
                 (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0])
               this.sendFile(jid, pp, 'pp.jpg', text, null, false, {
                 contextInfo: {
