@@ -6,7 +6,7 @@ let handler = async(m, { conn, text }) => {
     if (!bln) return conn.reply(m.chat, 'Masukan bulan', m)
     if (!thn) return conn.reply(m.chat, 'Masukan tahun', m)
 
-  await m.reply('Searching...')
+  await m.reply(global.wait)
 	axios.get(`https://videfikri.com/api/primbon/tgljadian/?tgl=${tgl}&bln=${bln}&thn=${thn}`).then ((res) => {
 	 	let hasil = `*Makna tgl jadian:* ${res.data.result.hasil}`
 
