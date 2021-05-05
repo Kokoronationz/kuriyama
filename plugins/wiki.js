@@ -3,7 +3,7 @@
 let handler = async(m, { conn, text, usedPrefix }) => {
 
     if (!text) return conn.reply(m.chat, 'Contoh penggunaan: ' + usedPrefix + 'wikipedia bot', m)
-    await m.reply('Searching...')
+    await m.reply(global.wait)
     axios.get(`https://docs-jojo.herokuapp.com/api/wiki?q=` + text)
         .then((res) => {
           let hasil = `*• Wikipedia ${text} :*\n\n${res.data.result}`
