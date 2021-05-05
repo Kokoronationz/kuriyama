@@ -30,7 +30,7 @@ let handler = async (m, { conn, usedPrefix, command, text, args, isROwner }) => 
       chat.antiLink = isEnable
       break
     case 'antitoxic':
-      chat.antiToxic = !isEnable
+      chat.antiToxic = isEnable
       break
     case 'autolevelup':
       isUser = true
