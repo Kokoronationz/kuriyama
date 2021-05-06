@@ -1,10 +1,11 @@
 let handler = m => m
 
 let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})/i
-const time = async (ms) => {
+
+handler.before = function (m, { user, bot, groupMetadata }) {
+  const time = async (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-handler.before = function (m, { user, bot, groupMetadata }) {
   if (m.isBaileys && m.fromMe) return true
   let chat = global.DATABASE.data.chats[m.chat]
   let isGroupLink = linkRegex.exec(m.text)
