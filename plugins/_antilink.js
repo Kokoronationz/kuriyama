@@ -3,9 +3,6 @@ let handler = m => m
 let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})/i
 
 handler.before = function (m, { user, bot, groupMetadata }) {
-  const time = async (ms) => {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
   if (m.isBaileys && m.fromMe) return true
   let chat = global.DATABASE.data.chats[m.chat]
   let isGroupLink = linkRegex.exec(m.text)
@@ -16,6 +13,9 @@ handler.before = function (m, { user, bot, groupMetadata }) {
     let participants = m.isGroup ? groupMetadata.participants : []
     let bot = m.isGroup ? participants.find(u => u.jid == this.user.jid) : {}
     if (bot.isAdmin || bot.isSuperAdmin) {
+      const time = async (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
         let linkGC = this.groupInviteCode(m.chat)
         let isLinkThisGc = new RegExp(linkGC, 'g')
         let isgclink = isLinkThisGc.exec(m.text)
