@@ -8,7 +8,7 @@ handler.before = function (m, { user, bot, groupMetadata }) {
   let isGroupLink = linkRegex.exec(m.text)
 
   if (chat.antiLink && isGroupLink) {
-    
+    m.reply('Byee, kamu akan di kick!!')
     if (user.isAdmin || user.isSuperAdmin) return m.reply('Eh maap kamu admin, kamu gk bakal dikick')
     let participants = m.isGroup ? groupMetadata.participants : []
     let bot = m.isGroup ? participants.find(u => u.jid == this.user.jid) : {}
@@ -19,7 +19,6 @@ handler.before = function (m, { user, bot, groupMetadata }) {
         if (isgclink) { 
              m.reply('Untung Link grup ini sendiri :v')
         } else {
-          //m.reply('Byee, kamu akan di kick!!')
           this.groupRemove(m.chat, [m.sender])
         }
     } else m.reply('Bot bukan admin, mana bisa kick orang _-')
