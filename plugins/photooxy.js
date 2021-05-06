@@ -64,7 +64,6 @@ lolpentakill
 `.trim()
 
     if (!effect) return conn.reply(m.chat, listeffect, m)
-    if (!text) return conn.reply(m.chat, 'Uhm... Teksnya?', m)
   let [text, ...text2] = txt.replace(effect, '').trimStart().split(split)
   text2 = text2.join(split)
   let url = global.API('xteam', '/photooxy/' + effect, { text, text2 }, 'APIKEY')
