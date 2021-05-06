@@ -24,7 +24,7 @@ handler.before = function (m, { user, bot, groupMetadata }) {
         } else {
           m.reply('Byee, kamu akan di kick!!')
             await time(6000)
-             this.groupRemove(m.chat, [m.sender])
+          await.groupRemove(m.chat, [m.sender])
         }
     } else m.reply('Bot bukan admin, mana bisa kick orang _-')
   }
