@@ -19,12 +19,8 @@ handler.before = function (m, { user, bot, groupMetadata }) {
         if (isgclink) { 
              m.reply('Untung Link grup ini sendiri :v')
         } else {
-          const time = async (ms) => {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
           m.reply('Byee, kamu akan di kick!!')
-            await time(6000)
-          await.groupRemove(m.chat, [m.sender])
+          this.groupRemove(m.chat, [m.sender])
         }
     } else m.reply('Bot bukan admin, mana bisa kick orang _-')
   }
