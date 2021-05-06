@@ -13,15 +13,15 @@ handler.before = function (m, { user, bot, groupMetadata }) {
     let participants = m.isGroup ? groupMetadata.participants : []
     let bot = m.isGroup ? participants.find(u => u.jid == this.user.jid) : {}
     if (bot.isAdmin || bot.isSuperAdmin) {
-      const time = async (ms) => {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
         let linkGC = this.groupInviteCode(m.chat)
         let isLinkThisGc = new RegExp(linkGC, 'g')
         let isgclink = isLinkThisGc.exec(m.text)
         if (isgclink) { 
              m.reply('Untung Link grup ini sendiri :v')
         } else {
+          const time = async (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
           m.reply('Byee, kamu akan di kick!!')
             await time(6000)
           await.groupRemove(m.chat, [m.sender])
