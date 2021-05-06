@@ -29,11 +29,11 @@ Kamu: *${usersLev.indexOf(m.sender) + 1}* dari *${usersLev.length}*
 
 ${sortedLev.slice(0, len).map(([user, data], i) => (i + 1) + '. ' + conn.getName(user) + ': *' + data.level + ' Level*').join`\n`}
 `.trim()
-  conn.reply(m.chat, text, m, {
+  conn.reply(m.chat, text, m) /*, {
     contextInfo: {
       mentionedJid: [...usersExp.slice(0, len), ...usersLim.slice(0, len), ...usersLev.slice(0, len)]
     }
-  })
+  })*/
 }
 handler.help = ['leaderboard [jumlah user]', 'lb [jumlah user]']
 handler.tags = ['xp']
