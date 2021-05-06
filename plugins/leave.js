@@ -8,16 +8,16 @@ const time = async (ms) => {
   await conn.groupLeave(m.key.remoteJid)
 }
 handler.help = ['leave', 'keluar']
-handler.tags = ['group']
+handler.tags = ['owner']
 handler.command = /^(leave|keluar)$/i
-handler.owner = false
+handler.owner = true
 handler.mods = false
 handler.premium = false
 handler.group = true
 handler.private = false
 handler.register = true
 
-handler.admin = true
+handler.admin = false
 handler.botAdmin = false
 
 handler.fail = null
