@@ -31,7 +31,7 @@ ${sortedLev.slice(0, len).map(([user, data], i) => (i + 1) + '. ' + conn.getName
 `.trim()
   conn.reply(m.chat, text, m) /*, {
     contextInfo: {
-      mentionedJid: [...usersExp.slice(0, len), ...usersLim.slice(0, len), ...usersLev.slice(0, len)]
+      mentionedJid: [...usersUang.slice(0, len), ...usersExp.slice(0, len), ...usersLim.slice(0, len), ...usersLev.slice(0, len)]
     }
   })*/
 }
