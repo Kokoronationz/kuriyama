@@ -1,10 +1,70 @@
 let fetch = require('node-fetch')
 let split = '|'
 let handler = async (m, { conn, args: [effect], text: txt }) => {
-  let { effects } = await (await (fetch(global.API('xteam', '/photooxy')))).json()
-  if (!effect) throw '*List Effect*\n\n' + effects.sort((a, b) => a - b).join('\n')
-  effect = effect.toLowerCase()
-  if (!effect in effects) throw `Efek *${effect}* tidak ditemukan`
+  await m.reply(global.wait)
+  let listeffect = `
+*List Effect Photooxy :*
+
+smoke
+wolfmetal
+underwaterocean
+typography
+neonlight
+google
+rainbowshine
+camuflage
+3dglowing
+vintage
+candy
+gradientavatar
+glowrainbow
+stars
+fur
+flaming
+crispchrome
+kueultah
+rainbowbg
+metalicglow
+striking3d
+watermelon
+underwebmatrix
+multimaterial
+harrypotter
+8bit
+kopi2
+luxuryroyal
+gerbang
+woodblock
+smoketypography
+sweetcandy
+silk
+bevel
+partyneon
+greenleaves
+modernmetal
+lolcover
+warface
+pentakill
+aov
+battlefield
+avatarlol
+pokemon
+lolavatarglitch
+shinebannerlol
+mastery7lol
+dota2avatar
+lol
+crossfire
+glowpentakill
+warfacecover
+coveroverwatch
+lolcover2
+csgo
+lolpentakill
+`.trim()
+
+    if (!effect) return conn.reply(m.chat, listeffect, m)
+    if (!text) return conn.reply(m.chat, 'Uhm... Teksnya?', m)
   let [text, ...text2] = txt.replace(effect, '').trimStart().split(split)
   text2 = text2.join(split)
   let url = global.API('xteam', '/photooxy/' + effect, { text, text2 }, 'APIKEY')
