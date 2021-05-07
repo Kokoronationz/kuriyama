@@ -32,8 +32,8 @@ handler.exp = 0
 module.exports = handler
 
 function JaM(ms) {
-  let m = isNaN(ms) ? '60' : Math.floor(ms / 360000) % 60
-  return [m].map(v => v.toString().padStart(2, 0) ).join(':')
+  let h = isNaN(ms) ? '60' : Math.floor(ms / 360000) % 60
+  return [h].map(v => v.toString().padStart(2, 0) ).join(':')
 }
 
 function MeNit(ms) {
