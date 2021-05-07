@@ -32,7 +32,7 @@ handler.exp = 0
 module.exports = handler
 
 function JaM(ms) {
-  let h = isNaN(ms) ? '60' : Math.floor(ms / 360000) % 60
+  let h = isNaN(ms) ? '60' : Math.floor(ms / 3600000) % 60
   return [h].map(v => v.toString().padStart(2, 0) ).join(':')
 }
 
