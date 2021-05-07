@@ -18,7 +18,7 @@ let handler = async (m, { conn }) => {
 *「 Kisah Nabi 」*
   
 *Nama:* ${name}
-*Tahun Kelahiran:* ${thn_kelahiran}
+*Tahun Kelahiran:* ${thn_kelahiran} SM
 *Usia:* ${usia}
 *Tempat:* ${tmp}
 
