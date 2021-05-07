@@ -16,7 +16,7 @@ let handler = async (m, { conn }) => {
 
 No. ${id}
 
-${arabic} 
+${arabic} ${times}x
 
 ${tnc}
 `.trim()
