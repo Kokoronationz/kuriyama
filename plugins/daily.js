@@ -3,7 +3,7 @@ let handler = async (m, { conn }) => {
 let cdj = `${JaM(new Date - LastClaim)}`
 let cdm = `${MeNit(new Date - LastClaim)}`
 let cds = `${DeTik(new Date - LastClaim)}`
-let cd1 = math.ceil(23 - cdj)
+let cd1 = Math.ceil(23 - cdj)
 let cd2 = Math.ceil(59 - cdm)
 let cd3 = Math.ceil(60 - cds)
   if (new Date - global.DATABASE._data.users[m.sender].lastclaim > 86400000) {
