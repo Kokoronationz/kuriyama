@@ -46,6 +46,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       'main': 'Main',
       'xp': 'Exp & Limit',
       'sticker': 'Sticker',
+      'islamic': 'Islamic',
       'weebs': 'Weebs',
       'game': 'Game',
       'fun': 'Fun',
