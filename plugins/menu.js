@@ -7,6 +7,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     let kuriyama = './src/kuriyama.png'
     let { exp, uang, limit, level } = global.DATABASE.data.users[m.sender]
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
+    let kokoronationz = 'https://linktr.ee/Kokoronationz'
     let name = conn.getName(m.sender)
     let d = new Date
     let locale = 'id'
@@ -106,8 +107,8 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
 ┃
 ┃ ❖ Uptime: *_%uptime_ (%muptime)*
 ┃ ❖ Database: %rtotalreg of %totalreg
-┃ ❖ Github:
-┃ %github
+┃ ❖ Contact:
+┃ ${kokoronationz}
 ┗ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
 %readmore
 ┏ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
@@ -153,7 +154,19 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => ''+replace[name])
     //conn.fakeReply(m.chat, text.trim(), '0@s.whatsapp.net', `${conn.user.name} Verified Bot`, 'status@broadcast')
-    conn.sendFile(m.chat, kuriyama, 'kuriyama.jpg', text.trim(), { key: { remoteJid: 'status@broadcast', participant: '0@s.whatsapp.net', fromMe: false }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": `${conn.user.name} Verified Bot`, "jpegThumbnail": fs.readFileSync(`./src/mirai.png`)} } }, m, { contextInfo: { mentionedJid: [m.sender] } })
+    conn.sendFile(m.chat, kuriyama, 'kuriyama.jpg', text.trim(), { 
+      key: { 
+        remoteJid: 'status@broadcast', 
+        participant: '0@s.whatsapp.net', 
+        fromMe: false 
+      }, 
+      message: { 
+        "imageMessage": { "mimetype": "image/jpeg", 
+        "caption": `${conn.user.name} Verified Bot`, 
+        "jpegThumbnail": fs.readFileSync(`./src/mirai.png`)
+        } 
+      }
+    }, m, { contextInfo: { mentionedJid: [m.sender] } })
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
