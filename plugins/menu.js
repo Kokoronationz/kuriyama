@@ -7,7 +7,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     let kuriyama = './src/kuriyama.png'
     let { exp, uang, limit, level } = global.DATABASE.data.users[m.sender]
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
-    let kokoronationz = 'https://linktr.ee/Kokoronationz'
+    let kokoronationz = 'https://bit.ly/Kokoronationz'
     let name = conn.getName(m.sender)
     let d = new Date
     let locale = 'id'
@@ -109,7 +109,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
 ┃ ❖ Uptime: *_%uptime_ (%muptime)*
 ┃ ❖ Database: %rtotalreg of %totalreg
 ┃ ❖ Contact:
-┃ ${kokoronationz}
+┃   ${kokoronationz}
 ┗ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
 %readmore
 ┏ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
