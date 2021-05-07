@@ -17,7 +17,7 @@ let handler = async (m, { conn }) => {
   let caption = `
 *「 Kisah Nabi 」*
   
-*nama:* ${name}
+*Nama:* ${name}
 *Tahun Kelahiran:* ${thn_kelahiran}
 *Usia:* ${usia}
 *Tempat:* ${tmp}
