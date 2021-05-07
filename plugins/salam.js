@@ -1,6 +1,13 @@
-let handler = m => m.reply('Wa`alaikumussalam')
+let util = require('util')
+let path = require('path')
 
-handler.customPrefix = /assalamualaikum|Assalamualaikum/i
+let handler = async (m, { conn }) => {
+let vn ='src/waalaikumsalam.opus' //tergantung nama file
+conn.sendFile(m.chat, vn, 'salam.opus', null, m, true, {
+  type: 'audioMessage', 
+  ptt: true
+})
+}
+handler.customPrefix = /Assalamualaikum|assalamualaikumm/i
 handler.command = new RegExp
-
 module.exports = handler
