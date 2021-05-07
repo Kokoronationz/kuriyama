@@ -1,6 +1,6 @@
 let handler = async (m, { conn }) => {
   let LastClaim = global.DATABASE._data.users[m.sender].lastclaim
-let cdj = `${JaM(new Date - LastClaim}`
+let cdj = `${JaM(new Date - LastClaim)}`
 let cdm = `${MeNit(new Date - LastClaim)}`
 let cds = `${DeTik(new Date - LastClaim)}`
 let cd1 = math.ceil(23 - cdj)
