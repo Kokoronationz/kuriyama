@@ -17,9 +17,10 @@ try {
     quoted: m
   })
 } catch (e) {
-m.reply('Conversion Failed')
+  m.reply('Conversion Failed')
+  }
 }
-}
+
 
 handler.help = ['trigger (caption|reply media)']
 handler.tags = ['sticker']
