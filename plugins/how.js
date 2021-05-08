@@ -1,5 +1,5 @@
 let handler = async (m, { conn, command, text }) => {
-  if (!text) throw `Siapa yang *${command.replace('cek', '').toUpperCase()}*`
+  if (!text) text = `@${m.sender.split`@`[0]}`
   conn.reply(m.chat, `
 ${command} *${text}*
 
@@ -10,13 +10,13 @@ ${command} *${text}*
     }
   } : {})
 }
-handler.help = ['gay', 'pintar', 'cantik', 'ganteng', 'gabut', 'gila', 'lesbi', 'stress', 'bucin', 'jones', 'sadboy', 'tolol'].map(v => v + 'cek @user')
+handler.help = ['gay', 'pintar', 'cantik', 'ganteng', 'gabut', 'gila', 'halu', 'lesbi', 'stress', 'bucin', 'jones', 'sadboy', 'tolol'].map(v => v + 'cek @user')
 handler.tags = ['fun']
-handler.command = /^(gay|pintar|cantik|ganteng|gabut|gila|lesbi|stress?|bucin|jones|sadboy|tolol)cek/i
+handler.command = /^(gay|pintar|cantik|ganteng|gabut|gila|halu|lesbi|stress?|bucin|jones|sadboy|tolol)cek/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
-handler.group = true
+handler.group = false
 handler.private = false
 handler.register = true
 
