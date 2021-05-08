@@ -1,13 +1,10 @@
-const { sticker } = require('../lib/sticker')
+const fetch = require('node-fetch')
+const FormData = require('form-data')
 const { MessageType } = require('@adiwajshing/baileys')
 
-let handler = async (m, { conn, text }) => {
-  if (!text) throw 'Tidak ada teks?'
-  let stiker = await sticker(null, global.API('xteam', '/attp', { file: '', text }), global.packname, global.author)
-  if (stiker) return conn.sendMessage(m.chat, stiker, MessageType.sticker, {
-    quoted: m
-  })
-  throw stiker.toString()
+let handler  = async (m, { conn, text }) => {
+  if (text) conn.sendFile(m.chat, global.API('xteam', '/attp', { file: '', text }), 'attp.webp', '', m, false, { asSticker: true })
+  else throw 'Uhm...Teksnya?'
 }
 handler.help = ['attp <teks>']
 handler.tags = ['sticker']
