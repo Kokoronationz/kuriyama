@@ -1,5 +1,5 @@
 let handler = async (m, { conn, command, text }) => {
-  if (!text) text = conn.getname(m.sender)
+  if (!text) text = conn.getName(m.sender)
   conn.reply(m.chat, `
 ${command} *${text}*
 
