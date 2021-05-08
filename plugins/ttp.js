@@ -1,14 +1,12 @@
-const { sticker2 } = require('../lib/sticker')
+const { sticker } = require('../lib/sticker')
 const { MessageType } = require('@adiwajshing/baileys')
-
 let handler = async (m, { conn, text }) => {
-  await m.reply(global.wait)
-if (text) {
-let stiker = await sticker2(null, global.API('xteam', '/ttp', { file: '', text }), global.packname, global.author)
-conn.sendMessage(m.chat, stiker, MessageType.sticker, {
-quoted: m
-})
-}
+  if (!text) throw 'Tidak ada teks?'
+  let stiker = await sticker(null, global.API('xteam', '/ttp', { file: '', text }), global.packname, global.author)
+  if (stiker) return conn.sendMessage(m.chat, stiker, MessageType.sticker, {
+    quoted: m
+  })
+  throw stiker.toString()
 }
 handler.help = ['ttp <teks>']
 handler.tags = ['sticker']
