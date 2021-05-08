@@ -2,13 +2,13 @@ let handler = async (m, { conn, text }) => {
   let q
   try { q = m.quoted.download() }
   catch (e) { q = m.download() }
-  m.reply('_Sedang membuat..._\n*Mohon tunggu sekitar 1 menit*')
+  await m.reply(global.wait)
   running(await q).then(vid => conn.sendFile(m.chat, vid, 'run.mp4', '*© Nurutomo*\nMade with FFmpeg', m))
 }
 handler.help = ['runningtext']
 handler.tags = ['tools']
 handler.command = /^runningtext$/i
-handler.group = true
+handler.group = false
 handler.register = true
 handler.limit = true
 

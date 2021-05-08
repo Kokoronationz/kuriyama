@@ -1,5 +1,5 @@
 let handler  = async (m, { conn }) => {
-  conn.reply(m.chat,`“${pickRandom(global.motivasi)}”`, m)
+  conn.reply(m.chat,`${pickRandom(global.motivasi)}`, m)
 }
 handler.help = ['motivasi']
 handler.tags = ['quotes']
@@ -7,7 +7,7 @@ handler.command = /^(motivasi)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
-handler.group = true
+handler.group = false
 handler.private = false
 handler.register = true
 

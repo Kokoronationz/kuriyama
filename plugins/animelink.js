@@ -1,5 +1,5 @@
 let handler = async m => m.reply(`
-「 Anime 」
+*「 Anime 」*
 
 ┏ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
 ┃ ❖ https://kusonime.com
@@ -48,7 +48,6 @@ let handler = async m => m.reply(`
 handler.help = ['animelink']
 handler.tags = ['weebs']
 handler.command = /^animelink$/i
-handler.group = true
 handler.register = true
 
 module.exports = handler

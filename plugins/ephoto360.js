@@ -41,7 +41,7 @@ freefire
     if (!effect) return conn.reply(m.chat, listeffect, m)
     if (!teks) return conn.reply(m.chat, 'Uhm... Teksnya?', m)
 
-  await m.reply('Sedang membuat...')
+  await m.reply(global.wait)
  let hasil = await (await fetch('http://lolhuman.herokuapp.com/api/ephoto1/' + effect + '?apikey=APIKEYMU&text=' + teks)).buffer()
  let caption = `*EPHOTO 360*\n\nEffect : ${effect}`
 
@@ -53,7 +53,7 @@ handler.command = /^(ephoto)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
-handler.group = true
+handler.group = false
 handler.private = false
 handler.register = true
 

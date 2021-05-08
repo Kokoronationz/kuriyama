@@ -3,7 +3,7 @@ const fetch = require('node-fetch')
 
 let handler = async (m, { conn }) => {
     try {
-      await m.reply('Searching...')
+      await m.reply(global.wait)
         let res = await fetch(global.API('xteam', '/randomimage/uniform', {}, 'APIKEY'))
         let img = await res.buffer()
         conn.sendMessage(m.chat, img, MessageType.image, {

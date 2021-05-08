@@ -30,7 +30,7 @@ let handler = async m => m.reply(`
 handler.help = ['mangalink','manhwalink']
 handler.tags = ['weebs']
 handler.command = /^ma(nga|nhwa)link$/i
-handler.group = true
+handler.group = false
 handler.register = true
 
 module.exports = handler

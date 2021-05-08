@@ -5,7 +5,7 @@ let handler = async(m, { conn, text }) => {
     if (!kata) return conn.reply(m.chat, 'Masukan kata', m)
   await m.reply(global.wait)
 	axios.get(`https://api.zeks.xyz/api/sgplay?apikey=apivinz&q=${kata}`).then ((res) => {
-	 	let hasil = res.data.result.map(res=>`*➸ Judul: ${res.title}*\n*➸ ${res.appid}*\n*➸ Dev: ${res.developer}*\n*➸ Rating: ${res.rating}*\n*➸ Link: ${res.url}*`).join('\n\n')
+	 	let hasil = res.data.result.map(res=>`*Judul: ${res.title}*\n*${res.appid}*\n*Dev: ${res.developer}*\n*Rating: ${res.rating}*\n*Link: ${res.url}*`).join('\n\n')
 
     conn.reply(m.chat, hasil, m)
 	})
@@ -16,7 +16,7 @@ handler.command = /^(playstore)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
-handler.group = true
+handler.group = false
 handler.private = false
 handler.register = true
 

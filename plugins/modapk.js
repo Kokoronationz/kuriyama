@@ -111,7 +111,7 @@ let handler = async m => m.reply(`
 handler.help = ['modapk']
 handler.tags = ['tools']
 handler.command = /^(modapk)$/i
-handler.group = true
+handler.group = false
 handler.premium = true
 handler.register = true
 

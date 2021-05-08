@@ -11,7 +11,7 @@ let json= await res.json()
 handler.help = ['kusonime <judul>']
 handler.tags = ['weebs']
 handler.command = /^kusonime$/i
-handler.group = true
+handler.group = false
 handler.register = true
 
 module.exports = handler

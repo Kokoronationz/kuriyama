@@ -2,7 +2,8 @@ let axios = require("axios");
 let handler = async(m, { conn, text }) => {
 
     if (!text) return conn.reply(m.chat, 'Masukan Namamu', m)
-
+    
+    await m.reply(global.wait)
 	axios.get(`https://api.terhambar.com/ninja?nama=${text}`).then ((res) => {
 	 	let hasil = `Nama Ninja *${text}*\nAdalah : ${res.data.result.ninja}`
 
@@ -15,7 +16,7 @@ handler.command = /^(ninja)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
-handler.group = true
+handler.group = false
 handler.private = false
 handler.register = true
 

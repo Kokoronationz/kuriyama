@@ -2,7 +2,8 @@ let axios = require("axios");
 let handler = async(m, { conn, text }) => {
 
     if (!text) return conn.reply(m.chat, 'Masukan Teksnya', m)
-
+    
+    await m.reply(global.wait)
 	axios.get(`https://api.terhambar.com/bpk?kata=${text}`).then ((res) => {
 	 	let hasil = `${res.data.text}`
 
@@ -15,7 +16,7 @@ handler.command = /^(alay)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
-handler.group = true
+handler.group = false
 handler.private = false
 handler.register = true
 
@@ -24,6 +25,6 @@ handler.botAdmin = false
 
 handler.fail = null
 handler.exp = 0
-handler.limit = false
+handler.limit = true
 
 module.exports = handler

@@ -3,9 +3,9 @@ let handler = async(m, { conn, text }) => {
 
     if (!text) return conn.reply(m.chat, 'Masukan Teksnya', m)
 
-  await m.reply('Searching...')
+  await m.reply(global.wait)
 	axios.get(`https://api-anoncybfakeplayer.herokuapp.com/pastebin?text=${text}`).then ((res) => {
-	 	let hasil = `Nih Link Pastebinmu Dh Jadi\n${res.data.result}`
+	 	let hasil = `Nih Link Pastebinmu Dah Jadi\n${res.data.result}`
 
     conn.reply(m.chat, hasil, m)
 	})

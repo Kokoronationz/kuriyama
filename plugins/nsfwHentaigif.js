@@ -3,11 +3,11 @@ const fetch = require('node-fetch')
 
 let handler = async (m, { conn }) => {
     try {
-      await m.reply('Searching...')
+      await m.reply(global.wait)
         let res = await fetch(global.API('xteam', '/randomimage/hentaigif', {}, 'APIKEY'))
         let img = await res.buffer()
         conn.sendMessage(m.chat, img, MessageType.gif, {
-            quoted: m, caption: '*©Kuriyama-bot*'
+            quoted: m
         })
     } catch (e) {
         console.log(e)

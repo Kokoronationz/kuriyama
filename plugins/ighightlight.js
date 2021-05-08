@@ -1,5 +1,6 @@
 let fetch = require('node-fetch')
 let handler = async (m, { conn, args }) => {
+  await m.reply(global.wait)
   if (!args[0]) throw 'Uhm...url nya mana?'
   let res = await fetch(global.API('xteam', '/dl/ighighlight', {
     nama: args[0]
@@ -18,7 +19,7 @@ handler.help = ['ighighlight'].map(v => v + ' <username>')
 handler.tags = ['downloader']
 
 handler.command = /^(ighighlight?)$/i
-handler.group = true
+handler.group = false
 handler.premium = true
 handler.register = true
 
