@@ -1,6 +1,6 @@
 let fetch = require('node-fetch')
 let handler = async (m, { text }) => {
-  await m.reply('Fitur nonaktifkan!')
+  await m.reply('Fitur nonaktif!')
 /*  await m.reply(global.wait)
   let url = await fetch('https://api.zeks.xyz/api/darkjokes?apikey=apivinz')
   let darkjokes = await url.json()
@@ -12,5 +12,5 @@ handler.tags = ['fun']
 handler.command = /^darkjokes$/i
 handler.group = false
 handler.register = true
-handler.limit = true
+handler.limit = false
 module.exports = handler
