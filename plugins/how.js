@@ -1,5 +1,7 @@
 let handler = async (m, { conn, command, text }) => {
-  if (!text) text = `@${m.sender.replace(/@.+/, '')}`
+  let elu = m.sender
+  let tag = elu + '@s.whatsapp.net'
+  if (!text) text = `@${tag.replace(/@.+/, '')}`
   conn.reply(m.chat, `
 ${command} *${text}*
 
