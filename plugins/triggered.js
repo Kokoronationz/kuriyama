@@ -3,11 +3,12 @@ const { sticker } = require('../lib/sticker')
 const { MessageType } = require('@adiwajshing/baileys')
 
 let handler = async (m, { conn, text }) => {
+  await m.reply(global.wait)
 try {
 let q = m.quoted ? m.quoted : m
 let mime = (q.msg || q).mimetype || ''
 if (!mime) throw 'Tidak ada foto'
-if (!/image/(jpe?g|png)/.test(mime)) throw Mime ${mime} tidak support
+if (!/image|video/.test(mime)) throw Mime ${mime} tidak support
 let img = await q.download()
 let url = await uploadImage(img)
 let trigger = https://some-random-api.ml/canvas/triggered?avatar=${url}
