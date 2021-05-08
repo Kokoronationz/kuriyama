@@ -1,33 +1,23 @@
-const imgbb = require('imgbb-uploader')
-const fs = require('fs')
-const { exec } = require('child_process')
+const uploadImage = require('../lib/uploadImage')
+const { sticker } = require('../lib/sticker')
 const { MessageType } = require('@adiwajshing/baileys')
 
-let handler = async (m, { conn, args }) => {
-  await m.reply(global.wait)
-    const content = JSON.stringify(m.message)
-    const type = Object.keys(m.message)[0]
-    const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
-    const isMedia = (type === 'imageMessage' || type === 'videoMessage')
-    if ((isMedia && !m.message.videoMessage || isQuotedImage) && args.length == 0) {
-        const ger = isQuotedImage ? JSON.parse(JSON.stringify(m).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : m
-        const owgi = await conn.downloadAndSaveMediaMessage(ger, `./tmp/${Math.floor(Math.random() * 10000)}`)
-        const anu = await imgbb("bbd84b1e8f381e888d1bb48a8846637e", owgi)
-        const url = `${anu.display_url}`
-        let ranp = getRandom('.gif')
-        let rano = getRandom('.webp')
-        anu1 = `https://some-random-api.ml/canvas/triggered?avatar=${url}`
-        exec(`wget ${anu1} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=40 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
-            fs.unlinkSync(ranp)
-            if (err) return m.reply('emror..')
-            nobg = fs.readFileSync(rano)
-            conn.sendMessage(m.chat, nobg, MessageType.sticker, { quoted: m })
-            fs.unlinkSync(rano)
-            fs.unlinkSync(owgi)
-        })
-    } else {
-        m.reply('pastikan format jpg/png!')
-    }
+let handler = async (m, { conn, text }) => {
+try {
+let q = m.quoted ? m.quoted : m
+let mime = (q.msg || q).mimetype || ''
+if (!mime) throw 'Tidak ada foto'
+if (!/image/(jpe?g|png)/.test(mime)) throw Mime ${mime} tidak support
+let img = await q.download()
+let url = await uploadImage(img)
+let trigger = https://some-random-api.ml/canvas/triggered?avatar=${url}
+let stiker = await sticker(null, trigger, 'Triggered', '@kokoronation')
+conn.sendMessage(m.chat, stiker, MessageType.sticker, {
+quoted: m
+})
+} catch (e) {
+m.reply('Conversion Failed')
+}
 }
 
 handler.help = ['trigger (caption|reply media)']
