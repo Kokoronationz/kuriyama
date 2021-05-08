@@ -1,5 +1,6 @@
 let fetch = require('node-fetch')
 let handler = async (m, { conn, args }) => {
+  await m.reply(global.wait)
   if (!args[0]) throw 'Uhm...url nya mana?'
   let res = await fetch(global.API('xteam', '/dl/tiktok', {
     url: args[0]
@@ -14,5 +15,6 @@ handler.tags = ['downloader']
 
 handler.command = /^(tiktok(dl)?)$/i
 handler.register = true
+handler.premium = true
 
 module.exports = handler

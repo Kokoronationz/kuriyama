@@ -1,6 +1,7 @@
 const translate = require('translate-google-api')
 
 let handler = async (m, { text, usedPrefix }) => {
+  await m.reply(global.wait)
     bales = `contoh: \n${usedPrefix}tr kode bahasa|teks\n${usedPrefix}tr id|thankyou\n\nBahasa yang didukung: https://cloud.google.com/translate/docs/language`
     if (!text) throw bales
 
@@ -27,7 +28,7 @@ handler.command = /^(tr(anslate)?)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
-handler.group = true
+handler.group = false
 handler.private = false
 handler.register = true
 

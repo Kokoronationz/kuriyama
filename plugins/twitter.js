@@ -1,6 +1,6 @@
 let handler = async(m, { conn, text }) => {
     if (!text) return conn.reply(m.chat, 'Uhm... urlnya mana?', m)
-    conn.reply(m.chat, 'Tunggu bentar ya :)', m)
+    await m.reply(global.wait)
     new Promise((resolve, reject) => {
         axios.get(`https://arugaz.my.id/api/media/twvid?url=` + text)
             .then((res) => {

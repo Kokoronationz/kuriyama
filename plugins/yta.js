@@ -22,7 +22,7 @@ handler.command = /^yt(a|mp3)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = true
-handler.group = true
+handler.group = false
 handler.private = false
 handler.register = true
 

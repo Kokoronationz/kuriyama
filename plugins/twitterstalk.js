@@ -1,5 +1,6 @@
 let handler = async(m, { conn, text, usedPrefix }) => {
     if (!text) return conn.reply(m.chat, 'User yang mau distalk ?', m)
+    await m.reply(global.wait)
     new Promise((resolve, reject) => {
         axios.get(`https://arugaz.my.id/api/media/stalktwitt?user=` + text)
             .then((res) => {

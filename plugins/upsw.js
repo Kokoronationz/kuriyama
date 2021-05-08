@@ -31,6 +31,7 @@ let handler = async (m, { conn, text }) => {
 }
 handler.help = ['upsw [text] (Reply Media)', 'upsw <text>']
 handler.tags = ['']
+handler.owner = true
 
 handler.command = /^upsw$/i
 

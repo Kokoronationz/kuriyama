@@ -12,7 +12,7 @@ handler.command = /^waifu$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
-handler.group = true
+handler.group = false
 handler.private = false
 handler.register = true
 
@@ -20,5 +20,6 @@ handler.admin = false
 handler.botAdmin = false
 
 handler.fail = null
+handler.limit = true
 
 module.exports = handler

@@ -4,6 +4,7 @@ const { exec } = require('child_process')
 const { MessageType } = require('@adiwajshing/baileys')
 
 let handler = async (m, { conn, args }) => {
+  await m.reply(global.wait)
     const content = JSON.stringify(m.message)
     const type = Object.keys(m.message)[0]
     const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
@@ -33,7 +34,7 @@ handler.help = ['trigger (caption|reply media)']
 handler.tags = ['sticker']
 handler.command = /^(trigger(ed)?)$/i
 handler.limit = true
-handler.group = true
+handler.group = false
 handler.register = true
 module.exports = handler
 

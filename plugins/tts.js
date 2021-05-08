@@ -3,6 +3,7 @@ let fs = require('fs')
 let path = require('path')
 let { spawn } = require('child_process')
 let handler = async (m, { conn, args }) => {
+  await m.reply(global.wait)
   let lang = 'id'
   let text = args.slice(1).join(' ')
   if (args[0].length === 2) lang = args[0]

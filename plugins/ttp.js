@@ -2,6 +2,7 @@ const { sticker2 } = require('../lib/sticker')
 const { MessageType } = require('@adiwajshing/baileys')
 
 let handler = async (m, { conn, text }) => {
+  await m.reply(global.wait)
 if (text) {
 let stiker = await sticker2(null, global.API('xteam', '/ttp', { file: '', text }), global.packname, global.author)
 conn.sendMessage(m.chat, stiker, MessageType.sticker, {

@@ -56,7 +56,7 @@ let handler = async (m, { conn, args, usedPrefix }) => {
 handler.help = ['tovideo (reply sticker)']
 handler.tags = ['sticker']
 handler.command = /^(tovid(eo)?)$/i
-handler.group = true
+handler.group = false
 handler.register = true
 handler.limit = true
 module.exports = handler
