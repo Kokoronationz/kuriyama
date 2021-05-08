@@ -28,7 +28,3 @@ handler.limit = true
 handler.group = false
 handler.register = true
 module.exports = handler
-
-const getRandom = (ext) => {
-    return `${Math.floor(Math.random() * 10000)}${ext}`
-}
