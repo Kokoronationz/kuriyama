@@ -1,4 +1,4 @@
-let handler = async (m, { conn, usedPrefix, command, text, args, isROwner }) => {
+let handler = async (m, { conn, usedPrefix, command, text, args, isOwner }) => {
   let isEnable = /true|enable|(turn)?on/i.test(command)
   let chat = global.DATABASE._data.chats[m.chat]
   let user = global.DATABASE._data.users[m.sender]
@@ -20,8 +20,8 @@ let handler = async (m, { conn, usedPrefix, command, text, args, isROwner }) => 
       break
     case 'public':
       isAll = true
-      if (!isROwner) {
-        global.dfail('rowner', m, conn)
+      if (!isOwner) {
+        global.dfail('owner', m, conn)
         throw false
       }
       global.opts['self'] = !isEnable
