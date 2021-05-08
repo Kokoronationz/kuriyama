@@ -1,7 +1,5 @@
 let handler = async (m, { conn, command, text }) => {
-  let elu = m.sender
-  let tag = elu + '@s.whatsapp.net'
-  if (!text) text = `${tag.split`@`[0]}`
+  if (!text) text = conn.getname(m.sender)
   conn.reply(m.chat, `
 ${command} *${text}*
 
