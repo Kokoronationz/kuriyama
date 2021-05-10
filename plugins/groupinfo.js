@@ -12,7 +12,7 @@ let handler = async (m, { conn }) => {
 		let antiToxic = global.DATABASE.data.chats[m.chat].antiToxic
 		let antiLink = global.DATABASE.data.chats[m.chat].antiLink
 		let hapus = global.DATABASE.data.chats[m.chat].delete
-    let isBanned = global.DATABASE.data.chats[m.chat].isBanned
+		let isBanned = global.DATABASE.data.chats[m.chat].isBanned
     
 	
 	let caption = `
@@ -21,14 +21,15 @@ let handler = async (m, { conn }) => {
 Nama Group: ${res.subject}
 ID:	${res.id}
 Dibuat pada: ${formatDate(res.creation * 1000)}
+Jumlah Member: ${res.participants}
 Deskripsi:
 ${res.desc}
 
-  - Banned : ${data(isBanned)}
-  - Anti-Link : ${data(antiLink)}
-  - Anti-Toxic : ${data(antiToxic)}
-  - Welcome Msg : ${data(welcome)}
-  - delete Msg : ${data(hapus)}
+  ❖  Banned : ${data(isBanned)}
+  ❖  Anti-Link : ${data(antiLink)}
+  ❖  Toxic : ${data(antiToxic)}
+  ❖  Welcome Msg : ${data(welcome)}
+  ❖  delete Msg : ${data(hapus)}
 `.trim()
 	
 	conn.sendFile(m.chat, pp, 'profile.jpg', caption, false, {
