@@ -3,7 +3,7 @@ let path = require('path')
 
 let handler = async (m, { conn }) => {
 let vn = './src/explosion.opus'
-conn.sendFile(m.chat, vn, 'explosion.opus', null, m, {
+conn.sendFile(m.chat, vn, 'explosion.opus', null, m, true, {
   type: 'audioMessage',
   ptt: true
 })
