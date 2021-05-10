@@ -4,6 +4,7 @@ const { MessageType } = require('@adiwajshing/baileys')
 let handler = async (m, { conn, text }) => {
   await m.reply(global.wait)
 try {
+  let [text1, text2] = text.split('|')
   let q = m.quoted ? m.quoted : m
   let mime = (q.msg || q).mimetype || ''
   if (!mime) throw 'Tidak ada foto'
