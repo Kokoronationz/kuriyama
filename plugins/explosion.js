@@ -8,6 +8,6 @@ conn.sendFile(m.chat, vn, 'explosion.opus', null, m, {
   ptt: true
 })
 }
-handler.customPrefix = /bakuritsu|ledakin/i
+handler.customPrefix = /bakuretsu|ledakin/i
 handler.command = new RegExp
 module.exports = handler
