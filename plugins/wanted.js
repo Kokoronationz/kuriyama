@@ -1,3 +1,4 @@
+const axios = require('axios')
 const uploadImage = require('../lib/uploadImage')
 const { MessageType } = require('@adiwajshing/baileys')
 
@@ -11,7 +12,7 @@ try {
   if (!/image\/(jpe?g|png)/.test(mime)) throw `Mime ${mime} tidak support`
   let img = await q.download()
   let url = await uploadImage(img)
-  let wanted = `https://videfikri.com/api/textmaker/wanted/?urlgbr=${url}&text1=${text1}&text2=${text2}`
+  let wanted = await axios.get(`https://videfikri.com/api/textmaker/wanted/?urlgbr=${url}&text1=${text1}&text2=${text2}`)
   conn.sendFile(m.chat, wanted, 'wanted.jpg', '©Kuriyama-bot', m)
 } catch (e) {
   m.reply('Conversion Failed')
