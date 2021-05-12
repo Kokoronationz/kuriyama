@@ -1,4 +1,4 @@
-let fetch = require('node-fetch')
+const axios = require('axios')
 const uploadImage = require('../lib/uploadImage')
 const { MessageType } = require('@adiwajshing/baileys')
 
@@ -12,10 +12,8 @@ try {
   if (!/image\/(jpe?g|png)/.test(mime)) throw `Mime ${mime} tidak support`
   let img = await q.download()
   let url = await uploadImage(img)
-  let wanted = await fetch('https://lindow-api.herokuapp.com/api/wanted?img=' + ${url} + '&text=' + ${text1} + '&text2=' + ${text2} + '&apikey=LindowApi')
-  conn.sendMessage(m.chat, wanted.result, MessageType.image, { caption: `*©Kuriyama-bot*`,
-        quoted: m
-      })
+  let wanted = await axios.get(`https://lindow-api.herokuapp.com/api/wanted?img=${url}&text=${text1}&text2=${text2}&apikey=LindowApi`)
+  conn.sendMessage(m.chat, wanted, '', '©Kuriyama-bot', m)
 } catch (e) {
   m.reply('Conversion Failed')
   }
