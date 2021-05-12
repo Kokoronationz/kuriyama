@@ -12,7 +12,7 @@ try {
   if (!/image\/(jpe?g|png)/.test(mime)) throw `Mime ${mime} tidak support`
   let img = await q.download()
   let url = await uploadImage(img)
-  let wanted = await fetch(`https://lindow-api.herokuapp.com/api/wanted?img=${url}&text=${text1}&text2=${text2}&apikey=LindowApi`)
+  let wanted = await fetch('https://lindow-api.herokuapp.com/api/wanted?img=' + ${url} + '&text=' + ${text1} + '&text2=' + ${text2} + '&apikey=LindowApi')
   conn.sendMessage(m.chat, wanted.result, MessageType.image, { caption: `*©Kuriyama-bot*`,
         quoted: m
       })
