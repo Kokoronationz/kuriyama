@@ -4,7 +4,7 @@ let levelling = require('../lib/levelling')
 let handler  = async (m, { conn, usedPrefix: _p }) => {
   try {
     let package = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json')))
-    let kuriyama = './src/kuriyama.png'
+    let kuriyama = './src/kuriyamaIF.png'
     let { exp, uang, limit, level } = global.DATABASE.data.users[m.sender]
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
     let kokoronationz = 'https://bit.ly/Kokoronationz'
@@ -54,6 +54,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       'primbon': 'Primbon Menu',
       'nulis': 'MagerNulis',
       'creator': 'Creator',
+      'videomaker': 'Videomaker',
       'internet': 'Internet',
       'downloader': 'Downloader',
       'admin': 'Admin',
