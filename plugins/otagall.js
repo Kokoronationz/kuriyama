@@ -4,7 +4,7 @@ let handler = async (m, { conn, text, participants }) => {
 	let user = global.DATABASE._data.users[m.sender]
 	
   let users = participants.map(u => u.jid)
-  conn.reply(m.chat, '*「 TAG ALL 」*\n\n❖' + users.map(v => '@' + v.replace(/@.+/, '')).join`\n`, m, {
+  conn.reply(m.chat, '*「 TAG ALL 」*\n\n❖ ' + users.map(v => '@' + v.replace(/@.+/, '')).join`\n`, m, {
     contextInfo: { mentionedJid: users }
  
   
