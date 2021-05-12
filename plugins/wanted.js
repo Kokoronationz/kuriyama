@@ -1,4 +1,3 @@
-const axios = require('axios')
 const uploadImage = require('../lib/uploadImage')
 const { sticker } = require('../lib/sticker')
 const { MessageType } = require('@adiwajshing/baileys')
@@ -13,7 +12,7 @@ try {
   if (!/image\/(jpe?g|png)/.test(mime)) throw `Mime ${mime} tidak support`
   let img = await q.download()
   let url = await uploadImage(img)
-  let wanted = await axios.get(`https://lindow-api.herokuapp.com/api/wanted?img=${url}&text=${text1}&text2=${text2}&apikey=LindowApi`)
+  let wanted = `https://lindow-api.herokuapp.com/api/wanted?img=${url}&text=${text1}&text2=${text2}&apikey=LindowApi`
   let stiker = await sticker(null, wanted, 'Wanted', '@Kokoronationz')
   conn.sendMessage(m.chat, stiker, MessageType.sticker, {
     quoted: m
