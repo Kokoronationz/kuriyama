@@ -218,7 +218,7 @@ module.exports = {
           } catch (e) {
             // Error occured
             m.error = e
-            console.log(e)
+            console.error(e)
             if (e) {
               let text = util.format(e)
               for (let key of Object.values(global.APIKeys))
@@ -247,18 +247,18 @@ module.exports = {
           if (m.plugin in stats) {
             stat = stats[m.plugin]
             if (!isNumber(stat.total)) stat.total = 1
-            if (!isNumber(stat.success)) stat.success = m.error ? 0 : 1
+            if (!isNumber(stat.success)) stat.success = m.error != null ? 0 : 1
             if (!isNumber(stat.last)) stat.last = now
-            if (!isNumber(stat.lastSuccess)) stat.lastSuccess = m.error ? 0 : now
+            if (!isNumber(stat.lastSuccess)) stat.lastSuccess = m.error != null ? 0 : now
           } else stat = stats[m.plugin] = {
             total: 1,
-            success: m.error ? 0 : 1,
+            success: m.error != null ? 0 : 1,
             last: now,
-            lastSuccess: m.error ? 0 : now
+            lastSuccess: m.error != null ? 0 : now
           }
           stat.total += 1
           stat.last = now
-          if (!m.error) {
+          if (m.error == null) {
             stat.success += 1
             stat.lastSuccess = now
           }
