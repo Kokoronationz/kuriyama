@@ -1,6 +1,4 @@
 const axios = require('axios')
-const { spawn } = require('child_process')
-const util = require('util')
 const uploadImage = require('../lib/uploadImage')
 const { MessageType } = require('@adiwajshing/baileys')
 
