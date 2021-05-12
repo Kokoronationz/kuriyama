@@ -12,7 +12,7 @@ try {
   if (!/image\/(jpe?g|png)/.test(mime)) throw `Mime ${mime} tidak support`
   let img = await q.download()
   let url = await uploadImage(img)
-  let wanted = `https://lindow-api.herokuapp.com/api/wanted?img=${url}&text=${text1}&text2=${text2}&apikey=LindowApi`
+  let wanted = `https://videfikri.com/api/textmaker/wanted/?urlgbr=${url}&text1=${text1}&text2=${text2}`
   let stiker = await sticker(null, wanted, 'Wanted', '@Kokoronationz')
   conn.sendMessage(m.chat, stiker, MessageType.sticker, {
     quoted: m
