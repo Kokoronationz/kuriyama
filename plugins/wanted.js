@@ -1,6 +1,8 @@
 const axios = require('axios')
 const uploadImage = require('../lib/uploadImage')
 const { MessageType } = require('@adiwajshing/baileys')
+let util = require('util')
+let path = require('path')
 
 let handler = async (m, { conn, text }) => {
   await m.reply(global.wait)
