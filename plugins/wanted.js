@@ -15,7 +15,9 @@ try {
   let img = await q.download()
   let url = await uploadImage(img)
   let wanted = await axios.get(`https://lindow-api.herokuapp.com/api/wanted?img=${url}&text=${text1}&text2=${text2}&apikey=LindowApi`)
-  await conn.sendFile(m.chat, wanted, 'wanted.jpg', '©Kuriyama-bot', m)
+  conn.sendMessage(m.chat, wanted, MessageType.image, { caption: `*©Kuriyama-bot*`,
+        quoted: m
+      })
 } catch (e) {
   m.reply('Conversion Failed')
   }
