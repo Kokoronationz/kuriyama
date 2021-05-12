@@ -1,5 +1,5 @@
 const axios = require('axios')
-const { sticker } = require('.lib/sticker')
+const { sticker } = require('./lib/sticker')
 const uploadImage = require('../lib/uploadImage')
 const { MessageType } = require('@adiwajshing/baileys')
 
