@@ -12,8 +12,8 @@ try {
   if (!/image\/(jpe?g|png)/.test(mime)) throw `Mime ${mime} tidak support`
   let img = await q.download()
   let url = await uploadImage(img)
-  let wanted = await axios.get(`https://videfikri.com/api/textmaker/wanted/?urlgbr=${url}&text1=${text1}&text2=${text2}`)
-  await conn.sendFile(m.chat, wanted.result, 'wanted.jpg', '©Kuriyama-bot', m)
+  let wanted = await axios.get(`https://lindow-api.herokuapp.com/api/wanted?img=${url}&text=${text1}&text2=${text2}&apikey=LindowApi`)
+  await conn.sendFile(m.chat, wanted, 'wanted.jpg', '©Kuriyama-bot', m)
 } catch (e) {
   m.reply('Conversion Failed')
   }
