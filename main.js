@@ -8,7 +8,6 @@ let { promisify } = require('util')
 let yargs = require('yargs/yargs')
 let Readline = require('readline')
 let cp = require('child_process')
-let qrcode = require('qrcode')
 let path = require('path')
 let fs = require('fs')
 
@@ -36,21 +35,12 @@ if (!global.DATABASE.data.users) global.DATABASE.data = {
 if (!global.DATABASE.data.chats) global.DATABASE.data.chats = {}
 if (!global.DATABASE.data.stats) global.DATABASE.data.stats = {}
 if (!global.DATABASE.data.stats) global.DATABASE.data.msgs = {}
-if (opts['server']) {
-  let express = require('express')
-  global.app = express()
-  app.all('*', async (req, res) => {
-    res.end(await qrcode.toBuffer(global.qr))
-  })
-  app.listen(PORT, () => console.log('App listened on port', PORT))
-}
 global.conn = new WAConnection()
 let authFile = `${opts._[0] || 'session'}.data.json`
 if (fs.existsSync(authFile)) conn.loadAuthInfo(authFile)
 if (opts['trace']) conn.logger.level = 'trace'
 if (opts['debug']) conn.logger.level = 'debug'
 if (opts['big-qr'] || opts['server']) conn.on('qr', qr => generate(qr, { small: false }))
-if (opts['server']) conn.on('qr', qr => { global.qr = qr })
 let lastJSON = JSON.stringify(global.DATABASE.data)
 if (!opts['test']) setInterval(() => {
   conn.logger.info('Saving database . . .')
