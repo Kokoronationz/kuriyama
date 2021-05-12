@@ -1,4 +1,5 @@
 const axios = require('axios')
+const { sticker } = require('.lib/sticker')
 const uploadImage = require('../lib/uploadImage')
 const { MessageType } = require('@adiwajshing/baileys')
 
@@ -13,13 +14,16 @@ try {
   let img = await q.download()
   let url = await uploadImage(img)
   let wanted = await axios.get(`https://lindow-api.herokuapp.com/api/wanted?img=${url}&text=${text1}&text2=${text2}&apikey=LindowApi`)
-  conn.sendMessage(m.chat, wanted, 'wanted.jpg', '©Kuriyama-bot', m)
+  let stiker = await sticker(null, wanted, 'Wanted', '@Kokoronationz')
+  conn.sendMessage(m.chat, stiker, MessageType.sticker, {
+    quoted: m
+  })
 } catch (e) {
   m.reply('Conversion Failed')
   }
 }
 handler.help = ['wanted <name>|<text>']
-handler.tags = ['creator']
+handler.tags = ['sticker']
 handler.command = /^(wanted)$/i
 handler.limit = true
 handler.group = false
