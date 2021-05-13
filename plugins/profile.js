@@ -13,7 +13,7 @@ let handler = async (m, { conn }) => {
     let { name, uang, limit, exp, lastclaim, registered, regTime, age, level } = global.DATABASE.data.users[who]
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
     let username = conn.getName(who)
-    let sn = createHash('md5').update(m.sender).digest('hex')
+    let sn = createHash('md5').update(who).digest('hex')
     let str = `
 Name: ${username} ${registered ? '(' + name + ') ': ''}(@${who.replace(/@.+/, '')})${about ? '\nAbout: ' + about : ''}
 Number: ${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}
@@ -31,7 +31,7 @@ SN: ${sn}
 }
 handler.help = ['profile [@user]']
 handler.tags = ['main']
-handler.command = /^profile$/i
+handler.command = /^profile?$/i
 handler.register = true
 module.exports = handler
 
