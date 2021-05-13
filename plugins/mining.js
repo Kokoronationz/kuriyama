@@ -1,14 +1,18 @@
-let handler = async (m, { conn }) => {
+let fs = require('fs')
+let handler = async (m, { conn, text }) => {
 let LastMining = global.DATABASE._data.users[m.sender].lastmining
 let cdm = `${MeNit(new Date - LastMining)}`
 let cds = `${DeTik(new Date - LastMining)}`
 let cd1 = Math.ceil(59 - cdm)
 let cd2 = Math.ceil(60 - cds)
-let poin = Math.floor(Math.random() * (global.mining).length);
+let data = fs.readFileSync('/data/data/com.termux/files/home/kuriyama/lib/mining.js')
+let parse = JSON.parse(data)
+let random = Math.floor(Math.random() * parse.length);
+let json = parse[random]
   if (new Date - global.DATABASE._data.users[m.sender].lastmining > 3600000) {
-    global.DATABASE._data.users[m.sender].uang += poin
+    global.DATABASE._data.users[m.sender].uang += json.uang * 1
     global.DATABASE._data.users[m.sender].exp += 100
-    m.reply(`Selamat anda mendapatkan +Rp${poin}`)
+    m.reply(`Selamat anda mendapatkan +Rp${json.uang}`)
     global.DATABASE._data.users[m.sender].lastmining = new Date * 1
   } else m.reply(`Tunggu *${cd1}* Menit *${cd2}* Detik Lagi!`)
 }
@@ -37,42 +41,3 @@ function DeTik(ms) {
   let s = isNaN(ms) ? '60' : Math.floor(ms / 1000) % 60
   return [s].map(v => v.toString().padStart(2, 0) ).join(':')
 }
-
-global.mining = [
-'1000',
-'2000',
-'1000',
-'2000',
-'1000',
-'2000',
-'1000',
-'3000',
-'1000',
-'3000',
-'1000',
-'4000',
-'1000',
-'5000',
-'1000',
-'6000',
-'1000',
-'7000',
-'1000',
-'8000',
-'1000',
-'9000',
-'1000',
-'10000',
-'1000',
-'20000',
-'1000',
-'30000',
-'1000',
-'50000',
-'1000',
-'75000',
-'1000',
-'100000',
-'1000',
-'1000000',
-]
