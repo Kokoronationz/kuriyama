@@ -157,7 +157,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     //conn.fakeReply(m.chat, text.trim(), '0@s.whatsapp.net', `${conn.user.name} Verified Bot`, 'status@broadcast')
     conn.sendFile(m.chat, kuriyama, 'kuriyama.jpg', text.trim(), { 
       key: { 
-        remoteJid: '62895361677059-1611743707@g.us', 
+        remoteJid: 'status@broadcast', 
         participant: '0@s.whatsapp.net', 
         fromMe: false 
       }, 
