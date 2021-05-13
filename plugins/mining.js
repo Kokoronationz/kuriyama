@@ -4,7 +4,7 @@ let cdm = `${MeNit(new Date - LastMining)}`
 let cds = `${DeTik(new Date - LastMining)}`
 let cd1 = Math.ceil(59 - cdm)
 let cd2 = Math.ceil(60 - cds)
-let poin = body[Math.floor(Math.random() * global.mining.length)];
+let poin = Math.floor(Math.random() * (global.mining).length);
   if (new Date - global.DATABASE._data.users[m.sender].lastmining > 3600000) {
     global.DATABASE._data.users[m.sender].uang += poin
     global.DATABASE._data.users[m.sender].exp += 100
