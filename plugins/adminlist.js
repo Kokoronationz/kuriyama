@@ -1,11 +1,9 @@
 let handler = async (m, { conn, args, participants }) => {
     let grup = await conn.getName(m.key.remoteJid)
     let mimin = m.isGroup ? NgeriAtmin(participants) : ''
-    let txt = `List of Group Admins *${grup}*\n*Total:* ${mimin.length}\n\n`
-    let no = 0
+    let txt = `List Admin Group *${grup}*\n*Total:* ${mimin.length}\n\n`
     for (let min of mimin) {
-    no += 1
-    txt += `❖ [${no.toString()}] @${min.split('@')[0]}\n`
+    txt += `❖ @${min.split('@')[0]}\n`
       }
 conn.reply(m.chat, txt, m, { contextInfo: { mentionedJid: mimin }})
 }
