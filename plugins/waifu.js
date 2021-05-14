@@ -3,7 +3,7 @@ let handler = async (m, { conn }) => {
   await m.reply(global.wait)
  let res = await fetch('https://ardhixsquerpants.herokuapp.com/api/waifu')
  let { desc, image, name, source } = await res.json()
- let hasil = `*DESC :* ${desc}\n*NAMA :* ${name}\n*URL :* ${source}`
+ let hasil = `*NAME :* ${name}\n*DESC :* ${desc}\n*URL :* ${source}`
  conn.sendFile(m.chat, image, 'image.png', hasil, m)
 }
 handler.help = ['waifu']
