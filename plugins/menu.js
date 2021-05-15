@@ -4,12 +4,12 @@ let levelling = require('../lib/levelling')
 let handler  = async (m, { conn, usedPrefix: _p }) => {
   try {
     let package = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json')))
-    let kuriyama = './src/kuriyamaIF.png'
+    let kuriyama = './src/kuriyama.png'
     let { exp, uang, limit, level } = global.DATABASE.data.users[m.sender]
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
     let kokoronationz = 'https://bit.ly/Kokoronationz'
     let name = conn.getName(m.sender)
-    let d = new Date(new Date - (4 * 3600000))
+    let d = new Date
     let locale = 'id'
     let weton = ['Pahing', 'Pon', 'Wage', 'Kliwon', 'Legi'][Math.floor(((d * 1) + d.getTimezoneOffset()) / 84600000) % 5]
     let week = d.toLocaleDateString(locale, { weekday: 'long' })
