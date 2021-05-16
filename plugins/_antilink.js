@@ -17,14 +17,7 @@ handler.before = function (m, { isAdmin, isBotAdmin, conn, participants }) {
     if (warn < 2) {
     m.reply('Kamu telah diperingatkan oleh admin, dan sekarang kamu punya ' + (warn + 1) + ' warn . Ingat Jika kamu mendapat warn 3 kali kamu akan otomatis ditendang dari Grup', m.sender)
     global.DATABASE._data.users[m.sender].warn += 1
-    } else if (warn == 2) {
-            //global.DATABASE._data.users[ban].banned = true
-            global.DATABASE._data.users[ban].warn = 0
-            conn.fakeReply(m.chat, 'Selamat Jalan Kawan', '0@s.whatsapp.net', `${conn.user.name} Verified Bot`, 'status@broadcast')
-                await time(5000)
-             await conn.groupRemove(m.chat, [ban])
-             m.reply('*Kamu dikick karena telah mendapat 3 kali warn*', ban)
-        }
+    }
     if (global.opts['restrict']) {
       if (isAdmin || !isBotAdmin) return true
       // this.groupRemove(m.chat, [m.sender])
@@ -34,7 +27,3 @@ handler.before = function (m, { isAdmin, isBotAdmin, conn, participants }) {
 }
 
 module.exports = handler
-
-const time = async (ms) => {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
