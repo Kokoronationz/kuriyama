@@ -21,9 +21,9 @@ let handler = async (m, { conn, text }) => {
   m.reply(`(Rp${-money}) + (Rp${-pjk} (Pajak 2%)) = ( Rp${-uang} )`)
   conn.fakeReply(m.chat, `+Rp${money}`, who, m.text)
 }
-handler.help = ['payuang','uang'].map(v => v + ' <@user amount>')
+handler.help = ['transfer'].map(v => v + ' <@user amount>')
 handler.tags = ['xp']
-handler.command = /^(pay)?uang$/
-handler.rowner = true
+handler.command = /^transfer$/
+handler.register = true
 
 module.exports = handler
