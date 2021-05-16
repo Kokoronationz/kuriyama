@@ -1,28 +1,24 @@
-let handler = m => m
+let handler = async (m, { conn, participants }) => {
 
-let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})/i
-handler.before = function (m, { user, bot, groupMetadata }) {
+let linkRegex = /chat.whatsapp.com\/(?:invite\/)?([0-9A-Za-z]{20,24})/i
+handler.before = function (m, { isAdmin, isBotAdmin }) {
+  const NgeriAtmin = (participants) => {
+        atminn = []
+        let mimin = m.isGroup ? NgeriAtmin(participants) : ''
   if (m.isBaileys && m.fromMe) return true
   let chat = global.DATABASE.data.chats[m.chat]
   let isGroupLink = linkRegex.exec(m.text)
 
   if (chat.antiLink && isGroupLink) {
-    m.reply('*Byee, kamu akan di kick!!*')
-    if (user.isAdmin || user.isSuperAdmin) return m.reply('Eh maap kamu admin, kamu gk bakal dikick😅')
-    let participants = m.isGroup ? groupMetadata.participants : []
-    let bot = m.isGroup ? participants.find(u => u.jid == this.user.jid) : {}
-    if (bot.isAdmin || bot.isSuperAdmin) {
-        let linkGC = this.groupInviteCode(m.chat)
-        let isLinkThisGc = new RegExp(linkGC, 'g')
-        let isgclink = isLinkThisGc.exec(m.text)
-        if (isgclink) { 
-             m.reply('Untung link group sendiri :v')
-        } else {
-             this.groupRemove(m.chat, [m.sender])
-        }
-    } else m.reply('*Bot bukan admin, mana bisa kick orang _-*')
+    let pesan = 'Hapus!!\n\nLink Grup terdeteksi'
+    conn.reply(m.chat, pesan, m, { contextInfo: { mentionedJid: mimin }})
+    global.DATABASE._data.users[ban].warn += 1
+    if (global.opts['restrict']) {
+      if (isAdmin || !isBotAdmin) return true
+      // this.groupRemove(m.chat, [m.sender])
+    }
   }
   return true
 }
-
+}
 module.exports = handler
