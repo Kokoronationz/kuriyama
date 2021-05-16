@@ -1,9 +1,10 @@
-let handler = async (m, { conn, participants }) => 
+let handler = async (m, { conn, participants }) => {
 
 let linkRegex = /chat.whatsapp.com\/(?:invite\/)?([0-9A-Za-z]{20,24})/i
 handler.before = function (m, { isAdmin, isBotAdmin }) {
   const NgeriAtmin = (participants) => {
         atminn = []
+  }
         let mimin = m.isGroup ? NgeriAtmin(participants) : ''
   if (m.isBaileys && m.fromMe) return true
   let chat = global.DATABASE.data.chats[m.chat]
@@ -20,6 +21,5 @@ handler.before = function (m, { isAdmin, isBotAdmin }) {
   }
   return true
 }
-
-
+}
 module.exports = handler
