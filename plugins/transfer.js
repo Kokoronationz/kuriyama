@@ -25,5 +25,6 @@ handler.help = ['transfer'].map(v => v + ' <@user amount>')
 handler.tags = ['xp']
 handler.command = /^transfer$/
 handler.register = true
+handler.limit = true
 
 module.exports = handler
