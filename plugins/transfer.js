@@ -1,11 +1,11 @@
 let { MessageType } = require('@adiwajshing/baileys')
 let pajak = 0.02
 let handler = async (m, { conn, text }) => {
-  if (!text) throw 'Masukkan jumlah uang yang akan diberi'
   let who
   if (m.isGroup) who = m.mentionedJid[0]
   else who = m.chat
   if (!who) throw 'Tag salah satu lah'
+  if (!text) throw 'Masukkan jumlah uang yang akan diberi'
   let txt = text.replace('@' + who.split`@`[0], '').trim()
   if (isNaN(txt)) throw 'Hanya angka'
   let money = parseInt(txt)
