@@ -21,4 +21,5 @@ handler.before = function (m, { isAdmin, isBotAdmin }) {
   return true
 }
 }
+
 module.exports = handler
