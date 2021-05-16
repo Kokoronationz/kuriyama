@@ -1,24 +1,13 @@
 let handler = m => m
 
 let linkRegex = /chat.whatsapp.com\/(?:invite\/)?([0-9A-Za-z]{20,24})/i
-handler.before = function (m, { isAdmin, isBotAdmin, conn, participants }) {
-  let warn = global.DATABASE._data.users[m.sender].warn
-  const NgeriAtmin = (participants) => {
-        atminn = []
-  }
-        let mimin = m.isGroup ? NgeriAtmin(participants) : ''
+handler.before = function (m, { isAdmin, isBotAdmin }) {
   if (m.isBaileys && m.fromMe) return true
   let chat = global.DATABASE.data.chats[m.chat]
   let isGroupLink = linkRegex.exec(m.text)
 
   if (chat.antiLink && isGroupLink) {
-    let pesan = 'Hapus!!\n\nLink Grup terdeteksi'
-    m.reply(pesan, m, { contextInfo: { mentionedJid: mimin }})
-    
-    if (warn < 2) {
-    m.reply('Kamu telah diperingatkan oleh admin, dan sekarang kamu punya ' + (warn + 1) + ' warn . Ingat Jika kamu mendapat warn 3 kali kamu akan otomatis ditendang dari Grup', m.sender)
-    global.DATABASE._data.users[m.sender].warn += 1
-    }
+    m.reply('Hapus!!\n\nLink Grup terdeteksi')
     if (global.opts['restrict']) {
       if (isAdmin || !isBotAdmin) return true
       // this.groupRemove(m.chat, [m.sender])
