@@ -1,7 +1,7 @@
 let handler = function (m) {
-  if (!m.quoted) throw 'Reply pesan bot!'
+  if (!m.quoted) throw false
   let { fromMe, id, isBaileys } = m.quoted
-  if (!fromMe) throw 'Hanya bisa menghapus pesan dariku'
+  if (!fromMe) throw false
   if (!isBaileys) throw 'Pesan tersebut bukan dikirim oleh bot!'
   this.deleteMessage(m.chat, {
     fromMe,
@@ -9,11 +9,9 @@ let handler = function (m) {
     remoteJid: m.chat
   })
 }
-handler.help = ['delete']
+handler.help = ['del', 'delete']
 handler.tags = ['info']
 
-handler.command = /^d(el|elete)?$/i
-handler.group = true
-handler.register = true
+handler.command = /^del(ete)?$/i
 
 module.exports = handler
