@@ -1,15 +1,37 @@
+let imageToBase64 = require('image-to-base64');
 let axios = require("axios");
 let handler = async(m, { conn, text }) => {
-try {
-    if (!text) return conn.reply(m.chat, '_Sil ahkan Masukan Teks!_', m)
-    if (text.length > 10) return conn.reply(m.chat, '_Teks Terlalu Panjang! Maksimal 10 huruf!_', m)
-    await m.reply(global.wait)
-    let link = 'https://lindow-api.herokuapp.com/api/pinterest?search=' + text
-    conn.sendFile(m.chat, link, 'pin.png', '*©Kuriyama-bot*', m)
-  } catch (e) {
-   m.reply('```Error```')
-  }
-} 
+
+if (!text) return conn.reply(m.chat, 'Harap masukan query!', m)
+
+let url = "https://api.fdci.se/rep.php?gambar=" + text;
+let str = `
+Hasil Pencarian :
+
+${text}
+`.trim()
+
+await m.reply(global.wait)
+axios.get(url)
+.then((result) => {
+let b = JSON.parse(JSON.stringify(result.data));
+let text = b[Math.floor(Math.random() * b.length)];
+imageToBase64(text) // Path to the image
+.then(
+(response) => {
+let buf = Buffer.from(response, 'base64'); // Ta-da
+
+conn.sendFile(m.chat, buf, 'foto.jpg', str, m)
+        }
+    )
+    .catch(
+        (error) => {
+            console.log(error); // Logs an error if there was one
+        }
+    )
+
+});
+}
 
 handler.help = ['pinterest <query>']
 handler.tags = ['internet']
