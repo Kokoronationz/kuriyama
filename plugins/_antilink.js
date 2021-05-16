@@ -13,9 +13,7 @@ handler.before = function (m, { isAdmin, isBotAdmin, conn, participants }) {
   if (chat.antiLink && isGroupLink) {
     let pesan = 'Hapus!!\n\nLink Grup terdeteksi'
     m.reply(pesan, m, { contextInfo: { mentionedJid: mimin }})
-    const time = async (ms) => {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+    
     if (warn < 2) {
     m.reply('Kamu telah diperingatkan oleh admin, dan sekarang kamu punya ' + (warn + 1) + ' warn . Ingat Jika kamu mendapat warn 3 kali kamu akan otomatis ditendang dari Grup', m.sender)
     global.DATABASE._data.users[m.sender].warn += 1
@@ -36,3 +34,7 @@ handler.before = function (m, { isAdmin, isBotAdmin, conn, participants }) {
 }
 
 module.exports = handler
+
+const time = async (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
