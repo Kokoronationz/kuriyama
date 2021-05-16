@@ -13,7 +13,7 @@ handler.before = function (m, { isAdmin, isBotAdmin, conn, participants }) {
   if (chat.antiLink && isGroupLink) {
     let pesan = 'Hapus!!\n\nLink Grup terdeteksi'
     conn.reply(m.chat, pesan, m, { contextInfo: { mentionedJid: mimin }})
-    global.DATABASE._data.users[ban].warn += 1
+    global.DATABASE._data.users[m.sender].warn += 1
     if (global.opts['restrict']) {
       if (isAdmin || !isBotAdmin) return true
       // this.groupRemove(m.chat, [m.sender])
