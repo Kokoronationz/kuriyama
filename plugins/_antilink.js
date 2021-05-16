@@ -9,8 +9,6 @@ handler.before = function (m, { isAdmin, isBotAdmin, conn, participants }) {
         }
         return admins
     }
-
-// 
 const adminGrup = ambilAdminGrup(participants)
 let daftar = adminGrup.map((v, i) => `${i + 1}. @${v.split('@')[0]}`).join('\n')
   if ( /izin min/i.test(m.text) ) throw false
@@ -18,7 +16,7 @@ let daftar = adminGrup.map((v, i) => `${i + 1}. @${v.split('@')[0]}`).join('\n')
   let chat = global.DATABASE.data.chats[m.chat]
   let isGroupLink = linkRegex.exec(m.text)
   if (chat.antiLink && isGroupLink) {
-    conn.reply(m.chat, `*「 Link terdeteksi! 」*\n\nsilahkan kak kalo mau kick :/\n${daftar}`, m, { contextInfo: { mentionedJid: adminGrup } })
+    conn.reply(m.chat, `*「 LINK TERDETEKSI! 」*\n\nsilahkan kak kalo mau kick :/\n${daftar}`, m, { contextInfo: { mentionedJid: adminGrup } })
     if (global.opts['restrict']) {
       if (isAdmin || !isBotAdmin) return true
       // this.groupRemove(m.chat, [m.sender])
