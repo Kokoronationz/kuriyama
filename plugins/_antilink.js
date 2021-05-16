@@ -2,6 +2,9 @@ let handler = m => m
 
 let linkRegex = /chat.whatsapp.com\/(?:invite\/)?([0-9A-Za-z]{20,24})/i
 handler.before = function (m, { isAdmin, isBotAdmin, conn, participants }) {
+  const time = async (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
   const NgeriAtmin = (participants) => {
         atminn = []
   }
