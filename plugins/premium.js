@@ -10,6 +10,12 @@ let handler = async m => m.reply(`
 ┃ 50k/Tahun
 ┃ 100k Permanen
 ┃ 
+┃ Invite Bot Ke Group 
+┃ 15k/Bulan
+┃ 30k/3 Bulan
+┃ 75k/Tahun
+┃ 150k Permanen
+┃ 
 ┃ Silahkan Hubungi Owner
 ┃ Untuk Menjadi Premium User
 ┃ 
