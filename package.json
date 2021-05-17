@@ -1,6 +1,6 @@
 {
   "name": "Kuriyama",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Customizable WhatsApp Bot",
   "depecrated": false,
   "main": "index.js",
@@ -44,6 +44,7 @@
     "fluent-ffmpeg": "^2.1.2",
     "form-data": "^3.0.1",
     "google-it": "^1.6.2",
+    "human-readable": "^0.2.1",
     "image-to-base64": "^2.1.1",
     "jsdom": "^16.5.1",
     "node-fetch": "^2.6.1",
