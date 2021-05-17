@@ -1,9 +1,3 @@
-/*
-   Silahkan Di Pakek
-   Tapi Bantu Rapihin :v
-   Buatan: Miaweers
-*/
-
 let handler = async (m, { conn, args }) => {
     let bot = conn.user.jid // Bot
     let q = m.quoted ? m.quoted : m
