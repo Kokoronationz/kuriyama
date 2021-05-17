@@ -28,7 +28,7 @@ let handler = async(m, { conn, text, args, bot, command }) => {
 }
 handler.help = ['setppgrup']
 handler.tags = ['group']
-handler.command = /^(setpp(gc|grup|group))$/i
+handler.command = /^(setpp(gc|gro?up))$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
