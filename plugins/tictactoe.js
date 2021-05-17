@@ -54,6 +54,8 @@ Menunggu @${room.game.currentTurn.split('@')[0]}
         conn.game[room.id] = room
     }
 }
+handler.help = ['tictactoe']
+handler.tags = ['game']
 handler.command = /^tictactoe$/
 handler.register = true
 
