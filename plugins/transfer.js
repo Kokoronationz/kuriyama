@@ -23,7 +23,7 @@ let handler = async (m, { conn, text }) => {
 }
 handler.help = ['transfer'].map(v => v + ' <@user amount>')
 handler.tags = ['xp']
-handler.command = /^transfer$/
+handler.command = /^(transfer|tf)$/
 handler.register = true
 handler.limit = true
 
