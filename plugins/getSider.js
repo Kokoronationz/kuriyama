@@ -8,6 +8,7 @@ let handler = async (m, { conn }) => {
 *Read by:*
 ${reads.sort((a, b) => b.t - a.t).map(({ jid, t }) => `@${jid.split`@`[0]}\n_${formatDate(t * 1000)}_`).join('\n')}
 ${members > 1 ? `${members - reads.length} remaining` : ''}
+
 *Delivered to:*
 ${deliveries.sort((a, b) => b.t - a.t).map(({ jid, t }) => `wa.me/${jid.split`@`[0]}\n_${formatDate(t * 1000)}_`).join('\n')}
 ${members > 1 ? `${members - reads.length - deliveries.length} remaining` : ''}
