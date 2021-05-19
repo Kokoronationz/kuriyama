@@ -11,7 +11,7 @@ handler.before = async function (m) {
       global.DATABASE._data.users[m.sender].exp += math.bonus
       clearTimeout(this.math[id][3])
       delete this.math[id]
-      m.reply(`*Jawaban Benar!*\n+${math.bonus} XP`)
+      m.reply(`*Jawaban Benar!*\n+Rp${math.bonus}`)
     } else {
       if (--this.math[id][2] == 0) {
         clearTimeout(this.math[id][3])
