@@ -4,7 +4,7 @@ let levelling = require('../lib/levelling')
 let handler  = async (m, { conn, usedPrefix: _p }) => {
   try {
     let package = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json')))
-    let kuriyama = './src/kuriyama.png'
+    let kuriyama = './src/photo/kuriyama.png'
     let { exp, uang, limit, level } = global.DATABASE.data.users[m.sender]
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
     let kokoronationz = 'https://bit.ly/Kokoronationz'
@@ -56,6 +56,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       'creator': 'Creator',
       'videomaker': 'Videomaker',
       'internet': 'Internet',
+      'anonymous': 'Anonymous Chat',
       'downloader': 'Downloader',
       'admin': 'Admin',
       'group': 'Group',
@@ -96,20 +97,20 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
 ┃
 ┃ ❖ Hai @${m.sender.split`@`[0]}!
 ┃
-┃ ❖ Level: *%level (%exp / %maxexp)* 
-┃ ❖ %totalexp XP in Total
-┃ ❖ Saldo: *Rp%saldo*
-┃ ❖ Limit: *%limit*
+┃ ❖ *Level:* %level (%exp / %maxexp)
+┃ ❖ *EXP:* %totalexp XP
+┃ ❖ *Saldo:* Rp%saldo
+┃ ❖ *Limit:* %limit
 ┃
-┃ ❖ Hari: *%week %weton*
-┃ ❖ Tanggal: *%date*
-┃ ❖ Tanggal Islam: *%dateIslamic*
-┃ ❖ Waktu: *%time*
+┃ ❖ *Hari:* %week %weton
+┃ ❖ *Tanggal:* %date
+┃ ❖ *Tanggal Islam:* %dateIslamic
+┃ ❖ *Waktu:* %time
 ┃
-┃ ❖ Uptime: *_%uptime_ (%muptime)*
-┃ ❖ Database: %rtotalreg of %totalreg
-┃ ❖ Contact:
-┃   ${kokoronationz}
+┃ ❖ *Uptime:* _%uptime_ (%muptime)
+┃ ❖ *Database:* %rtotalreg of %totalreg
+┃ ❖ *Contact:*
+┃   _${kokoronationz}_
 ┗ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
 %readmore
 ┏ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
@@ -164,7 +165,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       message: { 
         "imageMessage": { "mimetype": "image/jpeg", 
         "caption": `${conn.user.name} Verified Bot`, 
-        "jpegThumbnail": fs.readFileSync(`./src/mirai.png`)
+        "jpegThumbnail": fs.readFileSync(`./src/photo/mirai.png`)
         } 
       }
     }, m, { contextInfo: { mentionedJid: [m.sender] } })
@@ -175,7 +176,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
 }
 handler.help = ['menu','help','?']
 handler.tags = ['main']
-handler.command = /^(menu|help|start|\?)$/i
+handler.command = /^(menu|help|\?)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
