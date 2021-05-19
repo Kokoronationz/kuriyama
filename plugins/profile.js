@@ -18,7 +18,7 @@ let handler = async (m, { conn, isPrems }) => {
     let str = `
 *Name:* ${username} ${registered ? '(' + name + ') ': ''}(@${who.replace(/@.+/, '')})${about ? '\n*About:* ' + about : ''}
 *Number:* ${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}
-*Link:* https://wa.me/${who.split`@`[0]}${registered ? '\nAge: ' + age : ''}
+*Link:* https://wa.me/${who.split`@`[0]}${registered ? '\n*Age:* ' + age : ''}
 *XP:* TOTAL ${exp} (${exp - min} / ${xp}) [${max - exp} left to levelup]
 *Saldo:* Rp${uang}
 *Level:* ${level}
