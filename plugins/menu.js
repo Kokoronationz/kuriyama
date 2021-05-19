@@ -5,10 +5,10 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
   try {
     let package = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json')))
     let kuriyama = './src/photo/kuriyama.png'
-    let { exp, uang, limit, level } = global.DATABASE.data.users[m.sender]
+    let { name, exp, uang, limit, level } = global.DATABASE.data.users[m.sender]
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
     let kokoronationz = 'https://bit.ly/Kokoronationz'
-    let name = conn.getName(m.sender)
+    //let name = conn.getName(m.sender)
     let d = new Date
     let locale = 'id'
     let weton = ['Pahing', 'Pon', 'Wage', 'Kliwon', 'Legi'][Math.floor(((d * 1) + d.getTimezoneOffset()) / 84600000) % 5]
@@ -97,6 +97,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
 ┃
 ┃ ❖ Hai @${m.sender.split`@`[0]}!
 ┃
+┃ ❖ *Name:* %name
 ┃ ❖ *Level:* %level (%exp / %maxexp)
 ┃ ❖ *EXP:* %totalexp XP
 ┃ ❖ *Saldo:* Rp%saldo
@@ -151,7 +152,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       totalexp: exp,
       xp4levelup: max - exp,
       github: package.homepage ? package.homepage.url || package.homepage : '[unknown github url]',
-      level, limit, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg,
+      name, level, limit, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg,
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => ''+replace[name])
