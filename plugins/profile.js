@@ -16,24 +16,16 @@ let handler = async (m, { conn, isPrems }) => {
     let username = conn.getName(who)
     let sn = createHash('md5').update(who).digest('hex')
     let str = `
-┏ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
-┇       *「 Profile 」*
-┣ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
-┃ *Name:* ${username} ${registered ? '(' + name + ') ': ''}(@${who.replace(/@.+/, '')})
-┃ ${about ? '*About:* ' + about : ''}
-┃ *Number:* ${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}
-┃ *Link:* https://wa.me/${who.split`@`[0]}
-┃ ${registered ? 'Age: ' + age : ''}
-┃ *XP:* TOTAL ${exp} (${exp - min} / ${xp}) 
-┃ [${max - exp} left to levelup]
-┃ *Saldo:* Rp${uang}
-┃ *Level:* ${level}
-┃ *Limit:* ${limit}
-┃ *Premium:* ${premium ? 'YES':'NO'}
-┃ *Registered:* ${registered ? 'Yes (' + new Date(regTime) + ')': 'No'}
-┃ ${lastclaim > 0 ? '\n*Last Claim:* ' + new Date(lastclaim) : ''}
-┃ *SN:* ${sn}
-┗ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
+*Name:* ${username} ${registered ? '(' + name + ') ': ''}(@${who.replace(/@.+/, '')})${about ? '\n*About:* ' + about : ''}
+*Number:* ${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}
+*Link:* https://wa.me/${who.split`@`[0]}${registered ? '\nAge: ' + age : ''}
+*XP:* TOTAL ${exp} (${exp - min} / ${xp}) [${max - exp} left to levelup]
+*Saldo:* Rp${uang}
+*Level:* ${level}
+*Limit:* ${limit}
+*Premium:* ${premium ? 'YES':'NO'}
+*Registered:* ${registered ? 'Yes (' + new Date(regTime) + ')': 'No'}${lastclaim > 0 ? '\n*Last Claim:* ' + new Date(lastclaim) : ''}
+*SN:* ${sn}
 `.trim()
     let mentionedJid = [who]
     conn.sendFile(m.chat, pp, 'pp.jpg', str, m, false, { contextInfo: { mentionedJid }})
