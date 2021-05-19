@@ -54,6 +54,7 @@ handler.before = function (m) {
         }
         let winner = isSurrender ? room.game.currentTurn : room.game.winner
         let str = `
+Room ID: ${room.id}
 ${arr.slice(0, 3).join('')}
 ${arr.slice(3, 6).join('')}
 ${arr.slice(6).join('')}
@@ -62,7 +63,6 @@ ${isWin ? `@${winner.split('@')[0]} Menang! (+Rp${winScore})` : isTie ? `Game be
 ❌: @${room.game.playerX.split('@')[0]}
 ⭕: @${room.game.playerO.split('@')[0]}
 Ketik *nyerah* untuk nyerah
-Room ID: ${room.id}
 `.trim()
         let users = global.DATABASE._data.users
         if ((room.game._currentTurn ^ isSurrender ? room.x : room.o) !== m.chat)
