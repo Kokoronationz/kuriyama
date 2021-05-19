@@ -19,8 +19,7 @@ Selama ${clockString(new Date - user.afk)}
     m.reply(`
 *「 AFK 」*
 
-_Jangan tag dia!!_
-Dia Sedang AFK
+_Jangan tag dia, dia Sedang AFK!!_
 Alasan  : ${reason ? reason : 'tanpa alasan'}
 Selama : ${clockString(new Date - afkTime)}
 
