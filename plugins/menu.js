@@ -110,7 +110,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
 ┃ ❖ *Uptime:* _%uptime_ (%muptime)
 ┃ ❖ *Database:* %rtotalreg of %totalreg
 ┃ ❖ *Contact:*
-┃   _${kokoronationz}_
+┃     _${kokoronationz}_
 ┗ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
 %readmore
 ┏ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
