@@ -1,13 +1,14 @@
 let fs = require ('fs')
 let path = require('path')
 let levelling = require('../lib/levelling')
-let handler  = async (m, { conn, usedPrefix: _p }) => {
+let handler  = async (m, { conn, usedPrefix: _p, isPrems}) => {
   try {
     let package = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json')))
     let kuriyama = './src/photo/kuriyama.png'
     let { name, exp, uang, limit, level } = global.DATABASE.data.users[m.sender]
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
     let kokoronationz = 'https://bit.ly/Kokoronationz'
+    let premium = global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
     //let name = conn.getName(m.sender)
     let d = new Date
     let locale = 'id'
@@ -56,7 +57,6 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       'creator': 'Creator',
       'videomaker': 'Videomaker',
       'internet': 'Internet',
-      'anonymous': 'Anonymous Chat',
       'downloader': 'Downloader',
       'admin': 'Admin',
       'group': 'Group',
@@ -102,6 +102,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
 ┃ ❖ *EXP:* %totalexp XP
 ┃ ❖ *Saldo:* Rp%saldo
 ┃ ❖ *Limit:* %limit
+┃ ❖ *Premium:* ${premium ? 'YES':'NO'}
 ┃
 ┃ ❖ *Hari:* %week %weton
 ┃ ❖ *Tanggal:* %date
