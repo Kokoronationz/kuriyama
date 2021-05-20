@@ -29,7 +29,7 @@ async function handler(m, { command }) {
                     b: '',
                     state: 'WAITING'
                 }
-                m.reply('Menunggu parter...')
+                m.reply('Menunggu partner...')
             }
             break
         }
