@@ -7,9 +7,9 @@
   }
   conn.reply(m.chat, chats.length + ' chat grup telah dib' + (isDelete ? 'ersihkan' : 'isukan selamanya'), m)
 }
-handler.help = ['deleteallchat', 'deleteallchat group', 'mutechat', 'mutechat group']
+handler.help = ['deleteallchat', 'deleteallchat group', 'muteallchat', 'muteallchat group']
 handler.tags = ['owner']
-handler.command = /^(clearall|deleteall|mute)chat$/i
+handler.command = /^(clearall|deleteall|muteall)chat$/i
 handler.owner = true
 handler.mods = false
 handler.premium = false
