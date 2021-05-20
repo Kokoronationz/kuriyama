@@ -34,7 +34,7 @@ Kualitas: ${videoQuality ? videoQuality : unknown}
 ${description}
 Keyword: ${keywords || none}
 `.trim()
-  conn.sendFile(m.chat, url, 'media-fb', caption, m)
+  conn.sendFile(m.chat, url, 'media-fb.mp4', caption, m)
 }
 handler.help = ['fb'].map(v => v + ' <url>')
 handler.tags = ['downloader']
