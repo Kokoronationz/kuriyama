@@ -51,6 +51,7 @@ let handler  = async (m, { conn, usedPrefix: _p, isPrems}) => {
       //'nsfw': 'NSFW 🔞',
       'game': 'Game',
       'fun': 'Fun',
+      'anonymous': 'Anonymous Chat',
       'kerang': 'Kerang Ajaib',
       'quotes': 'Quotes',
       'primbon': 'Primbon Menu',
