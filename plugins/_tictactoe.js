@@ -1,9 +1,6 @@
 let handler = m => m
 let debugMode = !1
 
-let winScore = 5000
-let playScore = 500
-
 handler.before = function (m) {
     let ok
     let isWin = !1
@@ -58,13 +55,12 @@ Room ID: ${room.id}
 ${arr.slice(0, 3).join('')}
 ${arr.slice(3, 6).join('')}
 ${arr.slice(6).join('')}
-${isWin ? `@${winner.split('@')[0]} Menang! (+Rp${winScore})` : isTie ? `Game berakhir (+Rp${playScore})` : `Giliran ${['❌', '⭕'][1 * room.game._currentTurn]} (@${room.game.currentTurn.split('@')[0]})`}
+${isWin ? `@${winner.split('@')[0]} Menang!` : isTie ? `Game berakhir` : `Giliran ${['❌', '⭕'][1 * room.game._currentTurn]} (@${room.game.currentTurn.split('@')[0]})`}
 
 ❌: @${room.game.playerX.split('@')[0]}
 ⭕: @${room.game.playerO.split('@')[0]}
-Ketik *nyerah* untuk nyerah
+Ketik *nyerah* untuk nyerah 
 `.trim()
-        let users = global.DATABASE._data.users
         if ((room.game._currentTurn ^ isSurrender ? room.x : room.o) !== m.chat)
             room[room.game._currentTurn ^ isSurrender ? 'x' : 'o'] = m.chat
         if (room.x !== room.o) m.reply(str, room.x, {
@@ -78,9 +74,6 @@ Ketik *nyerah* untuk nyerah
             }
         })
         if (isTie || isWin) {
-            users[room.game.playerX] += playScore
-            users[room.game.playerO] += playScore
-            if (isWin) users[winner] += winScore - playScore
             if (debugMode) m.reply('[DEBUG]\n' + require('util').format(room))
             delete this.game[room.id]
         }
