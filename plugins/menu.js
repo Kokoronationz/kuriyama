@@ -48,6 +48,7 @@ let handler  = async (m, { conn, usedPrefix: _p, isPrems}) => {
       'sticker': 'Sticker',
       //'islamic': 'Islamic',
       'weebs': 'Weebs',
+      //'nsfw': 'NSFW 🔞',
       'game': 'Game',
       'fun': 'Fun',
       'kerang': 'Kerang Ajaib',
