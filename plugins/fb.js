@@ -12,7 +12,7 @@ let handler = async (m, { conn, args }) => {
   let json = await res.json()
   if (!json.result) throw json
   let { name, author, description, uploadDate, duration, url, isFamilyFriendly, genre, keywords, contentSize, videoQuality, commentCount } = json.result
-  let { name: authorname, url: authorlink } = author
+  let { name: authorname, url: authorlink } = author || {}
   let dateConfig = {
     hour: 'numeric',
     minute: 'numeric',
@@ -30,19 +30,17 @@ Diposting pada ${new Date(uploadDate).toLocaleDateString('id', dateConfig)}
 Size: ${contentSize || unknown}
 Durasi: ${clockString(+ new Date(duration))}
 Genre: ${genre || none}
-Kualitas: ${quality ? quality : unknown}
-
+Kualitas: ${videoQuality ? videoQuality : unknown}
 ${description}
-
 Keyword: ${keywords || none}
 `.trim()
   conn.sendFile(m.chat, url, 'media-fb', caption, m)
 }
 handler.help = ['fb'].map(v => v + ' <url>')
 handler.tags = ['downloader']
-handler.command = /^f((b|acebook)(dl|download)?(er)?)$/i
-handler.premium = true
 handler.register = true
+handler.premium = true
+handler.command = /^f((b|acebook)(dl|download)?(er)?)$/i
 
 module.exports = handler
 
