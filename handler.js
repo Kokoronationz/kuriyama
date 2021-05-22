@@ -348,7 +348,7 @@ Untuk mematikan fitur ini, ketik
   }
 }
 
-global.dfail = (type, m, conn) => {
+global.dfail = (type, m, conn, usedPrefix) => {
   let msg = {
     rowner: 'Perintah ini hanya dapat digunakan oleh _*OWWNER!1!1!*_',
     owner: 'Perintah ini hanya dapat digunakan oleh _*Owner Bot*_!',
@@ -358,7 +358,7 @@ global.dfail = (type, m, conn) => {
     private: 'Perintah ini hanya dapat digunakan di Chat Pribadi!',
     admin: 'Perintah ini hanya untuk *Admin* grup!',
     botAdmin: 'Jadikan bot sebagai *Admin* untuk menggunakan perintah ini!',
-    unreg: 'Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama|umur*\n\nContoh: *#daftar Kuriyama|13*'
+    unreg: `Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*${usedPrefix ? usedPrefix : '#'}daftar nama|umur*\n\nContoh: *#daftar Kuriyama|13*`
   }[type]
   if (msg) return m.reply(msg)
 }
