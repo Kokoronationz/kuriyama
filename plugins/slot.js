@@ -9,7 +9,7 @@ let handler = async (m, { conn, text }) => {
     if (uang < 100) throw 'Minimal 100'
     let users = global.DATABASE._data.users
     if (uang > users[m.sender].uang) throw 'Uang Anda Tidak Cukup'
-    let emojis = ["🍏","🍎","🍊","🍋","🍑","🪙","🍍"];
+    let emojis = ["🍏","🍎","🍊","🍋","🍑","🪙","🍍","🍐"];
     let a = Math.floor(Math.random() * emojis.length);
     let b = Math.floor(Math.random() * emojis.length);
     let c = Math.floor(Math.random() * emojis.length);
