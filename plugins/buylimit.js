@@ -1,4 +1,4 @@
-const uangperlimit = 500
+const uangperlimit = 1000
 let handler = async (m, { conn, command, args }) => {
   let count = command.replace(/^buy/i, '')
   count = count ? /all/i.test(count) ? Math.floor(global.DATABASE._data.users[m.sender].uang / uangperlimit) : parseInt(count) : args[0] ? parseInt(args[0]) : 1
