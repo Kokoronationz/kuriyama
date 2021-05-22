@@ -64,7 +64,7 @@ module.exports = {
           if (!'sDemote' in chat) chat.sDemote = ''
           if (!'delete' in chat) chat.delete = true
           if (!'antiLink' in chat) chat.antiLink = false
-          if (!'antiToxic' in chat) chat.antiToxic = true
+          if (!'antiToxic' in chat) chat.antiToxic = false
         } else global.DATABASE._data.chats[m.chat] = {
           isBanned: false,
           welcome: false,
