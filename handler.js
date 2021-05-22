@@ -358,7 +358,7 @@ global.dfail = (type, m, conn, usedPrefix) => {
     private: 'Perintah ini hanya dapat digunakan di Chat Pribadi!',
     admin: 'Perintah ini hanya untuk *Admin* grup!',
     botAdmin: 'Jadikan bot sebagai *Admin* untuk menggunakan perintah ini!',
-    unreg: `Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*${usedPrefix ? usedPrefix : '#'}daftar nama|umur*\n\nContoh: *#daftar Kuriyama|13*`
+    unreg: `Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*${usedPrefix}daftar nama|umur*\n\nContoh: *#daftar Kuriyama|13*`
   }[type]
   if (msg) return m.reply(msg)
 }
