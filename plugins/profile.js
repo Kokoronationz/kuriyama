@@ -9,7 +9,7 @@ let handler = async (m, { conn, isPrems }) => {
   } catch (e) {
 
   } finally {
-    let premium = global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+    let premium = global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(who)
     let about = (await conn.getStatus(who).catch(console.error) || {}).status || ''
     let { name, uang, limit, exp, lastclaim, registered, regTime, age, level } = global.DATABASE.data.users[who]
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
