@@ -26,7 +26,7 @@ ${res.desc}
 
   ❖  Banned : ${data(isBanned)}
   ❖  Anti-Link : ${data(antiLink)}
-  ❖  Toxic : ${antiToxic ? 'Active' : 'Inactive'}
+  ❖  Anti-Toxic : ${antiToxic ? 'Inactive' : 'Active'}
   ❖  Welcome Msg : ${data(welcome)}
   ❖  delete Msg : ${data(hapus)}
 `.trim()
