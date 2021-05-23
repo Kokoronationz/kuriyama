@@ -17,6 +17,7 @@ let handler = async (m, { conn }) => {
 handler.help = ['blowjob']
 handler.tags = ['nsfw']
 handler.command = /^(blowjob)$/i
+handler.private = true
 handler.premium = true
 handler.register = true
 

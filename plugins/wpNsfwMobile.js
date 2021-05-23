@@ -17,6 +17,7 @@ let handler = async (m, { conn }) => {
 handler.help = ['wallpapernsfw','wpnsfw']
 handler.tags = ['nsfw']
 handler.command = /^(wallpaper|wp)nsfw$/i
+handler.private = true
 handler.premium = true
 handler.register = true
 

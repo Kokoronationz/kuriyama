@@ -17,6 +17,7 @@ let handler = async (m, { conn }) => {
 handler.help = ['doujin']
 handler.tags = ['nsfw']
 handler.command = /^(doujin)$/i
+handler.private = true
 handler.premium = true
 handler.register = true
 
