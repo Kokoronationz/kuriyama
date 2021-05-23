@@ -9,7 +9,7 @@ let handler = async function (m, { text, usedPrefix }) {
   let [_, name, splitter, age] = text.match(Reg)
   if (!name) throw 'Nama tidak boleh kosong (Alphanumeric)'
   if (!age) throw 'Umur tidak boleh kosong (Angka)'
-  if (age < 17) throw 'Maaf, Anda tidak bisa mendaftar.'
+  if (age < 17) throw 'Maaf, Anda belum bisa mendaftar.'
   if (age > 60) throw 'Maaf, Anda terlalu tua.'
   user.name = name
   user.age = parseInt(age)
