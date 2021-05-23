@@ -19,7 +19,6 @@ let handler = async function (m, { text, usedPrefix }) {
 ┏ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
 ┇       *「 DAFTAR BERHASIL 」*
 ┣ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
-┃ *Info*
 ┃
 ┃ *Nama:* ${name}
 ┃ *Umur:* ${age} tahun
