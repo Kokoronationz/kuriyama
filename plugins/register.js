@@ -1,5 +1,5 @@
 const { createHash } = require('crypto')
-let Reg = /(.*)([.|])([0-9]*)$/i
+let Reg = /\|?(.*)([.|])([0-9]*)$/i
 let handler = async function (m, { text, usedPrefix }) {
   
   let rtotalreg = Object.values(global.DATABASE._data.users).filter(user => user.registered == true).length
