@@ -104,12 +104,12 @@ let handler  = async (m, { conn, usedPrefix: _p, isPrems}) => {
 ┃ ❖ *EXP:* %totalexp XP
 ┃ ❖ *Saldo:* Rp%saldo
 ┃ ❖ *Limit:* %limit
-┃ ❖ *Premium:* ${premium ? 'YES':'NO'}
+┃ ❖ *Premium:* ${premium ? 'Yes':'No'}
 ┃
 ┃ ❖ *Hari:* %week %weton
 ┃ ❖ *Tanggal:* %date
 ┃ ❖ *Tanggal Islam:* %dateIslamic
-┃ ❖ *Waktu:* %time
+┃ ❖ *Waktu:* %time WIB
 ┃
 ┃ ❖ *Uptime:* _%uptime_ (%muptime)
 ┃ ❖ *Database:* %rtotalreg of %totalreg
@@ -159,7 +159,7 @@ let handler  = async (m, { conn, usedPrefix: _p, isPrems}) => {
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => ''+replace[name])
-    //conn.fakeReply(m.chat, text.trim(), '0@s.whatsapp.net', `${conn.user.name} Verified Bot`, 'status@broadcast')
+    //conn.reply(m.chat, text.trim(), m, { contextInfo: { mentionedJid: [m.sender] } })
     conn.sendFile(m.chat, kuriyama, 'kuriyama.jpg', text.trim(), { 
       key: { 
         remoteJid: 'status@broadcast', 
@@ -192,7 +192,7 @@ handler.admin = false
 handler.botAdmin = false
 
 handler.fail = null
-handler.exp = 3
+handler.exp = 100
 
 module.exports = handler
 
