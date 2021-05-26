@@ -131,7 +131,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
         tags: Array.isArray(plugin.tags) ? plugin.tags : [plugin.tags],
         prefix: 'customPrefix' in plugin,
         limit: plugin.limit,
-        enabled: !plugin.disabled,
+        //enabled: !plugin.disabled,
       }
     })
     conn.menu = conn.menu ? conn.menu : {}
