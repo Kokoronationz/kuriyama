@@ -2,35 +2,35 @@ let fs = require ('fs')
 let path = require('path')
 let levelling = require('../lib/levelling')
 let tags = {
-      'main': 'Main',
-      'xp': 'Exp & Limit',
-      'sticker': 'Sticker',
-      //'islamic': 'Islamic',
-      'weebs': 'Weebs',
-      //'nsfw': 'NSFW 🔞',
-      'game': 'Game',
-      'fun': 'Fun',
-      'anonymous': 'Anonymous Chat',
-      'kerang': 'Kerang Ajaib',
-      'quotes': 'Quotes',
-      'primbon': 'Primbon Menu',
-      'nulis': 'MagerNulis',
-      'creator': 'Creator',
-      'videomaker': 'Videomaker',
-      'internet': 'Internet',
-      'downloader': 'Downloader',
-      'admin': 'Admin',
-      'group': 'Group',
-      'tools': 'Tools',
-      'jadibot': 'Jadi Bot',
-      'premium': 'Premium Menu',
-      'owner': 'Owner',
-      'host': 'Host',
-      'database': 'Database',
-      'advanced': 'Advanced',
-      'info': 'Info',
-      '': 'No Category',
-    }
+  'main': 'Main',
+  'xp': 'Exp & Limit',
+  'sticker': 'Sticker',
+  //'islamic': 'Islamic',
+  'weebs': 'Weebs',
+  //'nsfw': 'NSFW 🔞',
+  'game': 'Game',
+  'fun': 'Fun',
+  'anonymous': 'Anonymous Chat',
+  'kerang': 'Kerang Ajaib',
+  'quotes': 'Quotes',
+  'primbon': 'Primbon Menu',
+  'nulis': 'MagerNulis',
+  'creator': 'Creator',
+  'videomaker': 'Videomaker',
+  'internet': 'Internet',
+  'downloader': 'Downloader',
+  'admin': 'Admin',
+  'group': 'Group',
+  'tools': 'Tools',
+  'jadibot': 'Jadi Bot',
+  'premium': 'Premium Menu',
+  'owner': 'Owner',
+  'host': 'Host',
+  'database': 'Database',
+  'advanced': 'Advanced',
+  'info': 'Info',
+  '': 'No Category',
+}
 const defaultMenu = {
   before: `
 ┏ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
@@ -68,19 +68,19 @@ const defaultMenu = {
 ┃ ❖ Dan Kawan-kawan
 ┗ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
 `.trimStart(),
-    header: '┏ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━\n┇       *「 %category 」*\n┣ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━',
-    body  : '┃ ❖  %cmd%islimit',
-    footer: '┗ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━\n',
-    after : `
+  header: '┏ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━\n┇       *「 %category 」*\n┣ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━',
+  body  : '┃ ❖  %cmd%islimit%isPremium',
+  footer: '┗ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━\n',
+  after : `
 *%npmname@^%version*
 ${'```%npmdesc```'}
 `,
 }
-let handler  = async (m, { conn, usedPrefix: _p, isPrems}) => {
+let handler  = async (m, { conn, usedPrefix: _p }) => {
   try {
     let package = JSON.parse(await fs.promises.readFile(path.join(__dirname, '../package.json')).catch(_ => '{}'))
     let kuriyama = './src/photo/kuriyama.png'
-    let { name, exp, uang, limit, level } = global.DATABASE.data.users[m.sender]
+    let { name, exp, limit, level } = global.DATABASE.data.users[m.sender]
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
     let kokoronationz = 'https://bit.ly/Kokoronationz'
     let premium = global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
@@ -169,9 +169,9 @@ let handler  = async (m, { conn, usedPrefix: _p, isPrems}) => {
       npmname: package.name,
       npmdesc: package.description,
       version: package.version,
+      saldo: uang,
       exp: exp - min,
       maxexp: xp,
-      saldo: uang,
       totalexp: exp,
       xp4levelup: max - exp,
       github: package.homepage ? package.homepage.url || package.homepage : '[unknown github url]',
@@ -179,7 +179,7 @@ let handler  = async (m, { conn, usedPrefix: _p, isPrems}) => {
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => ''+replace[name])
-    //conn.reply(m.chat, text.trim(), m, { contextInfo: { mentionedJid: [m.sender] } })
+    //conn.reply(m.chat, text.trim(), m)
     conn.sendFile(m.chat, kuriyama, 'kuriyama.jpg', text.trim(), { 
       key: { 
         remoteJid: 'status@broadcast', 
@@ -192,7 +192,7 @@ let handler  = async (m, { conn, usedPrefix: _p, isPrems}) => {
         "jpegThumbnail": fs.readFileSync(`./src/photo/mirai.png`)
         } 
       }
-    }, { contextInfo: { mentionedJid: [m.sender] } })
+    }, m, { contextInfo: { mentionedJid: [m.sender] } })
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
@@ -212,7 +212,7 @@ handler.admin = false
 handler.botAdmin = false
 
 handler.fail = null
-handler.exp = 100
+handler.exp = 3
 
 module.exports = handler
 
