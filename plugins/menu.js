@@ -37,7 +37,7 @@ const defaultMenu = {
 ┇       *「 %me 」*
 ┣ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
 ┃
-┃ ❖ Hai @${m.sender.split`@`[0]}!
+┃ ❖ Hai %name!
 ┃
 ┃ ❖ *Name:* %name
 ┃ ❖ *Level:* %level (%exp / %maxexp)
