@@ -146,7 +146,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       for (let menu of help)
         if (menu.tags && menu.tags.includes(tag) && menu.help) group.push(menu)
       _text += header.replace(/%category/g, tags[tag]) + '\n'
-      for (let menu of groups) {
+      for (let menu of group) {
         for (let help of menu.help)
           _text += body.replace(/%cmd/g, menu.prefix ? help : '%p' + help)
             .replace(/%islimit/g, menu.limit ? '(Limit)' : '')
