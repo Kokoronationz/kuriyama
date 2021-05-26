@@ -71,7 +71,7 @@ const defaultMenu = {
     header: '┏ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━\n┇       *「 %category 」*\n┣ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━',
     body  : '┃ ❖  %cmd%islimit',
     footer: '┗ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━\n',
-    after  = : `
+    after : `
 *%npmname@^%version*
 ${'```%npmdesc```'}
 `,
