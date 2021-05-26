@@ -37,7 +37,7 @@ const defaultMenu = {
 ┇       *「 %me 」*
 ┣ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
 ┃
-┃ ❖ Hai @${m.sender.split`@`[0]}!
+┃ ❖ Hai @${elu.split`@`[0]}!
 ┃
 ┃ ❖ *Name:* %name
 ┃ ❖ *Level:* %level (%exp / %maxexp)
@@ -80,6 +80,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
   try {
     let package = JSON.parse(await fs.promises.readFile(path.join(__dirname, '../package.json')).catch(_ => '{}'))
     let kuriyama = './src/photo/kuriyama.png'
+    let elu = m.sender
     let { name, exp, limit, level } = global.DATABASE.data.users[m.sender]
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
     let kokoronationz = 'https://bit.ly/Kokoronationz'
