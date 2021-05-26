@@ -3,30 +3,24 @@ let path = require('path')
 let levelling = require('../lib/levelling')
 let tags = {
   'main': 'Main',
+  'game': 'Game',
   'xp': 'Exp & Limit',
   'sticker': 'Sticker',
-  //'islamic': 'Islamic',
-  'weebs': 'Weebs',
-  //'nsfw': 'NSFW 🔞',
-  'game': 'Game',
-  'fun': 'Fun',
-  'anonymous': 'Anonymous Chat',
   'kerang': 'Kerang Ajaib',
   'quotes': 'Quotes',
-  'primbon': 'Primbon Menu',
-  'nulis': 'MagerNulis',
-  'creator': 'Creator',
-  'videomaker': 'Videomaker',
-  'internet': 'Internet',
-  'downloader': 'Downloader',
   'admin': 'Admin',
   'group': 'Group',
+  'premium': 'Premium',
+  'internet': 'Internet',
+  'anonymous': 'Anonymous Chat',
+  'nulis': 'MagerNulis & Logo',
+  'downloader': 'Downloader',
   'tools': 'Tools',
+  'fun': 'Fun',
+  'database': 'Database',
   'jadibot': 'Jadi Bot',
-  'premium': 'Premium Menu',
   'owner': 'Owner',
   'host': 'Host',
-  'database': 'Database',
   'advanced': 'Advanced',
   'info': 'Info',
   '': 'No Category',
@@ -37,7 +31,7 @@ const defaultMenu = {
 ┇       *「 %me 」*
 ┣ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
 ┃
-┃ ❖ Hai %name!
+┃ ❖ Hai @${m.sender.split`@`[0]}!
 ┃
 ┃ ❖ *Name:* %name
 ┃ ❖ *Level:* %level (%exp / %maxexp)
@@ -69,7 +63,7 @@ const defaultMenu = {
 ┗ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
 `.trimStart(),
   header: '┏ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━\n┇       *「 %category 」*\n┣ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━',
-  body  : '┃ ❖  %cmd %islimit %isPremium',
+  body  : '┃ ❖  %cmd%islimit%isPremium',
   footer: '┗ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━\n',
   after : `
 *%npmname@^%version*
@@ -80,10 +74,10 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
   try {
     let package = JSON.parse(await fs.promises.readFile(path.join(__dirname, '../package.json')).catch(_ => '{}'))
     let kuriyama = './src/photo/kuriyama.png'
-    let { name, exp, limit, level } = global.DATABASE.data.users[m.sender]
-    let { min, xp, max } = levelling.xpRange(level, global.multiplier)
     let kokoronationz = 'https://bit.ly/Kokoronationz'
     let premium = global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+    let { name, exp, limit, level } = global.DATABASE.data.users[m.sender]
+    let { min, xp, max } = levelling.xpRange(level, global.multiplier)
     //let name = conn.getName(m.sender)
     let d = new Date(new Date + 3600000)
     let locale = 'id'
@@ -131,7 +125,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
         tags: Array.isArray(plugin.tags) ? plugin.tags : [plugin.tags],
         prefix: 'customPrefix' in plugin,
         limit: plugin.limit,
-        //enabled: !plugin.disabled,
+        enabled: !plugin.disabled,
       }
     })
     conn.menu = conn.menu ? conn.menu : {}
@@ -170,7 +164,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       totalexp: exp,
       xp4levelup: max - exp,
       github: package.homepage ? package.homepage.url || package.homepage : '[unknown github url]',
-      name, level, limit, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg,
+      level, limit, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg,
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => ''+replace[name])
@@ -201,7 +195,6 @@ handler.mods = false
 handler.premium = false
 handler.group = false
 handler.private = false
-handler.register = true
 
 handler.admin = false
 handler.botAdmin = false
