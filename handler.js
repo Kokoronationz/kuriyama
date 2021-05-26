@@ -246,7 +246,6 @@ module.exports = {
           } catch (e) {
             // Error occured
             m.error = e
-            if (value) 
             console.error(e)
             if (e) {
               let text = util.format(e)
