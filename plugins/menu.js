@@ -31,51 +31,7 @@ let tags = {
   'info': 'Info',
   '': 'No Category',
 }
-const defaultMenu = {
-  before: `
-┏ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
-┇       *「 %me 」*
-┣ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
-┃
-┃ ❖ Hai ${nama}!
-┃
-┃ ❖ *Name:* %name
-┃ ❖ *Level:* %level (%exp / %maxexp)
-┃ ❖ *EXP:* %totalexp XP
-┃ ❖ *Saldo:* Rp%saldo
-┃ ❖ *Limit:* %limit
-┃ ❖ *Premium:* ${premium ? 'Yes':'No'}
-┃
-┃ ❖ *Hari:* %week %weton
-┃ ❖ *Tanggal:* %date
-┃ ❖ *Tanggal Islam:* %dateIslamic
-┃ ❖ *Waktu:* %time WIB
-┃
-┃ ❖ *Uptime:* _%uptime_ (%muptime)
-┃ ❖ *Database:* %rtotalreg of %totalreg
-┃ ❖ *Contact:*
-┃     _${kokoronationz}_
-┗ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
-%readmore
-┏ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
-┇       *「 Thanks to 」*
-┣ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
-┃ ❖ Nurutomo
-┃ ❖ St4rz
-┃ ❖ DrawlNag
-┃ ❖ Ariffb
-┃ ❖ RC047
-┃ ❖ Dan Kawan-kawan
-┗ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
-`.trimStart(),
-  header: '┏ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━\n┇       *「 %category 」*\n┣ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━',
-  body  : '┃ ❖  %cmd %islimit %isPremium',
-  footer: '┗ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━\n',
-  after : `
-*%npmname@^%version*
-${'```%npmdesc```'}
-`,
-}
+
 let handler  = async (m, { conn, usedPrefix: _p }) => {
   try {
     let package = JSON.parse(await fs.promises.readFile(path.join(__dirname, '../package.json')).catch(_ => '{}'))
@@ -84,7 +40,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
     let kokoronationz = 'https://bit.ly/Kokoronationz'
     let premium = global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
-    let nama = conn.getName(m.sender)
+    //let name = conn.getName(m.sender)
     let d = new Date(new Date + 3600000)
     let locale = 'id'
     // d.getTimeZoneOffset()
@@ -135,6 +91,51 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       }
     })
     conn.menu = conn.menu ? conn.menu : {}
+const defaultMenu = {
+  before: `
+┏ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
+┇       *「 %me 」*
+┣ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
+┃
+┃ ❖ Hai @${m.sender.split`@`[0]}!
+┃
+┃ ❖ *Name:* %name
+┃ ❖ *Level:* %level (%exp / %maxexp)
+┃ ❖ *EXP:* %totalexp XP
+┃ ❖ *Saldo:* Rp%saldo
+┃ ❖ *Limit:* %limit
+┃ ❖ *Premium:* ${premium ? 'Yes':'No'}
+┃
+┃ ❖ *Hari:* %week %weton
+┃ ❖ *Tanggal:* %date
+┃ ❖ *Tanggal Islam:* %dateIslamic
+┃ ❖ *Waktu:* %time WIB
+┃
+┃ ❖ *Uptime:* _%uptime_ (%muptime)
+┃ ❖ *Database:* %rtotalreg of %totalreg
+┃ ❖ *Contact:*
+┃     _${kokoronationz}_
+┗ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
+%readmore
+┏ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
+┇       *「 Thanks to 」*
+┣ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
+┃ ❖ Nurutomo
+┃ ❖ St4rz
+┃ ❖ DrawlNag
+┃ ❖ Ariffb
+┃ ❖ RC047
+┃ ❖ Dan Kawan-kawan
+┗ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
+`.trimStart(),
+  header: '┏ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━\n┇       *「 %category 」*\n┣ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━',
+  body  : '┃ ❖  %cmd %islimit %isPremium',
+  footer: '┗ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━\n',
+  after : `
+*%npmname@^%version*
+${'```%npmdesc```'}
+`,
+}
     let before = conn.menu.before || defaultMenu.before
     let header = conn.menu.header || defaultMenu.header
     let body   = conn.menu.body   || defaultMenu.body
