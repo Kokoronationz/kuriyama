@@ -192,7 +192,7 @@ let handler  = async (m, { conn, usedPrefix: _p, isPrems}) => {
         "jpegThumbnail": fs.readFileSync(`./src/photo/mirai.png`)
         } 
       }
-    }, m, { contextInfo: { mentionedJid: [m.sender] } })
+    }, { contextInfo: { mentionedJid: [m.sender] } })
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
