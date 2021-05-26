@@ -16,7 +16,7 @@ let handler = async(m, { conn, text, usedPrefix }) => {
 
 handler.help = ['twitstalk', 'stalktwit'].map(v => v + ' <user>')
 handler.tags = ['internet']
-handler.command = /^(twitstalk|stalktwit|\?)$/i
+handler.command = /^(twitstalk|stalktwit)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
