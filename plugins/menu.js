@@ -3,24 +3,30 @@ let path = require('path')
 let levelling = require('../lib/levelling')
 let tags = {
   'main': 'Main',
-  'game': 'Game',
   'xp': 'Exp & Limit',
   'sticker': 'Sticker',
+  //'islamic': 'Islamic',
+  'weebs': 'Weebs',
+  //'nsfw': 'NSFW 🔞',
+  'game': 'Game',
+  'fun': 'Fun',
+  'anonymous': 'Anonymous Chat',
   'kerang': 'Kerang Ajaib',
   'quotes': 'Quotes',
+  'primbon': 'Primbon Menu',
+  'nulis': 'MagerNulis',
+  'creator': 'Creator',
+  'videomaker': 'Videomaker',
+  'internet': 'Internet',
+  'downloader': 'Downloader',
   'admin': 'Admin',
   'group': 'Group',
-  'premium': 'Premium',
-  'internet': 'Internet',
-  'anonymous': 'Anonymous Chat',
-  'nulis': 'MagerNulis & Logo',
-  'downloader': 'Downloader',
   'tools': 'Tools',
-  'fun': 'Fun',
-  'database': 'Database',
   'jadibot': 'Jadi Bot',
+  'premium': 'Premium Menu',
   'owner': 'Owner',
   'host': 'Host',
+  'database': 'Database',
   'advanced': 'Advanced',
   'info': 'Info',
   '': 'No Category',
@@ -74,10 +80,10 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
   try {
     let package = JSON.parse(await fs.promises.readFile(path.join(__dirname, '../package.json')).catch(_ => '{}'))
     let kuriyama = './src/photo/kuriyama.png'
-    let kokoronationz = 'https://bit.ly/Kokoronationz'
-    let premium = global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
     let { name, exp, limit, level } = global.DATABASE.data.users[m.sender]
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
+    let kokoronationz = 'https://bit.ly/Kokoronationz'
+    let premium = global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
     //let name = conn.getName(m.sender)
     let d = new Date(new Date + 3600000)
     let locale = 'id'
@@ -122,12 +128,18 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     let help = Object.values(global.plugins).map(plugin => {
       return {
         help: plugin.help,
-        tags: Array.isArray(plugin.tags) ? plugin.tags : [plugin.tags],
+        tags: plugin.tags,
         prefix: 'customPrefix' in plugin,
-        limit: plugin.limit,
-        enabled: !plugin.disabled,
+        limit: plugin.limit
       }
     })
+    let groups = {}
+    for (let tag in tags) {
+      groups[tag] = []
+      for (let menu of help)
+        if (menu.tags && menu.tags.includes(tag))
+          if (menu.help) groups[tag].push(menu)
+    }
     conn.menu = conn.menu ? conn.menu : {}
     let before = conn.menu.before || defaultMenu.before
     let header = conn.menu.header || defaultMenu.header
@@ -135,17 +147,16 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     let footer = conn.menu.footer || defaultMenu.footer
     let after  = conn.menu.after  || (conn.user.jid == global.conn.user.jid ? '' : `Powered by https://wa.me/${global.conn.user.jid.split`@`[0]}`) + defaultMenu.after
     let _text  = before + '\n'
-    for (let tag in tags) {
-      let group = []
-      for (let menu of help)
-        if (menu.tags && menu.tags.includes(tag) && menu.help) group.push(menu)
+    for (let tag in groups) {
       _text += header.replace(/%category/g, tags[tag]) + '\n'
-      for (let menu of group) {
+      for (let menu of groups[tag]) {
         for (let help of menu.help)
-          _text += body.replace(/%cmd/g, menu.prefix ? help : '%p' + help)
-            .replace(/%islimit/g, menu.limit ? '(Limit)' : '')
-            .replace(/%isPremium/g, menu.limit ? '(Premium)' : '')
-            .trim() + '\n'
+          _text += body.replace(/%cmd/g, menu.prefix ? help : '%p' + help).replace(/%islimit/g, () => {
+            let str = ''
+            if (menu.limit) str += ' (Limit)'
+            if (menu.premium) str += ' (Premium)'
+            return str + '\n'
+          })
       }
       _text += footer + '\n'
     }
@@ -164,7 +175,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       totalexp: exp,
       xp4levelup: max - exp,
       github: package.homepage ? package.homepage.url || package.homepage : '[unknown github url]',
-      level, limit, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg,
+      name, level, limit, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg,
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => ''+replace[name])
@@ -195,6 +206,7 @@ handler.mods = false
 handler.premium = false
 handler.group = false
 handler.private = false
+handler.register = true
 
 handler.admin = false
 handler.botAdmin = false
