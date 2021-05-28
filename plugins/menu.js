@@ -31,13 +31,13 @@ let tags = {
   'info': 'Info',
   '': 'No Category',
 }
-let defaultMenu = {
+const defaultMenu = {
   before: `
 ┏ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
 ┇       *「 %me 」*
 ┣ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
 ┃
-┃ ❖ Hai @${m.sender.split`@`[0]}!
+┃ ❖ Hai %name!
 ┃
 ┃ ❖ *Name:* %name
 ┃ ❖ *Level:* %level (%exp / %maxexp)
