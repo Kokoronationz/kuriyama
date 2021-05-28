@@ -53,7 +53,7 @@ const defaultMenu = {
 ┃ ❖ *Uptime:* _%uptime_ (%muptime)
 ┃ ❖ *Database:* %rtotalreg of %totalreg
 ┃ ❖ *Contact:*
-┃     _%kokoronationz_
+┃     _https://bit.ly/Kokoronationz_
 ┗ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
 %readmore
 ┏ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
