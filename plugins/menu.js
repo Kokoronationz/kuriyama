@@ -31,7 +31,7 @@ let tags = {
   'info': 'Info',
   '': 'No Category',
 }
-const defaultMenu = {
+let defaultMenu = {
   before: `
 ┏ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
 ┇       *「 %me 」*
