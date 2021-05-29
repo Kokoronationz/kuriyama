@@ -1,7 +1,7 @@
 let handler = m => m
 let debugMode = !1
 
-let winScore = 5000
+let winScore = 2500
 let playScore = 500
 
 handler.before = function (m) {
