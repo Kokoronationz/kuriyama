@@ -26,6 +26,7 @@ Contoh penggunaan: ${usedPrefix}math medium
 handler.help = ['math <mode>']
 handler.tags = ['game']
 handler.command = /^math/i
+handler.register = true
 
 module.exports = handler
 
