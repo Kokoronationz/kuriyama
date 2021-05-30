@@ -6,7 +6,7 @@ let handler = async(m, { conn, text, usedPrefix }) => {
     await m.reply(global.wait)
     axios.get(`https://videfikri.com/api/wiki/?query=` + text)
         .then((res) => {
-          let hasil = `*• Wikipedia ${res.data.result.judul}:*\n\n${res.data.result.isi_konten}`
+          let hasil = `*Wikipedia ${res.result.judul}:*\n\n${res.result.isi_konten}`
             conn.reply(m.chat, hasil, m)
         })
         .catch()
