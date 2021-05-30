@@ -41,7 +41,7 @@ let caption = `
  }
 
 handler.help = ['kanji'].map(v => v + '<kanji>')
-handler.tags = ['kanji']
+handler.tags = ['weebs','internet']
 handler.command = /^(kanji)$/i
 handler.register = true
 
