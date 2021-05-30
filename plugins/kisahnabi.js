@@ -9,6 +9,7 @@ let handler = async(m, { conn, text }) => {
 	 	let pp = res.data.result.image
 if (pp) conn.sendFile(m.chat, pp, 'pp.jpg', caption, m)
   else m.reply(caption)
+})
 }
 handler.help = ['kisahnabi']
 handler.tags = ['islamic']
