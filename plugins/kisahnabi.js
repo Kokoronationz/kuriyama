@@ -1,29 +1,12 @@
-let fetch = require('node-fetch')
-let handler = async (m, { conn }) => {
-  await m.reply(global.wait)
-  let res = await fetch(global.API('xteam','/religi/kisahnabi', {}, 'APIKEY'))
-  let json = await res.json()
-  if (res.status != 200) throw json
-  if (json.result.error) throw json.result.message
-  let {
-    name,
-    thn_kelahiran,
-    usia,
-    description,
-    tmp,
-    image_url
-  } = json.result
-  let pp = image_url
-  let caption = `
-*「 Kisah Nabi 」*
-  
-*Nama:* ${name}
-*Tahun Kelahiran:* ${thn_kelahiran} SM
-*Usia:* ${usia}
-*Tempat:* ${tmp}
+let axios = require("axios");
+let handler = async(m, { conn, text }) => {
 
-   ${description}
-`.trim()
+    if (!text) throw 'Silahkan masukan nama nabi,contoh *!kisahnabi adam*'
+
+  await m.reply(global.wait)
+	axios.get(`https://videfikri.com/api/religi/kisahnabi/?nabi=${text}`).then ((res) => {
+	 	let hasil = `*Lahir Tahun ${res.data.result.tahun_kelahiran} SM*\n*Tempat Lahir :${res.data.result.tempat_lahir}*\n*Umur :${res.data.result.usia}*\n\n*Cerita* :${res.data.result.description}*`
+	 	let pp = res.data.result.image
 if (pp) conn.sendFile(m.chat, pp, 'pp.jpg', caption, m)
   else m.reply(caption)
 }
