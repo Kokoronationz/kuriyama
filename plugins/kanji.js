@@ -23,7 +23,7 @@ let caption = `
 *「 Kanji Information 」*
 
 *Kanji:* ${kanji}
-*Arti:* ${meanings.join()}
+*Arti:* ${meanings}
 *Kun Reading:* ${kun_readings}
 *On Reading:* ${on_readings}
 *Reading:* ${name_readings}
