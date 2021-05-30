@@ -3,6 +3,7 @@ let fetch = require("node-fetch")
 let handler = async(m, { conn, text }) => {
 	if (!text) return m.reply ("Masukkan Kanji!")
  try {
+   await m.reply(global.wait)
  	let res = await fetch("https://kanjiapi.dev/v1/kanji/" + encodeURIComponent(text))
      let json = await res.json()
      let { 
@@ -18,7 +19,6 @@ unicode,
 heisig_en 
 } = json
 
-let foto = 'https://telegra.ph/file/8e66e1b3d6ab300031c43.png'
 let caption = `
 *「 Kanji Information 」*
 
@@ -33,7 +33,7 @@ let caption = `
 *Unicode:* ${unicode}
 *Heisig En:* ${heisig_en}
 `.trim ()
-    conn.sendFile(m.chat, foto, 'foto.jpg', caption, m)
+    conn.reply(m.chat, caption, m)
     }catch (e){
     	m.reply("Error")
     console.log (e)
