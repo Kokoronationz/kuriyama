@@ -6,7 +6,7 @@ let handler = async (m, { conn }) => {
       await m.reply(global.wait)
         let res = await fetch(global.API('xteam', '/randomimage/hentaigif', {}, 'APIKEY'))
         let img = await res.buffer()
-        conn.sendMessage(m.chat, img, MessageType.gif, {
+        conn.sendFile(m.chat, img, MessageType.gif, {
             quoted: m
         })
     } catch (e) {
