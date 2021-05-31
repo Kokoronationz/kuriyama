@@ -178,7 +178,6 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     //conn.reply(m.chat, text.trim(), m)
     conn.sendFile(m.chat, kuriyama, 'kuriyama.jpg', text.trim(), { 
       key: { 
-        contextInfo: { mentionedJid: [m.sender]},   
         remoteJid: 'status@broadcast', 
         participant: '0@s.whatsapp.net', 
         fromMe: false 
@@ -186,7 +185,8 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       message: { 
         "imageMessage": { "mimetype": "image/jpeg", 
         "caption": `${conn.user.name} Verified Bot`, 
-        "jpegThumbnail": fs.readFileSync(`./src/photo/mirai.png`)
+        "jpegThumbnail": fs.readFileSync(`./src/photo/mirai.png`),
+        contextInfo: { mentionedJid: [m.sender]}
         } 
       }
     }, m)
