@@ -16,9 +16,9 @@ let stiker = await sticker(null, link, 'Face-Palm', '@Kokoronationz')
  } catch (e) {
   }
 }
-handler.help = ['face-palm']
+handler.help = ['facepalm']
 handler.tags = ['expression']
-handler.command = /^face-palm/i
+handler.command = /^facepalm/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
