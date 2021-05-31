@@ -3,7 +3,7 @@ const axios = require('axios')
 let handler = async(m, { conn, text, usedPrefix }) => {
 
     await m.reply(global.wait)
-    axios.get(`https://docs-jojo.herokuapp.com/api/infogempa`)
+    axios.get(`https://tobz-api.herokuapp.com/api/infogempa?apikey=Tobzzz17`)
         .then((res) => {
      let hasil = `
 *「 INFO GEMPA 」*
