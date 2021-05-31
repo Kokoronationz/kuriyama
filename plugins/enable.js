@@ -18,6 +18,9 @@ let handler = async (m, { conn, usedPrefix, command, text, args, isOwner }) => {
     case 'antidelete':
       chat.delete = !isEnable
       break
+    case 'autodelvn':
+      chat.autodelvn = isEnable
+      break
     case 'public':
       isAll = true
       if (!isOwner) {
@@ -38,7 +41,7 @@ let handler = async (m, { conn, usedPrefix, command, text, args, isOwner }) => {
       break
     default:
       return m.reply(`
-List option: welcome | delete | public | antilink | antitoxic | autolevelup | detect
+List option: welcome | delete | public | antilink | antitoxic | autolevelup | autodelvn | detect
 
 Contoh:
 ${usedPrefix}enable welcome
