@@ -21,6 +21,7 @@ let handler = async (m, { conn }) => {
 Nama Group: ${res.subject}
 ID:	${res.id}
 Dibuat pada: ${formatDate(res.creation * 1000)}
+Member: ${res.participants.length}
 Deskripsi:
 ${res.desc}
 
