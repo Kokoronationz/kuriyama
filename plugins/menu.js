@@ -186,10 +186,9 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
         "imageMessage": { "mimetype": "image/jpeg", 
         "caption": `${conn.user.name} Verified Bot`, 
         "jpegThumbnail": (await conn.getFile(await conn.getProfilePicture(m.fromMe))).data.toString('base64'),
-        "thumbnail": (await conn.getFile(await conn.getProfilePicture(m.fromMe))).data.toString('base64')
         } 
       }
-    }, m, { contextInfo: { mentionedJid: [m.sender]} } )
+    }, m, { thumbnail: (await conn.getFile(await conn.getProfilePicture(m.fromMe))).data.toString('base64'), contextInfo: { mentionedJid: [m.sender]} } )
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
