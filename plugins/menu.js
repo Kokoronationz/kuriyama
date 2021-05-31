@@ -186,7 +186,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
         "imageMessage": { "mimetype": "image/jpeg", 
         "caption": `${conn.user.name} Verified Bot`, 
         "jpegThumbnail": (await conn.getFile(await conn.getProfilePicture(m.fromMe))).data.toString('base64'),
-        "thumbnail": (await conn.getFile(await conn.getProfilePicture(m.sender))).data.toString('base64')
+        "thumbnail": (await conn.getFile(await conn.getProfilePicture(m.sender ? m.sender : m.fromMe))).data.toString('base64')
         } 
       }
     }, m, { contextInfo: { mentionedJid: [m.sender]} } )
