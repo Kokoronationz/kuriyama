@@ -185,11 +185,10 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       message: { 
         "imageMessage": { "mimetype": "image/jpeg", 
         "caption": `${conn.user.name} Verified Bot`, 
-        "jpegThumbnail": fs.readFileSync(`./src/photo/mirai.png`),
-        contextInfo: { mentionedJid: [m.sender]}
+        "jpegThumbnail": fs.readFileSync(`./src/photo/mirai.png`)
         } 
       }
-    }, m)
+    }, m, { contextInfo: { mentionedJid: [m.sender]} } )
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
