@@ -18,11 +18,11 @@ let handler = async (m, { conn }) => {
 	let caption = `
 *「 Group Info 」*
 
-Nama Group: ${res.subject}
-ID:	${res.id}
-Dibuat pada: ${formatDate(res.creation * 1000)}
-Member: ${res.participants.length}
-Deskripsi:
+*Nama Group:* ${res.subject}
+*ID:*	${res.id}
+*Dibuat Pada:* ${formatDate(res.creation * 1000)}
+*Total Member:* ${res.participants.length}
+*Deskripsi:*
 ${res.desc}
 
   ❖  Banned : ${data(isBanned)}
