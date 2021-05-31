@@ -7,6 +7,7 @@ let tags = {
   'sticker': 'Sticker',
   //'islamic': 'Islamic',
   'weebs': 'Weebs',
+  'expression': 'Expression',
   //'nsfw': 'NSFW 🔞',
   'game': 'Game',
   'fun': 'Fun',
@@ -120,11 +121,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     let uptime = clockString(_uptime)
     let totalreg = Object.keys(global.DATABASE._data.users).length
     let rtotalreg = Object.values(global.DATABASE._data.users).filter(user => user.registered == true).length
-    for (let plugin of Object.values(global.plugins))
-      if (plugin && 'tags' in plugin)
-        for (let tag of plugin.tags)
-          if (!tag in tags) tags[tag] = tag
-    let help = Object.values(global.plugins).map(plugin => {
+    let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(plugin => {
       return {
         help: Array.isArray(plugin.tags) ? plugin.help : [plugin.help],
         tags: Array.isArray(plugin.tags) ? plugin.tags : [plugin.tags],
@@ -133,6 +130,10 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
         enabled: !plugin.disabled,
       }
     })
+    for (let plugin of help)
+      if (plugin && 'tags' in plugin)
+        for (let tag of plugin.tags)
+          if (!(tag in tags) && tag) tags[tag] = tag
     conn.menu = conn.menu ? conn.menu : {}
     let before = conn.menu.before || defaultMenu.before
     let header = conn.menu.header || defaultMenu.header
@@ -177,6 +178,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     //conn.reply(m.chat, text.trim(), m)
     conn.sendFile(m.chat, kuriyama, 'kuriyama.jpg', text.trim(), { 
       key: { 
+        contextInfo: { mentionedJid: [m.sender]},   
         remoteJid: 'status@broadcast', 
         participant: '0@s.whatsapp.net', 
         fromMe: false 
@@ -187,7 +189,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
         "jpegThumbnail": fs.readFileSync(`./src/photo/mirai.png`)
         } 
       }
-    }, m, { contextInfo: { mentionedJid: [m.sender] } })
+    }, m)
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
