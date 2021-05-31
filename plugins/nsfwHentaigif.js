@@ -1,4 +1,4 @@
-const { MessageType, MimeType } = require('@adiwajshing/baileys')
+const { MessageType, Mimetype } = require('@adiwajshing/baileys')
 const fetch = require('node-fetch')
 
 let handler = async (m, { conn }) => {
@@ -6,7 +6,7 @@ let handler = async (m, { conn }) => {
       await m.reply(global.wait)
         let res = await fetch(global.API('xteam', '/randomimage/hentaigif', {}, 'APIKEY'))
         let img = await res.buffer()
-        conn.sendMessage(m.chat, img, MessageType.video, { mimetype: MimeType.gif, caption: `*©Kuriyama-BOT*`, quoted: m, })
+        conn.sendMessage(m.chat, img, MessageType.video, { mimetype: Mimetype.gif, caption: `*©Kuriyama-BOT*`, quoted: m, })
     } catch (e) {
         console.log(e)
         throw '_*Owner belum membayar tagihan fitur ini*_'
