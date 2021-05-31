@@ -16,7 +16,7 @@ let stiker = await sticker(null, link, 'Hug', '@Kokoronationz')
  } catch (e) {
   }
 }
-handler.help = ['Hug']
+handler.help = ['hug']
 handler.tags = ['expression']
 handler.command = /^hug/i
 handler.owner = false
