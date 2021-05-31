@@ -77,12 +77,16 @@ ${'```%npmdesc```'}
 `,
 }
 let handler = async (m, { conn, usedPrefix: _p }) => {
-  let tnbot = (await conn.getFile(await conn.getProfilePicture(m.fromMe))).data.toString('base64')
   try {
     let package = JSON.parse(await fs.promises.readFile(path.join(__dirname, '../package.json')).catch(_ => '{}'))
     let kuriyama = './src/photo/kuriyama.png'
     let kokoronationz = 'https://bit.ly/Kokoronationz'
     //let premium = global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+    try {
+      let tnbot = (await conn.getFile(await conn.getProfilePicture(m.fromMe))).data.toString('base64')
+    }catch (e) {
+      
+    } finally {
     let tnbot = (await conn.getFile(await conn.getProfilePicture(m.sender))).data.toString('base64')
     let { name, uang, exp, limit, level } = global.DATABASE.data.users[m.sender]
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
@@ -194,6 +198,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
+  }
   }
 }
 handler.help = ['menu', 'help', '?']
