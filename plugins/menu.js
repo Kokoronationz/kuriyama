@@ -188,7 +188,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
         "jpegThumbnail": (await conn.getFile(await conn.getProfilePicture(m.fromMe))).data.toString('base64'),
         } 
       }
-    }, m, { thumbnail: (await conn.getFile(await conn.getProfilePicture(m.sender))).data.toString('base64'), contextInfo: { mentionedJid: [m.sender]} } )
+    }, m, { thumbnail: (await conn.getFile(await conn.getProfilePicture(m.fromMe))).data.toString('base64'), contextInfo: { mentionedJid: [m.sender]} } )
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
