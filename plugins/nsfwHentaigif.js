@@ -6,8 +6,7 @@ let handler = async (m, { conn }) => {
       await m.reply(global.wait)
         let res = await fetch(global.API('xteam', '/randomimage/hentaigif', {}, 'APIKEY'))
         let img = await res.buffer()
-        conn.sendFile(m.chat, img, 'random.gif', '*©Kuriyama-Bot*', m)
-m, false, { asGIF: true })
+        conn.sendFile(m.chat, img, 'random.gif', '*©Kuriyama-Bot*', m, false, { asGIF: true })
     } catch (e) {
         console.log(e)
         throw '_*Owner belum membayar tagihan fitur ini*_'
