@@ -1,6 +1,6 @@
 {
   "name": "Kuriyama",
-  "version": "2.1.0",
+  "version": "2.1.2",
   "description": "Customizable WhatsApp Bot",
   "depecrated": false,
   "main": "index.js",
