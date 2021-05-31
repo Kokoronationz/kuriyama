@@ -82,12 +82,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     let kuriyama = './src/photo/kuriyama.png'
     let kokoronationz = 'https://bit.ly/Kokoronationz'
     //let premium = global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
-    try {
-      let tnbot = (await conn.getFile(await conn.getProfilePicture(m.fromMe))).data.toString('base64')
-    }catch (e) {
-      
-    } finally {
-    let tnbot = (await conn.getFile(await conn.getProfilePicture(m.sender))).data.toString('base64')
+    let tnbot = (await conn.getFile(await conn.getProfilePicture(m.fromMe))).data.toString('base64')
     let { name, uang, exp, limit, level } = global.DATABASE.data.users[m.sender]
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
     //let name = conn.getName(m.sender)
@@ -191,14 +186,13 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       message: { 
         "imageMessage": { "mimetype": "image/jpeg", 
         "caption": `${conn.user.name} Verified Bot`, 
-        "jpegThumbnail": (await conn.getFile(await conn.getProfilePicture(m.fromMe))).data.toString('base64'),
+        "jpegThumbnail": tnbot
         } 
       }
     }, m, { thumbnail: tnbot, contextInfo: { mentionedJid: [m.sender]} } )
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
-  }
   }
 }
 handler.help = ['menu', 'help', '?']
