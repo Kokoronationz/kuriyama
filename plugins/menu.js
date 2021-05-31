@@ -82,6 +82,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     let kuriyama = './src/photo/kuriyama.png'
     let kokoronationz = 'https://bit.ly/Kokoronationz'
     //let premium = global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+    let thumbnailbot = (await conn.getFile(await conn.getProfilePicture(m.fromMe))).data.toString('base64')
     let { name, uang, exp, limit, level } = global.DATABASE.data.users[m.sender]
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
     //let name = conn.getName(m.sender)
@@ -185,8 +186,8 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       message: { 
         "imageMessage": { "mimetype": "image/jpeg", 
         "caption": `${conn.user.name} Verified Bot`, 
-        "jpegThumbnail": (await conn.getFile(await conn.getProfilePicture(m.fromMe))).data.toString('base64'),
-        "thumbnail": (await conn.getFile(await conn.getProfilePicture(m.sender ? m.sender : m.fromMe))).data.toString('base64')
+        "jpegThumbnail": thumbnailbot,
+        "thumbnail": thumbnailbot
         } 
       }
     }, m, { contextInfo: { mentionedJid: [m.sender]} } )
