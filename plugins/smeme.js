@@ -1,4 +1,3 @@
-let fetch = require("node-fetch")
 const uploadImage = require('../lib/uploadImage')
 const { sticker } = require('../lib/sticker')
 const { MessageType } = require('@adiwajshing/baileys')
@@ -15,9 +14,7 @@ try {
   if (!/image\/(jpe?g|png)/.test(mime)) throw `Mime ${mime} tidak support`
   let img = await q.download()
   let url = await uploadImage(img)
-  let res = await fetch(`https://mnazria.herokuapp.com/api/create-meme?text-atas=` + encodeURIComponent(text1) + `&text-bawah=` + encodeURIComponent(text2) + `&background-url=${url}`)
-     let json = await res.json()
-     let { gambar: meme } = json
+  let meme = `https://docs-jojo.herokuapp.com/api/meme-gen?top=${text1}&bottom=${text2}&img=${url}`
   let stiker = await sticker(null, meme, 'Sticker Meme', '@Kokoronationz')
   conn.sendMessage(m.chat, stiker, MessageType.sticker, {
     quoted: m
