@@ -1,7 +1,7 @@
 let handler = async m => m.reply(`
-*「 Manga • Manhwa 」*
-
 ┏ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
+┇       *「 Manga • Manhwa 」*
+┣ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
 ┃ ❖ https://mangatx.com
 ┃ ❖ https://komikcast.com
 ┃ ❖ https://komiku.id
@@ -25,6 +25,7 @@ let handler = async m => m.reply(`
 ┃ ❖ https://mangaku.pro
 ┃ ❖ https://boosei.com
 ┃ ❖ https://mgkomik.my.id
+┃ ❖ https://pojokmanga.com
 ┗ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
 `.trim()) // Tambah sendiri kalo mau
 handler.help = ['mangalink','manhwalink']
