@@ -1,24 +1,39 @@
 // ariffb - http:/wa.me/6283128734012
 const translate = require('translate-google-api')
+const defaultLang = 'en'
+const tld = 'cn'
+
 let handler = async (m, { args, usedPrefix, command }) => {
-    er = `contoh: \n${usedPrefix + command} lang teks\n${usedPrefix + command} id your messages\n\nDaftar bahasa yang didukung: https://cloud.google.com/translate/docs/languages`
+    let err = `
+Contoh:
+${usedPrefix + command} <lang> [text]
+${usedPrefix + command} id your messages
+Daftar bahasa yang didukung: https://cloud.google.com/translate/docs/languages
+`.trim()
 
-    let lang = 'en'
+    let lang = args[0]
     let text = args.slice(1).join(' ')
-    if (!text) throw er
-    if (args[0].length === 2) lang = args[0]
-    else text = args.join(' ')
-    if (!text) text = lang
+    if ((args[0] || '').length !== 2) {
+        lang = defaultLang
+        text = args.join(' ')
+    }
+    if (!text && m.quoted && m.quoted.text) text = m.quoted.text
 
+    let result
     try {
-        const result = await translate(`${text}`, {
-            tld: "cn",
-            to: `${lang}`,
+        result = await translate(`${text}`, {
+            tld,
+            to: lang,
         })
-        m.reply(`To: ${lang}\n\nTerjemahan: ${result[0]}`)
-        console.log(result[0])
+        
     } catch (e) {
-        throw er
+        result = await translate(`${text}`, {
+            tld,
+            to: defaultLang,
+        })
+        throw err
+    } finally {
+        m.reply(result[0])
     }
 }
 handler.help = ['translate'].map(v => v + ' <lang> <teks>')
