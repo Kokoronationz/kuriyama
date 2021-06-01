@@ -1,9 +1,10 @@
 let handler = async (m, { conn, command, text }) => {
-  //if (!text) text = '@' + m.sender.replace(/@.+/, '')
+  let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+  let cok = conn.getName(who)
   conn.reply(m.chat, `
-${command} *${text ? text : '@' + m.sender.replace(/@.+/, '')}*
+${command} *${cok}*
 
-*${text}* is *${Math.floor(Math.random() * 101)}*% ${command.replace('cek', '').toUpperCase()}
+*${cok}* is *${Math.floor(Math.random() * 101)}*% ${command.replace('cek', '').toUpperCase()}
 `.trim(), m, m.mentionedJid ? {
     contextInfo: {
       mentionedJid: m.mentionedJid
