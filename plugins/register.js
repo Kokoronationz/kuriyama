@@ -43,7 +43,7 @@ await conn.reply(m.chat, caption, {
       "caption": `Registration Successful!`, 
       "jpegThumbnail": tnbot} }, { 
         contextInfo: { 
-          mentionedJid: [m.sender]} }} )
+          mentionedJid: [m.sender]} }}, m)
 global.DATABASE._data.users[m.sender].uang += 10000
 }
 handler.help = ['daftar', 'register'].map(v => v + ' <nama>|<umur>')
