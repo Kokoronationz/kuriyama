@@ -18,9 +18,9 @@ let handler = async function (m, { text, usedPrefix }) {
   user.registered = true
   let sn = createHash('md5').update(m.sender).digest('hex')
   let caption = `
-┏ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
+┏ ┅ ━━━━━━━━━━━━━━━━━━━━━━ ┅ ━
 ┇       *「 INFORMATION 」*
-┣ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
+┣ ┅ ━━━━━━━━━━━━━━━━━━━━━━ ┅ ━
 ┃
 ┃ *Nama:* ${name}
 ┃ *Umur:* ${age} tahun
@@ -28,7 +28,7 @@ let handler = async function (m, { text, usedPrefix }) {
 ┃ *Registered:* ${rtotalreg}
 ┃ *SN:* 
 ┃ ${sn}
-┗ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━
+┗ ┅ ━━━━━━━━━━━━━━━━━━━━━━ ┅ ━
 
  _Simpan Serial Number anda!_
 `.trim()
