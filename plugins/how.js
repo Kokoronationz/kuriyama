@@ -1,5 +1,5 @@
 let handler = async (m, { conn, command, text }) => {
-  if (!text) text = '@' + m.sender.split`@`[0]
+  if (!text) text = '@' + m.sender.replace(/@.+/, '')
   conn.reply(m.chat, `
 ${command} *${text}*
 
