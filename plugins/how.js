@@ -1,5 +1,5 @@
 let handler = async (m, { conn, command, text }) => {
-  if (!text) text = conn.getName(m.sender)
+  if (!text) text = '@' + m.sender.split`@`[0]
   conn.reply(m.chat, `
 ${command} *${text}*
 
@@ -10,19 +10,9 @@ ${command} *${text}*
     }
   } : {})
 }
-handler.help = ['gay', 'pintar', 'cantik', 'ganteng', 'gabut', 'gila', 'halu', 'lesbi', 'stress', 'bucin', 'jones', 'sadboy', 'tolol'].map(v => v + 'cek @user')
+handler.help = ['bucin', 'cantik', 'gabut', 'ganteng', 'gay', 'gila', 'halu', 'jones', 'lesbi', 'pintar', 'sadboy', 'sadgirl', 'stress', 'tolol', 'wibu'].map(v => v + 'cek @user')
 handler.tags = ['fun']
-handler.command = /^(gay|pintar|cantik|ganteng|gabut|gila|halu|lesbi|stress?|bucin|jones|sadboy|tolol)cek/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
+handler.command = /^(gay|pintar|cantik|ganteng|gabut|gila|halu|lesbi|stress?|bucin|jones|sad(boy|girl)|tolol|wibu)cek/i
 handler.register = true
-
-handler.admin = false
-handler.botAdmin = false
-
-handler.fail = null
 
 module.exports = handler
