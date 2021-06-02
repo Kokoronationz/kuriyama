@@ -8,10 +8,10 @@ handler.before = async function (m) {
   if (m.quoted.id == this.math[id][0].id) {
     let math = JSON.parse(JSON.stringify(this.math[id][1]))
     if (m.text == math.result) {
-      global.DATABASE._data.users[m.sender].uang += math.bonus
+      global.DATABASE._data.users[m.sender].exp += math.bonus
       clearTimeout(this.math[id][3])
       delete this.math[id]
-      m.reply(`*Jawaban Benar!*\n+Rp${math.bonus}`)
+      m.reply(`*Jawaban Benar!*\n+${math.bonus}XP`)
     } else {
       if (--this.math[id][2] == 0) {
         clearTimeout(this.math[id][3])
