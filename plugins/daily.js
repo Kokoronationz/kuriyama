@@ -7,9 +7,9 @@ let cd1 = Math.ceil(23 - cdj)
 let cd2 = Math.ceil(59 - cdm)
 let cd3 = Math.ceil(60 - cds)
   if (new Date - global.DATABASE._data.users[m.sender].lastclaim > 86400000) {
-    global.DATABASE._data.users[m.sender].uang += 5000
+    global.DATABASE._data.users[m.sender].uang += 2500
     global.DATABASE._data.users[m.sender].exp += 100
-    m.reply('Selamat anda mendapatkan +Rp5000')
+    m.reply('Selamat anda mendapatkan +Rp2500')
     global.DATABASE._data.users[m.sender].lastclaim = new Date * 1
   } else throw `Anda sudah mengklaim harian hari ini.\n\nTunggu ${cd1} Jam ${cd2} Menit ${cd3} Detik!`
 }
