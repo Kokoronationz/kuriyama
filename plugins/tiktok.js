@@ -6,7 +6,9 @@ let handler = async(m, { conn, text }) => {
    await m.reply(global.wait)
  	let res = await fetch("https://toksaver.com/convertok?url=" + text)
      let json = await res.json()
-     let { no_watermark } = json
+     let { 
+       no_watermark 
+     } = json
     conn.sendFile(m.chat, no_watermark, 'tt.mp4', '*©Kuriyama-Bot*', m)
     }catch (e){
     	m.reply("Error")
