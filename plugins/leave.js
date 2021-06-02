@@ -7,9 +7,9 @@ const time = async (ms) => {
       await time(5000)
   await conn.groupLeave(m.key.remoteJid)
 }
-handler.help = ['leavebot', 'keluarbot']
+handler.help = ['leavegroup', 'keluargrup']
 handler.tags = ['owner']
-handler.command = /^(leavebot|keluarbot)$/i
+handler.command = /^(leave|keluar)gro?up$/i
 handler.owner = true
 handler.mods = false
 handler.premium = false
