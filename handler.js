@@ -3,6 +3,7 @@ let simple = require('./lib/simple')
 let { MessageType } = require('@adiwajshing/baileys')
 
 const isNumber = x => typeof x === 'number' && !isNaN(x)
+const delay = ms => isNumber(ms) && new Promise(resolve => setTimeout(resolve, ms))
 module.exports = {
   async handler(chatUpdate) {
     // console.log(chatUpdate)
@@ -15,8 +16,7 @@ module.exports = {
         case MessageType.image:
         case MessageType.video:
         case MessageType.audio:
-        case MessageType.document:
-        case MessageType.sticker:
+          if (!m.key.fromMe) await delay(1000)
           if (!m.msg.url) await this.updateMediaMessage(m)
           break
       }
@@ -31,18 +31,18 @@ module.exports = {
           if (!isNumber(user.limit)) user.limit = 10
           if (!isNumber(user.lastclaim)) user.lastclaim = 0
           if (!isNumber(user.lastmining)) user.lastmining = 0
-          if (!'registered' in user) user.registered = false
+          if (!('registered' in user)) user.registered = false
           if (!user.registered) {
-            if (!'name' in user) user.name = this.getName(m.sender)
+            if (!('name' in user)) user.name = this.getName(m.sender)
             if (!isNumber(user.age)) user.age = -1
             if (!isNumber(user.regTime)) user.regTime = -1
           }
           if (!isNumber(user.afk)) user.afk = -1
-          if (!'afkReason' in user) user.afkReason = ''
-          if (!'banned' in user) user.banned = false
+          if (!('afkReason' in user)) user.afkReason = ''
+          if (!('banned' in user)) user.banned = false
           if (!'warn' in user) user.warn = 0
           if (!isNumber(user.level)) user.level = 0
-          if (!'autolevelup' in user) user.autolevelup = true
+          if (!('autolevelup' in user)) user.autolevelup = true
         } else global.DATABASE._data.users[m.sender] = {
           exp: 0,
           uang: 0,
@@ -64,16 +64,16 @@ module.exports = {
         let chat = global.DATABASE._data.chats[m.chat]
         if (typeof chat !== 'object') global.DATABASE._data.chats[m.chat] = {}
         if (chat) {
-          if (!'isBanned' in chat) chat.isBanned = false
-          if (!'welcome' in chat) chat.welcome = false
-          if (!'detect' in chat) chat.detect = false
-          if (!'sWelcome' in chat) chat.sWelcome = ''
-          if (!'sBye' in chat) chat.sBye = ''
-          if (!'sPromote' in chat) chat.sPromote = ''
-          if (!'sDemote' in chat) chat.sDemote = ''
-          if (!'delete' in chat) chat.delete = true
-          if (!'antiLink' in chat) chat.antiLink = false
-          if (!'antiToxic' in chat) chat.antiToxic = true
+          if (!('isBanned' in chat)) chat.isBanned = false
+          if (!('welcome' in chat)) chat.welcome = false
+          if (!('detect' in chat)) chat.detect = false
+          if (!('sWelcome' in chat)) chat.sWelcome = ''
+          if (!('sBye' in chat)) chat.sBye = ''
+          if (!('sPromote' in chat)) chat.sPromote = ''
+          if (!('sDemote' in chat)) chat.sDemote = ''
+          if (!('delete' in chat)) chat.delete = true
+          if (!('antiLink' in chat)) chat.antiLink = false
+          if (!('antiToxic' in chat)) chat.antiToxic = true
         } else global.DATABASE._data.chats[m.chat] = {
           isBanned: false,
           welcome: false,
