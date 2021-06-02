@@ -1,16 +1,18 @@
-let fetch = require('node-fetch')
-let handler = async (m, { conn, args }) => {
-  if (!args[0]) throw 'Uhm...url nya mana?'
-  let res = await fetch(global.API('xteam', '/dl/tiktok', {
-    url: args[0]
-  }, 'APIKEY'))
-  if (res.status !== 200) throw await res.text()
-  let json = await res.json()
-  if (!json.status) throw json
-  await conn.sendFile(m.chat, json.info[0].videoUrl, 'tiktok.mp4', `
-${json.info [0].text}
-  `.trim(), m)
-}
+let fetch = require("node-fetch")
+
+let handler = async(m, { conn, text }) => {
+	if (!text) return m.reply ("Masukkan linknya!")
+ try {
+   await m.reply(global.wait)
+ 	let res = await fetch("https://toksaver.com/convertok?url=" + text)
+     let json = await res.json()
+     let { no_watermark } = json
+    conn.sendFile(m.chat, no_watermark, 'tt.mp4', '*©Kuriyama-Bot*', m)
+    }catch (e){
+    	m.reply("Error")
+    console.log (e)
+    }
+ }
 handler.help = ['tiktok'].map(v => v + ' <url>')
 handler.tags = ['downloader']
 
