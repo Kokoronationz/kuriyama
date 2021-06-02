@@ -3,7 +3,7 @@ let handler = async(m, { conn, command }) => {
   
   await m.reply(global.wait)
 	axios.get(`https://docs-jojo.herokuapp.com/api/news`).then ((res) => {
-	  let isi = res.data.articles.map(res=>`*Judul:* ${res.title}\n*Author:* ${res.author}\n*Publish:* ${res.publishedAt}\n*Deskripsi:* ${res.description}\n*URL:* ${res.url}`).join('\n\n━ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━n\n').trim()
+	  let isi = res.data.articles.map(res=>`*Judul:* ${res.title}\n*Author:* ${res.author}\n*Publish:* ${res.publishedAt}\n*Deskripsi:* ${res.description}\n*URL:* ${res.url}`).join('\n\n━ ┅ ━━━━━━━━━━━━━━━━━━━━ ┅ ━\n\n').trim()
 	 	let hasil = `*「 ${command.toUpperCase()} 」*\n\n*Total Berita:* ${res.data.totalResults}\n`
     conn.reply(m.chat, hasil+isi, m)
 	})
