@@ -5,11 +5,11 @@ let handler = async(m, { conn, text, usedPrefix }) => {
     if (!text) return conn.reply(m.chat, '_Masukkan yang dicari_', m)
     await m.reply(global.wait)
     new Promise((resolve, reject) => {
-        axios.get(`https://ardi30.herokuapp.com/api/v1/lirik?l=` + encodeURIComponent(text))
+        axios.get(`https://docs-jojo.herokuapp.com/api/lirik?q=` + encodeURIComponent(text))
             .then((res) => {
 
-                const ardi = `*• Lirik Lagu ${text} :*\n\n${res.data.data}`
-                conn.reply(m.chat, ardi, m)
+                const caption = `*• Lirik Lagu ${text} :*\n\n${res.data.result}`
+                conn.reply(m.chat, caption, m)
             })
             .catch((err) => {
                 reject(err)
