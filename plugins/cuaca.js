@@ -8,7 +8,7 @@ let handler = async(m, { conn, text }) => {
         axios.get('https://recoders-area.caliph.repl.co/api/cuaca?kota=' + encodeURIComponent(text))
             .then((res) => {
 
-                let caption = `*「 Cuaca 」*\n\n*Lokasi:* ${res.data.respon.tempat}\n*Angin:* ${res.data.respon.angin}\n*Cuaca:* ${res.data.respon.cuaca}\n*Keterangan:* ${res.data.respon.deks}\n*Kelembapan:* ${res.data.respon.kelembapan}\n*Suhu:* ${res.data.respon.suhu}\n*Udara:* ${res.data.respon.udara}`
+                let caption = `*「 Info Cuaca 」*\n\nInfo cuaca daerah ${text}\n*Lokasi:* ${res.data.respon.tempat}\n*Angin:* ${res.data.respon.angin}\n*Cuaca:* ${res.data.respon.cuaca}\n*Keterangan:* ${res.data.respon.deks}\n*Kelembapan:* ${res.data.respon.kelembapan}\n*Suhu:* ${res.data.respon.suhu}\n*Udara:* ${res.data.respon.udara}`
                 conn.reply(m.chat, caption, m)
             })
             .catch((err) => {
