@@ -84,7 +84,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     //let premium = global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
     let tnbot = (await conn.getFile(await conn.getProfilePicture(m.fromMe))).data.toString('base64')
     let tnyou = (await conn.getFile(await conn.getProfilePicture(m.sender))).data.toString('base64')
-    let tnl = tnyou || tnbot
+    let tnl = tnyou ? tnyou : tnbot
     let { name, uang, exp, limit, level } = global.DATABASE.data.users[m.sender]
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
     //let name = conn.getName(m.sender)
