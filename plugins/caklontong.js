@@ -15,10 +15,18 @@ let handler  = async (m, { conn, usedPrefix }) => {
     let res = await fetch('https://zahirr-web.herokuapp.com/api/kuis/caklontong?apikey=zahirgans')
     let json = await res.json()
     conn.caklontong[id] = [
-      await conn.reply(m.chat, `Soal: *${json.result.soal}*\nTimeout: *${(timeout / 1000).toFixed(2)} detik*\nKetik *${usedPrefix}hint caklontong* untuk hint\nBonus: +Rp${poin}`, m),
+    let caption = `
+*「 Cak Lontong 」*
+
+Soal: *${json.result.soal}*
+
+Timeout: *${(timeout / 1000).toFixed(2)} detik*
+Bonus: +Rp${poin}
+`.trim()
+      await conn.reply(m.chat,  caption, m),
       json, poin,
       setTimeout(() => {
-        if (conn.caklontong[id]) conn.reply(m.chat, `Waktu habis!\n*${json.result.deskripsi}*`, conn.caklontong[id][0])
+        if (conn.caklontong[id]) conn.reply(m.chat, `Waktu habis!\n${json.result.deskripsi}`, conn.caklontong[id][0])
         delete conn.caklontong[id]
       }, timeout)
     ]
