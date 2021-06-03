@@ -7,7 +7,7 @@ handler.before = async function (m) {
   if (m.quoted.id == conn.asahotak[id][0].id) {
     let json = JSON.parse(JSON.stringify(conn.asahotak[id][1]))
     // m.reply(JSON.stringify(json, null, '\t'))
-    if (m.text.toLowerCase() == json.jawaban.toLowerCase()) {
+    if (m.text.toLowerCase() == json.result.jawaban.toLowerCase()) {
       global.DATABASE._data.users[m.sender].uang += conn.asahotak[id][2]
       m.reply(`*Benar!*\n+Rp${conn.asahotak[id][2]}`)
       clearTimeout(conn.asahotak[id][3])
