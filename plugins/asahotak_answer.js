@@ -12,7 +12,7 @@ handler.before = async function (m) {
       m.reply(`*Benar!*\n+Rp${conn.asahotak[id][2]}`)
       clearTimeout(conn.asahotak[id][3])
       delete conn.asahotak[id]
-    } else if (m.text.toLowerCase().endsWith(json.jawaban.split` `[1])) m.reply(`*Dikit Lagi!*`)
+    } else if (m.text.toLowerCase().endsWith(json.result.jawaban.split` `[1])) m.reply(`*Dikit Lagi!*`)
     else m.reply(`*Salah!*`)
   }
   return !0
