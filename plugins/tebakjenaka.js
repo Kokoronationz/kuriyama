@@ -1,5 +1,5 @@
 let fetch = require('node-fetch')
-let kunci = require('./kunciAPI.json')
+let kunci = require('../kunciAPI.json')
 
 let timeout = 120000
 let poin = 2500
