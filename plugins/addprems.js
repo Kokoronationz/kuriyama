@@ -1,18 +1,18 @@
-const { MessageType } = require('@adiwajshing/baileys')
-const fs = require('fs')
-
-let handler = async(m, { conn, text, participants, isPrems }) => {
-let who
-  if (m.isGroup) who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-  else who = m.chat
-  if (!who) throw 'Tag orang yang akan dijadikan premium!'
-  if (participants.map(v=>v.jid).includes(global.conn.user.jid)) {
-  let user = `${who.split("@s.whatsapp.net")[0]}`
-  let up = global.prems.push(user)
-    m.reply(`*「 ADD PREMIUM 」*\n\nNomor : wa.me/${who.split("@s.whatsapp.net")[0]}\n*Expired : Until the bot dies*\n\nTerimakasih telah beli Premium!`)
-   } else m.reply('Ada nomor host disini..')
-  }
-handler.help = ['addprems <@user>']
+let handler = async (m, { conn }) => {
+  
+    let who
+    if (m.isGroup) who = m.mentionedJid[0]
+    else who = m.chat
+    if (global.prems.includes(who.split`@`[0])) throw 'Sudah premium!'
+    global.prems.push(`${who.split`@`[0]}`)
+    conn.reply(m.chat, `Hai, @${who.split`@`[0]}. Kamu sudah premium!`, m, {
+        contextInfo: {
+            mentionedJid: [who]
+        }
+    })
+  
+}
+handler.help = ['addprems @user']
 handler.tags = ['owner']
 handler.command = /^addprems$/i
 handler.rowner = true
