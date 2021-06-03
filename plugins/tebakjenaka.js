@@ -1,16 +1,17 @@
 let fetch = require('node-fetch')
-let kunci = require('../kunciAPI.json')
+let api = require("../kunciAPI.json")
 
 let timeout = 120000
 let poin = 2500
 let handler  = async (m, { conn, usedPrefix }) => {
+  let kunci = (api.lolhuman)
     conn.tebakjenaka = conn.tebakjenaka ? conn.tebakjenaka : {}
     let id = m.chat
     if (id in conn.tebakjenaka) {
         conn.reply(m.chat, 'Masih ada soal belum terjawab di chat ini', conn.tebakjenaka[id][0])
         throw false
     }
-    let res = await fetch(`https://lolhuman.herokuapp.com/api/tebak/jenaka?apikey=${kunci.lolhuman}`)
+    let res = await fetch(`https://lolhuman.herokuapp.com/api/tebak/jenaka?apikey=${kunci}`)
     if (res.status !== 200) throw await res.text()
     let json = await res.json()
     if (!json.status) throw json
