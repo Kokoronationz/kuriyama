@@ -16,7 +16,7 @@ let handler  = async (m, { conn, usedPrefix }) => {
     let caption = `
 *「 Siapakah Aku 」*
 
-Level: ${json.result.level}
+${json.result.level}
 Soal: "${json.result.soal}"
 
 Timeout *${(timeout / 1000).toFixed(2)} detik*
