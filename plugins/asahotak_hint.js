@@ -7,6 +7,6 @@ let handler = async (m, { conn }) => {
     let nyanya = nya.replace(/[bcdfghjklmnpqrstvwxyz]/g, '_')
     m.reply('```' + nyanya + '```')
 }
-handler.command = /^hint$/i
+handler.command = /^aohint$/i
 handler.limit = true
 module.exports = handler
