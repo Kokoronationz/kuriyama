@@ -19,6 +19,7 @@ let handler  = async (m, { conn, usedPrefix }) => {
 "${json.result.question}"
 
 Timeout *${(timeout / 1000).toFixed(2)} detik*
+Ketik *${usedPrefix}tjhint* untuk bantuan
 Bonus: Rp${poin}
     `.trim()
     conn.tebakjenaka[id] = [
