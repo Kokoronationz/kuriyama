@@ -20,6 +20,7 @@ ${json.result.level}
 Soal: "${json.result.soal}"
 
 Timeout *${(timeout / 1000).toFixed(2)} detik*
+Ketik *${usedPrefix}skhint* untuk bantuan
 Bonus: Rp${poin}
     `.trim()
     conn.susunkata[id] = [
