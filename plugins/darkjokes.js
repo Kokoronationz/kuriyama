@@ -4,7 +4,7 @@ conn.sendFile(m.chat, global.API('xteam', '/asupan/darkjoke', {}, 'APIKEY'), '',
 handler.help = ['darkjokes']
 handler.tags = ['fun']
 handler.command = /^darkjokes$/i
-handler.disable = true
+handler.disabled = true
 handler.register = true
 handler.limit = false
 module.exports = handler
