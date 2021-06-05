@@ -46,7 +46,6 @@
     "google-it": "^1.6.2",
     "human-readable": "^0.2.1",
     "image-to-base64": "^2.1.1",
-    "img2braille": "^1.0.1",
     "jsbarcode": "^3.11.4",
     "jsdom": "^16.5.1",
     "node-fetch": "^2.6.1",
