@@ -1,5 +1,5 @@
 let fetch = require('node-fetch')
-let winScore = 500
+let winScore = 2500
 async function handler(m) {
     this.game = this.game ? this.game : {}
     let id = 'family100_' + m.chat
@@ -18,7 +18,7 @@ Terdapat *${json.jawaban.length}* jawaban${json.jawaban.find(v => v.includes(' '
 (beberapa jawaban terdapat spasi)
 `: ''}
 
-+${winScore} XP tiap jawaban benar
++Rp${winScore} tiap jawaban benar
     `.trim()
     this.game[id] = {
         id,

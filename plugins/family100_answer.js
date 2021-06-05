@@ -12,7 +12,7 @@ module.exports = {
             if (room.terjawab[index]) return !0
             let users = global.DATABASE.data.users
             room.terjawab[index] = m.sender
-            users.exp += room.winScore
+            users.uang += room.winScore
         }
         let isWin = room.terjawab.length === room.terjawab.filter(v => v).length
         let caption = `
@@ -26,7 +26,7 @@ ${Array.from(room.jawaban, (jawaban, index) => {
             return isSurrender || room.terjawab[index] ? `(${index + 1}) ${jawaban} ${room.terjawab[index] ? '@' + room.terjawab[index].split('@')[0] : ''}`.trim() : false
         }).filter(v => v).join('\n')}
 
-${isSurrender ? '' : `+${room.winScore} XP tiap jawaban benar`}
+${isSurrender ? '' : `+Rp${room.winScore} tiap jawaban benar`}
     `.trim()
         m.reply(caption, null, {
             contextInfo: {
