@@ -2,7 +2,8 @@ let fetch = require('node-fetch')
 let handler = async (m, { text }) => {
   let res = await fetch('https://fdciabdul.tech/api/ayla/?pesan=' + encodeURIComponent(text))
   let json = await res.json()
-  if (json.status) m.reply(json.jawab)
+  let { jawab } = json
+  if (json.status) m.reply(jawab)
   else throw json
 }
 handler.help = ['simi', 'simsimi', 'simih'].map(v => v + ' <teks>')
