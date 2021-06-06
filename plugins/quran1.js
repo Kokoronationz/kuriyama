@@ -7,7 +7,7 @@ let [text1, text2] = text.split('|')
 
   await m.reply(global.wait)
 	axios.get(`https://islamic-api-indonesia.herokuapp.com/api/data/quran?surah=${text1}&ayat=${text2}`).then ((res) => {
-	 	let caption = `*「 Quran 」*\n\n ${res.data.result.data.preBismillah.text.arab}`
+	 	let caption = `*「 Quran 」*\n\n ${res.data.result.data.surah.preBismillah.text.arab}`
 	 	let pp = res.data.result.data.audio.primary
  conn.reply(m.chat, caption, m)
  conn.sendFile(m.chat, pp, 'pp.mp3', '', m)
