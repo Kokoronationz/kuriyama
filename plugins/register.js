@@ -41,7 +41,7 @@ await conn.reply(m.chat, caption, {
     "imageMessage": { 
       "mimetype": "image/jpeg", 
       "caption": `Registration Successful!`, 
-      "jpegThumbnail": require('fs')readFileSync('.src/photo/mirai.png')} } }, { contextInfo: { mentionedJid: [m.sender] } })
+      "jpegThumbnail": tnbot} } }, { contextInfo: { mentionedJid: [m.sender] } })
 global.DATABASE._data.users[m.sender].uang += 10000
 }
 handler.help = ['daftar', 'register'].map(v => v + ' <nama>|<umur>')
