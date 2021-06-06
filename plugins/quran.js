@@ -11,7 +11,7 @@ let [text1, text2] = text.split('|')
 *「 Quran 」*
 
 ${res.data.result.data.surah.preBismillah.text.arab}
-${res.data.result.data.surah.preBismillah.translation.id}
+${res.data.result.data.surah.preBismillah.translation.en}
 *Surah dan ayat ditemukan!*
 *Keterangan surah*
 *Nama surah :* ${res.data.result.data.surah.name.short} (${res.data.result.data.surah.transliteration.id}) (${res.data.result.data.surah.name.translation})
