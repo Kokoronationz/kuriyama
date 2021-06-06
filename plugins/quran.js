@@ -14,6 +14,7 @@ ${res.data.result.data.surah.preBismillah.text.arab}
 ${res.data.result.data.surah.preBismillah.translation.id}
 
 *Surah dan ayat ditemukan!*
+
 *Keterangan surah*
 *Nama surah :* ${res.data.result.data.surah.name.short} (${res.data.result.data.surah.name.transliteration.id}) (${res.data.result.data.surah.name.translation.id})
 *Surah ke-:* ${res.data.result.data.surah.number}
