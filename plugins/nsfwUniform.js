@@ -1,14 +1,12 @@
-const { MessageType } = require('@adiwajshing/baileys')
 const fetch = require('node-fetch')
 
 let handler = async (m, { conn }) => {
     try {
       await m.reply(global.wait)
+      let tnbot = (await conn.getFile(await conn.getProfilePicture(m.fromMe))).data.toString('base64')
         let res = await fetch(global.API('xteam', '/randomimage/uniform', {}, 'APIKEY'))
         let img = await res.buffer()
-        conn.sendMessage(m.chat, img, MessageType.image, {
-            quoted: m, caption: '*©Kuriyama-bot*'
-        })
+        await conn.sendFile(m.chat, img, 'img.png', '*©Kuriyama-bot*', m, false, { thumbnail: tnbot} )
     } catch (e) {
         console.log(e)
         throw '_*Owner belum membayar tagihan fitur ini*_'
