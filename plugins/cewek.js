@@ -5,7 +5,7 @@ let handler = async(m, { conn, text }) => {
   await m.reply(global.wait)
     let items = ["ullzang girl", "cewe cantik", "hijab cantik", "korean girl", "remaja cantik", "cewek korea", "cewek jepang"];
     let cewe = items[Math.floor(Math.random() * items.length)];
-    let url = "https://api.fdci.se/rep.php?gambar=" + cewe;
+    let url = "https://fdciabdul.tech/api/pinterest/?keyword=" + cewe;
     let str = `
 Nihh Cantik kan?
 
