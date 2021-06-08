@@ -31,7 +31,7 @@ global.doaharian = {
       },
       {
         "title": "Doa Sesudah Makan",
-        "arabic": "Dari Abu Umamah, ia berkata bahwasanya,\nالنَّبِىَّ – لى الله ليه لم – انَ ا رَفَعَ مَائِدَتَهُ قَالَ « الْحَمْدُ لِلَّهِ ا ا ارَكًا لاَ لاَ ا »"
+        "arabic": "Dari Abu Umamah, ia berkata bahwasanya,\nالنَّبِىَّ – لى الله ليه لم – انَ ا رَفَعَ مَائِدَتَهُ قَالَ « الْحَمْدُ لِلَّهِ ا ا ارَكًا لاَ لاَ ا »",
         "latin": "",
         "translation": "Nabi shallallahu 'alaihi wa sallam ketika mengangkatnya (artinya: selesai makan), beliau berdo'a: Alhamdulillahi kastiron thoyyiban mubarokan fiih, ghoiro makfiyyin wa laa muwadda'in wa laa mustaghnan 'anhu robbanaa (segala puji milik Allah, yang Allah tidak butuh makanan dari makhluk-Nya, yang Allah tidak mungkin ditinggalkan, dan semua tidak lepas dari butuh pada Allah, wahai Rabb kami) (HR. Bukhari no. 5458)"
       },
