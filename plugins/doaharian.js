@@ -27,7 +27,7 @@ global.doaharian = {
         "title": "Doa Sebelum Makan",
         "arabic": "Dari ‘Umar bin Abi Salamah, ia berkata, “Waktu aku masih kecil dan berada di bawah asuhan Rasulullah shallallahu ‘alaihi wa sallam, tanganku bersileweran di nampan saat makan. Maka Rasulullah shallallahu ‘alaihi wa sallam bersabda,\n« يَا غُلاَمُ سَمِّ اللَّهَ ، وَكُلْ بِيَمِينِكَ وَكُلْ مِمَّا يَلِيكَ » . فَمَا زَالَتْ تِلْكَ طِعْمَتِى بَعْدُ",
         "latin": "",
-        "translation": "\"Wahai Ghulam, sebutlah nama Allah (bacalah “BISMILLAH”), makanlah dengan tangan kananmu dan makanlah makanan yang ada di hadapanmu.” Maka seperti itulah gaya makanku setelah itu. (HR. Bukhari no. 5376 dan Muslim no. 2022)\"\n(Dengan Mengucap Bismillah saja sudah cukup)"
+        "translation": "Wahai Ghulam, sebutlah nama Allah (bacalah “BISMILLAH”), makanlah dengan tangan kananmu dan makanlah makanan yang ada di hadapanmu.” Maka seperti itulah gaya makanku setelah itu. (HR. Bukhari no. 5376 dan Muslim no. 2022)\"_\n_\"(Dengan Mengucap Bismillah saja sudah cukup)"
       },
       {
         "title": "Doa Sesudah Makan",
