@@ -1,7 +1,7 @@
 let handler = async (m) => {
     let bacaanshalat = JSON.stringify(global.bacaanshalat)
     let json = JSON.parse(bacaanshalat)
-    let data = json.result.data.map((v, i) => `${i + 1}. ${v.name}\n${v.arabic}\n${v.latin}\n*Artinya:*\n_"${v.terjemahan}"_`).join('\n\n')
+    let data = json.result.map((v, i) => `${i + 1}. ${v.name}\n${v.arabic}\n${v.latin}\n*Artinya:*\n_"${v.terjemahan}"_`).join('\n\n')
     contoh = `*「 Bacaan Shalat 」*\n\n`
     m.reply(contoh + data)
 }
