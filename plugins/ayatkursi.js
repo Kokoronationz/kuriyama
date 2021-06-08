@@ -1,6 +1,6 @@
 let handler = async (m) => {
-    let ayatkursi = JSON.stringify(global.ayatkursi)
-    let json = JSON.parse(ayatkursi)
+    let ayatKursi = JSON.stringify(global.ayatkursi)
+    let json = JSON.parse(ayatKursi)
     let data = json.result.data.map((v, i) => `*Tafsir:* ${v.tafsir}\n${v.arabic}\n${v.latin}\n*Artinya:*\n_"${v.translation}"_`)
     contoh = `*「 Ayat Kursi 」*\n\n`
     m.reply(contoh + data)
