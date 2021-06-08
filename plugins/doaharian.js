@@ -25,7 +25,7 @@ global.doaharian = {
     "data": [
       {
         "title": "Doa Sebelum Makan",
-        "arabic": "Dari ‘Umar bin Abi Salamah, ia berkata, “Waktu aku masih kecil dan berada di bawah asuhan Rasulullah shallallahu ‘alaihi wa sallam, tanganku bersileweran di nampan saat makan. Maka Rasulullah shallallahu ‘alaihi wa sallam bersabda,\n« يَا غُلاَمُ سَمِّ اللَّهَ ، وَكُلْ بِيَمِينِكَ وَكُلْ مِمَّا يَلِيكَ » . فَمَا زَالَتْ تِلْكَ طِعْمَتِى بَعْدُ"
+        "arabic": "Dari ‘Umar bin Abi Salamah, ia berkata, “Waktu aku masih kecil dan berada di bawah asuhan Rasulullah shallallahu ‘alaihi wa sallam, tanganku bersileweran di nampan saat makan. Maka Rasulullah shallallahu ‘alaihi wa sallam bersabda,\n« يَا غُلاَمُ سَمِّ اللَّهَ ، وَكُلْ بِيَمِينِكَ وَكُلْ مِمَّا يَلِيكَ » . فَمَا زَالَتْ تِلْكَ طِعْمَتِى بَعْدُ",
         "latin": "\"Wahai Ghulam, sebutlah nama Allah (bacalah “BISMILLAH”), makanlah dengan tangan kananmu dan makanlah makanan yang ada di hadapanmu.” Maka seperti itulah gaya makanku setelah itu. (HR. Bukhari no. 5376 dan Muslim no. 2022)\"",
         "translation": "(Dengan Mengucap Bismillah saja sudah cukup)"
       },
@@ -74,7 +74,7 @@ global.doaharian = {
       {
         "title": "Doa Masuk Kamar Mandi Atau Toilet",
         "arabic": "اَللّٰهُمَّ اِنّىْ اَعُوْذُبِكَ مِنَ الْخُبُثِ وَالْخَبَآئِثِ",
-        "latin": "Alloohumma Innii a'uudzubika minal khubutsi wal khoaaitsi",
+        "latin": "Alloohumma Innii a'uudzubika minal khubutsi wal khobaaitsi",
         "translation": "Ya Allah, aku berlindung pada-Mu dari godaan syetan  laki-laki dan setan perempuan"
       },
       {
