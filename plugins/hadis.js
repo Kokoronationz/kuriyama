@@ -9,7 +9,7 @@ let handler = async(m, { conn, text }) => {
         axios.get(`https://islamic-api-indonesia.herokuapp.com/api/data/hadith?kitab=${hadis.toLowerCase()}&nomor=${nomor}`)
             .then((res) => {
 
-                let caption = `*「 Hadis 」*\n\n${res.data.result.data.contents.arab}\n"${res.data.result.data.contents.id}"\n\n${res.data.result.data.name} ${res.data.result.data.contents.number}.`
+                let caption = `*「 Hadis 」*\n\n${res.data.result.data.contents.arab}\n\n*Artinya:*\n\"${res.data.result.data.contents.id}\"\n\n${res.data.result.data.name} ${res.data.result.data.contents.number}.`
                 conn.reply(m.chat, caption, m)
             })
             .catch((err) => {
