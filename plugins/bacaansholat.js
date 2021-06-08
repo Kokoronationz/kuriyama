@@ -7,7 +7,7 @@ let handler = async (m) => {
 }
 handler.help = ['bacaanshalat']
 handler.tags = ['islamic']
-handler.command = /^(bacaansh?hao]lat)$/i
+handler.command = /^(bacaansh?[ao]lat)$/i
 handler.register = true
 
 handler.fail = null
