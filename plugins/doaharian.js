@@ -25,15 +25,15 @@ global.doaharian = {
     "data": [
       {
         "title": "Doa Sebelum Makan",
-        "arabic": "اَللّٰهُمَّ بَارِكْ لَنَا فِيْمَا رَزَقْتَنَا وَقِنَا عَذَابَ النَّارِ",
-        "latin": "Alloohumma barik lanaa fiimaa razatanaa waqinaa 'adzaa bannar",
-        "translation": "Ya Allah, berkahilah kami dalam rezeki yang telah Engkau berikan kepada kami dan peliharalah kami dari siksa api neraka"
+        "arabic": "Dari ‘Umar bin Abi Salamah, ia berkata, “Waktu aku masih kecil dan berada di bawah asuhan Rasulullah shallallahu ‘alaihi wa sallam, tanganku bersileweran di nampan saat makan. Maka Rasulullah shallallahu ‘alaihi wa sallam bersabda,\n« يَا غُلاَمُ سَمِّ اللَّهَ ، وَكُلْ بِيَمِينِكَ وَكُلْ مِمَّا يَلِيكَ » . فَمَا زَالَتْ تِلْكَ طِعْمَتِى بَعْدُ"
+        "latin": "\"Wahai Ghulam, sebutlah nama Allah (bacalah “BISMILLAH”), makanlah dengan tangan kananmu dan makanlah makanan yang ada di hadapanmu.” Maka seperti itulah gaya makanku setelah itu. (HR. Bukhari no. 5376 dan Muslim no. 2022)\"",
+        "translation": "(Dengan Mengucap Bismillah saja sudah cukup)"
       },
       {
         "title": "Doa Sesudah Makan",
-        "arabic": "اَلْحَمْدُ ِللهِ الَّذِىْ اَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مُسْلِمِيْنَ",
-        "latin": "Alhamdu lillaahil ladzii ath'amanaa wa saqoonaa wa ja'alnaa muslimiin",
-        "translation": "Segala puji bagi Allah yang telah memberi makan kami dan minuman kami, serta menjadikan kami sebagai orang-orang islam"
+        "arabic": "Dari Abu Umamah, ia berkata bahwasanya,\nالنَّبِىَّ – لى الله ليه لم – انَ ا رَفَعَ مَائِدَتَهُ قَالَ « الْحَمْدُ لِلَّهِ ا ا ارَكًا لاَ لاَ ا »"
+        "latin": "",
+        "translation": "Nabi shallallahu 'alaihi wa sallam ketika mengangkatnya (artinya: selesai makan), beliau berdo'a: Alhamdulillahi kastiron thoyyiban mubarokan fiih, ghoiro makfiyyin wa laa muwadda'in wa laa mustaghnan 'anhu robbanaa (segala puji milik Allah, yang Allah tidak butuh makanan dari makhluk-Nya, yang Allah tidak mungkin ditinggalkan, dan semua tidak lepas dari butuh pada Allah, wahai Rabb kami) (HR. Bukhari no. 5458)"
       },
       {
         "title": "Doa Sesudah  Minum",
