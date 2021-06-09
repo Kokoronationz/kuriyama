@@ -2,6 +2,7 @@ let handler = async (m, { conn, text }) => {
   let [text1, text2] = text.split('|')
   if (!text1) throw 'No username'
   if (!text2) throw 'No comment'
+  await m.reply(global.wait)
   conn.sendFile(m.chat, global.API('https://some-random-api.ml', '/canvas/tweet', {
     avatar: await conn.getProfilePicture(m.sender).catch(_ => ''),
     username: text1,
