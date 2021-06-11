@@ -190,7 +190,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
         } 
       }
     }, m, { 
-      thumbnail: tnbot, 
+      //thumbnail: tnbot, 
       contextInfo: { 
         mentionedJid: [m.sender]} } )
   } catch (e) {
