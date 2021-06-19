@@ -189,7 +189,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
           "jpegThumbnail": tnbot
         } 
       }
-    }, m, { 
+    }, { 
       //thumbnail: tnbot, 
       contextInfo: { 
         mentionedJid: [m.sender]} } )
