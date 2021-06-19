@@ -183,7 +183,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
         fromMe: false 
       }, 
       message: { 
-        "imageMessage": { 
+        "extendedMessage": { 
           "mimetype": "image/jpeg", 
           "caption": `${conn.user.name} Verified Bot`, 
           "jpegThumbnail": tnbot
