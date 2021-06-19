@@ -8,11 +8,7 @@ let handler = async (m, { conn, text }) => {
   conn.emit('chat-update', {
     jid: who,
     hasNewMessage: true,
-    messages: {
-      all() {
-        return [conn.cMod(m.chat, m, txt, who)]
-      }
-    }
+    messages: newMessagesDB([conn.cMod(m.chat, m, txt, who)])
   })
 }
 handler.command = /^sudo$/
