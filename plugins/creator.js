@@ -7,7 +7,7 @@ handler.help = ['owner', 'creator']
 handler.tags = ['info']
 
 handler.command = /^(owner|creator)$/i
-handler.group = false
+handler.disabled = true
 handler.register = true
 
 module.exports = handler
