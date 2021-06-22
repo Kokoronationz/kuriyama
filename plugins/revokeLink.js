@@ -1,10 +1,12 @@
-let { Presence } = require('@adiwajshing/baileys')
-let handler = async (m, { conn, args }) => {
-  conn.updatePresence(m.chat, Presence.composing) 
-  await conn.revokeInvite(m.chat)
+let handler = async (m, { conn, args, usedPrefix }) => {
+
+let res = await conn.query({
+  json: ["action", "inviteReset", m.chat]
+    })
+  await m.reply('Link Group Berhasil Direset!\n\nLink Baru :\nhttps://chat.whatsapp.com/' + res.code)
 }
 handler.help = ['revoke']
-handler.tags = ['maintenance']
+handler.tags = ['group']
 handler.command = /^revoke$/i
 handler.owner = false
 handler.mods = false
