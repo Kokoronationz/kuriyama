@@ -1,4 +1,5 @@
 const uploadImage = require('../lib/uploadImage')
+const uploadFile = require('../lib/uploadFile')
 const { sticker } = require('../lib/sticker')
 const { MessageType } = require('@adiwajshing/baileys')
 
@@ -13,8 +14,9 @@ try {
   if (!mime) throw 'Tidak ada foto'
   if (!/image\/(jpe?g|png)/.test(mime)) throw `Mime ${mime} tidak support`
   let img = await q.download()
-  let url = await uploadImage(img)
-  let meme = `https://docs-jojo.herokuapp.com/api/meme-gen?top=${text1}&bottom=${text2}&img=${url}`
+  let url = await uploadImage(img).catch(e => uploadFile(img))
+  let meme = global.API('https://api.memegen.link', `/images/custom/${encodeURIComponent(text1)}/${encodeURIComponent(text2)}.png`, {
+    background: url })
   let stiker = await sticker(null, meme, 'Sticker Meme', '@Kokoronationz')
   conn.sendMessage(m.chat, stiker, MessageType.sticker, {
     quoted: m
