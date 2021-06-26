@@ -26,13 +26,13 @@ let handler = async function (m, { text, usedPrefix }) {
 ┃ *Umur:* ${age} tahun
 ┃ *Gift:* Rp10000
 ┃ *Registered:* ${rtotalreg}
-┃ *SN:* 
+┃ *Serial Number:* 
 ┃ ${sn}
 ┗ ┅ ━━━━━━━━━━━━━━━━━━━━━ ┅ ━
 
  _Simpan Serial Number anda!_
 `.trim()
-await conn.reply(m.chat, caption, { 
+await conn.reply(m.chat, caption/*, { 
   key: { 
     remoteJid: 'status@broadcast', 
     participant: '0@s.whatsapp.net', 
@@ -41,7 +41,7 @@ await conn.reply(m.chat, caption, {
     "imageMessage": { 
       "mimetype": "image/jpeg", 
       "caption": `Registration Successful!`, 
-      "jpegThumbnail": tnbot} } }, { contextInfo: { mentionedJid: [m.sender] } })
+      "jpegThumbnail": tnbot} } }, { contextInfo: { mentionedJid: [m.sender] } }*/)
 global.DATABASE._data.users[m.sender].uang += 10000
 }
 handler.help = ['daftar', 'register'].map(v => v + ' <nama>|<umur>')
