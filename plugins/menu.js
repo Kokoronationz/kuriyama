@@ -78,7 +78,7 @@ ${'```%npmdesc```'}
 let handler = async (m, { conn, usedPrefix: _p }) => {
   try {
     let package = JSON.parse(await fs.promises.readFile(path.join(__dirname, '../package.json')).catch(_ => '{}'))
-    let kuriyama = './src/photo/kuriyama.png'
+    let kuriyama = './src/photo/kuriyamaIA.png'
     let kokoronationz = 'https://bit.ly/Kokoronationz'
     //let premium = global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
     let tnbot = (await conn.getFile(await conn.getProfilePicture(m.fromMe))).data.toString('base64')
@@ -176,7 +176,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     //conn.reply(m.chat, text.trim(), m)
-    await conn.reply(m.chat, /*kuriyama, 'kuriyama.jpg',*/ text.trim(), { 
+    await conn.sendFile(m.chat, kuriyama, 'kuriyama.jpg', text.trim(), { 
       key: { 
         remoteJid: 'status@broadcast', 
         participant: '0@s.whatsapp.net', 
@@ -189,7 +189,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
           "jpegThumbnail": tnbot
         } 
       }
-    }, { 
+    }, m, { 
       //thumbnail: tnbot, 
       contextInfo: { 
         mentionedJid: [m.sender]} } )
