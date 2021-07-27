@@ -176,7 +176,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     //conn.reply(m.chat, text.trim(), m)
-    await conn.sendFile(m.chat, kuriyama, 'kuriyama.jpg', text.trim(), { 
+    await conn.reply(m.chat, /*kuriyama, 'kuriyama.jpg',*/ text.trim(), { 
       key: { 
         remoteJid: 'status@broadcast', 
         participant: '0@s.whatsapp.net', 
@@ -189,7 +189,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
           "jpegThumbnail": tnbot
         } 
       }
-    }, m, { 
+    }, /*m,*/ { 
       //thumbnail: tnbot, 
       contextInfo: { 
         mentionedJid: [m.sender]} } )
