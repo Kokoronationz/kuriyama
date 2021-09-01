@@ -1,36 +1,17 @@
-let imageToBase64 = require('image-to-base64');
-let axios = require("axios");
-let handler = async(m, { conn, text }) => {
-
-if (!text) return conn.reply(m.chat, 'Harap masukan query!', m)
-
-let url = "https://fdciabdul.tech/api/pinterest/?keyword=" + text;
-let str = `
-Hasil Pencarian :
-
+let fetch = require('node-fetch')
+let handler = async(m, { conn, text, usedPrefix, command }) => {
+  if (!text) throw `Contoh: ${usedPrefix + command} minecraft`
+  let res = await fetch(global.API('zeks', '/api/pinimg', {
+    q: encodeURI(text)
+  }, 'apikey'))
+  if (!res.ok) throw await `${res.status} ${res.statusText}`
+  let json = await res.json()
+  if (!json.status) throw json
+  let pint = json.data[Math.floor(Math.random() * json.data.length)];
+  conn.sendFile(m.chat, pint, '', `
+*Hasil pencarian*
 ${text}
-`.trim()
-
-await m.reply(global.wait)
-axios.get(url)
-.then((result) => {
-let b = JSON.parse(JSON.stringify(result.data));
-let text = b[Math.floor(Math.random() * b.length)];
-imageToBase64(text) // Path to the image
-.then(
-(response) => {
-let buf = Buffer.from(response, 'base64'); // Ta-da
-
-conn.sendFile(m.chat, buf, 'foto.jpg', str, m)
-        }
-    )
-    .catch(
-        (error) => {
-            console.log(error); // Logs an error if there was one
-        }
-    )
-
-});
+`.trim(), m)
 }
 
 handler.help = ['pinterest <query>']
