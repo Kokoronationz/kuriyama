@@ -30,6 +30,7 @@ module.exports = {
           if (!isNumber(user.uang)) user.uang = 0
           if (!isNumber(user.limit)) user.limit = 10
           if (!isNumber(user.lastclaim)) user.lastclaim = 0
+          if (!isNumber(user.lastdaily)) user.lastdaily = 0
           if (!isNumber(user.lastmining)) user.lastmining = 0
           if (!('registered' in user)) user.registered = false
           if (!user.registered) {
